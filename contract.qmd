@@ -1,0 +1,158 @@
+---
+title: "Tucson Police Data and Analysis"
+format: html
+editor: visual
+---
+
+**Team Project Contract**\
+**Project Title:** Tucson Police Data and Analysis\
+**Team Members:**
+
+1.  Ashwini R Jannu, ashwinijannu\@arizona.edu
+
+2.  Lekhashree Honnavalli Jayarama, lekhashreehj\@arizona.edu
+
+3.  Mridula Kalaisevan, lekhashreehj\@arizona.edu
+
+4.  Hitarth Bharad, hitarthbharad\@arizona.edu
+
+5.  Hardik Chemburkar, hardikchemburkar\@arizona.edu
+
+6.  Dhawal Gajwe, dhawalgajwe\@arizona.edu
+
+**Project Overview**
+
+-   **Project Description:** This project focuses on analyzing and visualizing crime data reported to the Tucson Police Department from 2018 to the present. The dataset contains over 181,000 incidents, including details such as crime type, location, and date. The primary objective is to gain insights into crime trends over time, geographic distribution of offenses, and other significant patterns. By using data visualization techniques, we aim to present the findings in an engaging and informative way for decision-makers, law enforcement agencies, and the public.
+
+-   **Expected Deliverables:**
+
+    -   Dashboard representing crime patterns.
+
+    -   A set of visualizations highlighting crime patterns over time (e.g., monthly/annual trends).
+
+    ```{=html}
+    <!-- -->
+    ```
+    -   Geographic heat maps showing the distribution of crimes across different wards and divisions in Tucson.
+
+    -   A detailed report summarizing key findings and visualizations.
+
+    -   A final presentation to showcase the visualizations and insights derived from the data.
+
+**Team Goals**
+
+-   **Project Goals:**
+
+    -   **Analyze crime trends**: Identify patterns in reported crimes across different time periods (year, month, day) and locations (ward, division) in Tucson.
+
+    ```{=html}
+    <!-- -->
+    ```
+    -   **Visualize crime distribution**: Create compelling visualizations such as heat maps, bar charts, and line graphs to showcase crime data trends over time and space.
+
+    -   **Understand crime categories**: Explore the types of crimes (e.g., burglary, homicide, assault) and their frequency to help uncover any significant trends or correlations.
+
+    -   **Support decision-making**: Provide insights through visualizations that could assist law enforcement, policy makers, and the community in understanding and responding to crime patterns effectively.
+
+-   **Learning Objectives:**
+
+    -   **Data wrangling**: Develop skills in cleaning, transforming, and preparing real-world datasets for analysis.
+
+    ```{=html}
+    <!-- -->
+    ```
+    -   **Data visualization**: Learn to design and implement effective visualizations using tools like `ggplot2`.
+
+    -   **Exploratory Data Analysis (EDA)**: Strengthen the ability to extract meaningful insights from large datasets by identifying trends, patterns, and anomalies.
+
+    -   **Collaboration and teamwork**: Enhance communication and project management skills by working collaboratively within a team structure to deliver a data-driven project.
+
+**Team Roles and Responsibilities**
+
+-   **Roles (change as needed):**
+
+<!-- -->
+
+-   **Project Manager:** \[Ashwini R Jannu\] – Ensures timelines are met, organizes meetings, and manages communications.
+
+-   **Data Analyst:** \[Lekhashree Honnavalli Jayarama, Mridula Kalaisevan\] – Responsible for data cleaning, analysis, and exploratory
+
+-   **Visualization Specialist:** \[Dhawal Gajwe, Hitharth Bharad\] – Designs the final visualizations and makes aesthetic choices.
+
+-   **Documentation Lead:** \[Hardik Chemburkar, Ashwini R Jannu\] – Keeps detailed notes, ensures all project decisions are documented, and handles the final report.
+
+<!-- -->
+
+-   **Responsibilities:**
+
+-   **General Responsibilities:** Each team member is responsible for:
+
+<!-- -->
+
+-   Participating actively in all meetings.
+
+-   Completing their assigned tasks on time.
+
+<!-- -->
+
+-   Communicating openly and promptly if issues arise.
+
+**Communication Plan**
+
+-   **Meeting Schedule:** Weekly on Monday and Wed at 3.15 - 4.15 PM in person.
+
+-   **Primary Communication Platform:** Whatsapp.
+
+-   **Decision-Making Process:** Decisions will be made by consensus; if a consensus cannot be reached, a vote will be taken.
+
+**Work Plan and Timeline**
+
+-   **Milestones:**
+
+    -   Milestone 1 - Completed
+    -   Milestone 2 - In process
+
+-   **Data Collection and Cleaning:** Completed by \[Date\].
+
+-   **Exploratory Data Analysis:** Completed by \[Date\].
+
+-   **Design of Visualizations:** Completed by \[Date\].
+
+-   **Final Presentation and Report:** Completed by \[Date\].
+
+-   **Task Assignments:** \[Use a table to assign tasks to team members with due dates.\]
+
+**Accountability and Expectations**
+
+-   **Attendance Policy:** All team members are expected to attend scheduled meetings unless previously discussed.
+
+-   **Quality of Work:** All deliverables should be completed to a professional standard.
+
+-   **Deadlines:** All members are responsible for meeting deadlines. If someone cannot meet a deadline, they must notify the team in advance.
+
+**Conflict Resolution Plan**
+
+-   **Conflict Management:** If a conflict arises, team members will:
+
+1.  Discuss the issue openly during a team meeting.
+
+2.  Attempt to resolve the issue through compromise.
+
+3.  If the conflict persists, consult the project supervisor for guidance.
+
+**Signatures**\
+By signing below, each team member agrees to the terms of this contract and commits to working together effectively and respectfully.
+
+-   Ashwini R Jannu (30th Sept 2024)
+
+-   Lekhashree Honnavalli Jayarama (30th Sept 2024)
+
+-   Mridula Kalaisevan (30th Sept 2024)
+
+-   Hitarth Bharad (30th Sept 2024)
+
+-   Hardik Chemburkar (30th Sept 2024)
+
+-   Dhawal Gajwe (30th Sept 2024)
+
+This template ensures that everyone understands their roles, responsibilities, and the expectations for the project. It can help prevent misunderstandings and promote effective teamwork throughout the project.
