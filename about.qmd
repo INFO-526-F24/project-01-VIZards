@@ -4,9 +4,15 @@ format: html
 editor: visual
 ---
 
+<<<<<<< HEAD
 This project was developed by VIZards For [INFO 526 - Data Analysis and Visualization](https://datavizaz.org/) at the University of Arizona, taught by Dr. Greg Chism. The team is comprised of the following team members.
 
 -   Team member 1: Ashwini R Jannu from MS in Information Science majoring in machine learning (Graduating in 2025).
+=======
+This project was developed by **Mridula Kalaiselvan** For [INFO 526 - Data Analysis and Visualization](https://datavizaz.org/) at the University of Arizona, taught by Dr. Greg Chism. The team is comprised of the following team members.
+
+-   Team member 1: One sentence description of Team member 24 (e.g., year, major, etc.).
+>>>>>>> cd2311e256d31388c0a4af2cf8488eb412d5e786
 
 -   Team member 2: Lekhashree Honnavalli Jayarama majoring in MS in Data Science (Graduating in 2026).
 
