@@ -1,0 +1,121 @@
+[
+  {
+    "objectID": "proposal.html",
+    "href": "proposal.html",
+    "title": "Proposal title",
+    "section": "",
+    "text": "library(tidyverse)"
+  },
+  {
+    "objectID": "proposal.html#dataset",
+    "href": "proposal.html#dataset",
+    "title": "Proposal title",
+    "section": "Dataset",
+    "text": "Dataset\nA brief description of your dataset including its provenance, dimensions, etc. as well as the reason why you chose this dataset.\nMake sure to load the data and use inline code for some of this information."
+  },
+  {
+    "objectID": "proposal.html#questions",
+    "href": "proposal.html#questions",
+    "title": "Proposal title",
+    "section": "Questions",
+    "text": "Questions\nThe two questions you want to answer."
+  },
+  {
+    "objectID": "proposal.html#analysis-plan",
+    "href": "proposal.html#analysis-plan",
+    "title": "Proposal title",
+    "section": "Analysis plan",
+    "text": "Analysis plan\n\nA plan for answering each of the questions including the variables involved, variables to be created (if any), external data to be merged in (if any)."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "This project was developed by VIZards For INFO 526 - Data Analysis and Visualization at the University of Arizona, taught by Dr. Greg Chism. The team is comprised of the following team members.\n\nTeam member 1: Ashwini R Jannu from MS in Information Science majoring in machine learning (Graduating in 2025).\nTeam member 2: Lekhashree Honnavalli Jayarama majoring in MS in Data Science (Graduating in 2026).\nTeam member 3: Mridula Kalaisevan majoring in MS in Data Science (Graduating in 2026).\nTeam member 4: Hitarth Bharad from MS in Information Science majoring in machine learning (Graduating in 2025).\nTeam member 5: Hardik Chemburkar majoring in MS in Data Science (Graduating in 2026).\nTeam member 6: Dhawal Gajwe from MS in Information Science majoring in machine learning (Graduating in 2025)."
+  },
+  {
+    "objectID": "presentation.html#quarto",
+    "href": "presentation.html#quarto",
+    "title": "Project title",
+    "section": "Quarto",
+    "text": "Quarto\n\nThe presentation is created using the Quarto CLI\n## sets the start of a new slide"
+  },
+  {
+    "objectID": "presentation.html#layouts",
+    "href": "presentation.html#layouts",
+    "title": "Project title",
+    "section": "Layouts",
+    "text": "Layouts\nYou can use plain text\n\n\n\nor bullet points1\n\n\nor in two columns\n\n\nlike\nthis\n\nAnd add footnotes"
+  },
+  {
+    "objectID": "presentation.html#code",
+    "href": "presentation.html#code",
+    "title": "Project title",
+    "section": "Code",
+    "text": "Code\n\n\n# A tibble: 2 × 5\n  term        estimate std.error statistic       p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;\n1 (Intercept)   25.3      3.08        8.22 0.00000000358\n2 speed         -0.116    0.0642     -1.81 0.0806       \n\n\n# A tibble: 1 × 12\n  r.squared adj.r.squared sigma statistic p.value    df logLik   AIC   BIC\n      &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1    0.0983        0.0682  5.82      3.27  0.0806     1  -101.  207.  212.\n# ℹ 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;"
+  },
+  {
+    "objectID": "presentation.html#plots",
+    "href": "presentation.html#plots",
+    "title": "Project title",
+    "section": "Plots",
+    "text": "Plots"
+  },
+  {
+    "objectID": "presentation.html#plot-and-text",
+    "href": "presentation.html#plot-and-text",
+    "title": "Project title",
+    "section": "Plot and text",
+    "text": "Plot and text\n\n\n\nSome text\ngoes here"
+  },
+  {
+    "objectID": "presentation.html#tables",
+    "href": "presentation.html#tables",
+    "title": "Project title",
+    "section": "Tables",
+    "text": "Tables\nIf you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\n\n\n\n\nAdelie\nTorgersen\n39.1\n18.7\n181\n3750\nmale\n\n\nAdelie\nTorgersen\n39.5\n17.4\n186\n3800\nfemale\n\n\nAdelie\nTorgersen\n40.3\n18.0\n195\n3250\nfemale\n\n\nAdelie\nTorgersen\nNA\nNA\nNA\nNA\nNA\n\n\nAdelie\nTorgersen\n36.7\n19.3\n193\n3450\nfemale\n\n\nAdelie\nTorgersen\n39.3\n20.6\n190\n3650\nmale"
+  },
+  {
+    "objectID": "presentation.html#images",
+    "href": "presentation.html#images",
+    "title": "Project title",
+    "section": "Images",
+    "text": "Images\n\nImage credit: Danielle Navarro, Percolate."
+  },
+  {
+    "objectID": "presentation.html#math-expressions",
+    "href": "presentation.html#math-expressions",
+    "title": "Project title",
+    "section": "Math Expressions",
+    "text": "Math Expressions\nYou can write LaTeX math expressions inside a pair of dollar signs, e.g. $\\alpha+\\beta$ renders \\(\\alpha + \\beta\\). You can use the display style with double dollar signs:\n$$\\bar{X}=\\frac{1}{n}\\sum_{i=1}^nX_i$$\n\\[\n\\bar{X}=\\frac{1}{n}\\sum_{i=1}^nX_i\n\\]\nLimitations:\n\nThe source code of a LaTeX math expression must be in one line, unless it is inside a pair of double dollar signs, in which case the starting $$ must appear in the very beginning of a line, followed immediately by a non-space character, and the ending $$ must be at the end of a line, led by a non-space character;\nThere should not be spaces after the opening $ or before the closing $."
+  },
+  {
+    "objectID": "presentation.html#feeling-adventurous",
+    "href": "presentation.html#feeling-adventurous",
+    "title": "Project title",
+    "section": "Feeling adventurous?",
+    "text": "Feeling adventurous?\n\nYou are welcomed to use the default styling of the slides. In fact, that's what I expect majority of you will do. You will differentiate yourself with the content of your presentation.\nBut some of you might want to play around with slide styling. Some solutions for this can be found at https://quarto.org/docs/presentations/revealjs."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Project Title",
+    "section": "",
+    "text": "Add project abstract here."
+  },
+  {
+    "objectID": "index.html#abstract",
+    "href": "index.html#abstract",
+    "title": "Project Title",
+    "section": "",
+    "text": "Add project abstract here."
+  },
+  {
+    "objectID": "contract.html",
+    "href": "contract.html",
+    "title": "Tucson Police Data and Analysis",
+    "section": "",
+    "text": "Team Project Contract\nProject Title: Tucson Police Data and Analysis\nTeam Members:\n\nAshwini R Jannu, ashwinijannu@arizona.edu\nLekhashree Honnavalli Jayarama, lekhashreehj@arizona.edu\nMridula Kalaisevan, lekhashreehj@arizona.edu\nHitarth Bharad, hitarthbharad@arizona.edu\nHardik Chemburkar, hardikchemburkar@arizona.edu\nDhawal Gajwe, dhawalgajwe@arizona.edu\n\nProject Overview\n\nProject Description: This project focuses on analyzing and visualizing crime data reported to the Tucson Police Department from 2018 to the present. The dataset contains over 181,000 incidents, including details such as crime type, location, and date. The primary objective is to gain insights into crime trends over time, geographic distribution of offenses, and other significant patterns. By using data visualization techniques, we aim to present the findings in an engaging and informative way for decision-makers, law enforcement agencies, and the public.\nExpected Deliverables:\n\nDashboard representing crime patterns.\nA set of visualizations highlighting crime patterns over time (e.g., monthly/annual trends).\n\n\n\nGeographic heat maps showing the distribution of crimes across different wards and divisions in Tucson.\nA detailed report summarizing key findings and visualizations.\nA final presentation to showcase the visualizations and insights derived from the data.\n\n\nTeam Goals\n\nProject Goals:\n\nAnalyze crime trends: Identify patterns in reported crimes across different time periods (year, month, day) and locations (ward, division) in Tucson.\n\n\n\nVisualize crime distribution: Create compelling visualizations such as heat maps, bar charts, and line graphs to showcase crime data trends over time and space.\nUnderstand crime categories: Explore the types of crimes (e.g., burglary, homicide, assault) and their frequency to help uncover any significant trends or correlations.\nSupport decision-making: Provide insights through visualizations that could assist law enforcement, policy makers, and the community in understanding and responding to crime patterns effectively.\n\nLearning Objectives:\n\nData wrangling: Develop skills in cleaning, transforming, and preparing real-world datasets for analysis.\n\n\n\nData visualization: Learn to design and implement effective visualizations using tools like ggplot2.\nExploratory Data Analysis (EDA): Strengthen the ability to extract meaningful insights from large datasets by identifying trends, patterns, and anomalies.\nCollaboration and teamwork: Enhance communication and project management skills by working collaboratively within a team structure to deliver a data-driven project.\n\n\nTeam Roles and Responsibilities\n\nRoles (change as needed):\n\n\n\nProject Manager: [Ashwini R Jannu] – Ensures timelines are met, organizes meetings, and manages communications.\nData Analyst: [Lekhashree Honnavalli Jayarama, Mridula Kalaisevan] – Responsible for data cleaning, analysis, and exploratory\nVisualization Specialist: [Dhawal Gajwe, Hitharth Bharad] – Designs the final visualizations and makes aesthetic choices.\nDocumentation Lead: [Hardik Chemburkar, Ashwini R Jannu] – Keeps detailed notes, ensures all project decisions are documented, and handles the final report.\n\n\n\nResponsibilities:\nGeneral Responsibilities: Each team member is responsible for:\n\n\n\nParticipating actively in all meetings.\nCompleting their assigned tasks on time.\n\n\n\nCommunicating openly and promptly if issues arise.\n\nCommunication Plan\n\nMeeting Schedule: Weekly on Monday and Wed at 3.15 - 4.15 PM in person.\nPrimary Communication Platform: Whatsapp.\nDecision-Making Process: Decisions will be made by consensus; if a consensus cannot be reached, a vote will be taken.\n\nWork Plan and Timeline\n\nMilestones:\n\nMilestone 1 - Completed\nMilestone 2 - In process\n\nData Collection and Cleaning: Completed by [Date].\nExploratory Data Analysis: Completed by [Date].\nDesign of Visualizations: Completed by [Date].\nFinal Presentation and Report: Completed by [Date].\nTask Assignments: [Use a table to assign tasks to team members with due dates.]\n\nAccountability and Expectations\n\nAttendance Policy: All team members are expected to attend scheduled meetings unless previously discussed.\nQuality of Work: All deliverables should be completed to a professional standard.\nDeadlines: All members are responsible for meeting deadlines. If someone cannot meet a deadline, they must notify the team in advance.\n\nConflict Resolution Plan\n\nConflict Management: If a conflict arises, team members will:\n\n\nDiscuss the issue openly during a team meeting.\nAttempt to resolve the issue through compromise.\nIf the conflict persists, consult the project supervisor for guidance.\n\nSignatures\nBy signing below, each team member agrees to the terms of this contract and commits to working together effectively and respectfully.\n\nAshwini R Jannu (30th Sept 2024)\nLekhashree Honnavalli Jayarama (30th Sept 2024)\nMridula Kalaisevan (30th Sept 2024)\nHitarth Bharad (30th Sept 2024)\nHardik Chemburkar (30th Sept 2024)\nDhawal Gajwe (30th Sept 2024)\n\nThis template ensures that everyone understands their roles, responsibilities, and the expectations for the project. It can help prevent misunderstandings and promote effective teamwork throughout the project."
+  }
+]
