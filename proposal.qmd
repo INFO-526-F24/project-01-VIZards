@@ -1,11 +1,11 @@
 ---
-title: "Proposal title"
+title: "Tucson Police Reported Crime Data Analysis"
 subtitle: "Proposal"
 author: 
-  - name: "Team Name"
+  - name: "VIZards"
     affiliations:
       - name: "School of Information, University of Arizona"
-description: "Project description"
+description: "Tucson Police Reported Crime Data Analysis"
 format:
   html:
     code-tools: true
@@ -16,20 +16,23 @@ editor: visual
 code-annotations: hover
 execute:
   warning: false
+  message: false
 ---
 
 ```{r}
-#| label: load-pkgs
+#| label: setup
 #| message: false
-library(tidyverse)
+if(!require(pacman))
+  install.packages("pacman")
+
+pacman::p_load(countdown,
+               tidyverse,
+               scales,
+               ggthemes,
+               gt)
 ```
 
-## Dataset 1 : Diwali Sales Data
-
-```{r}
-#| label: load-dataset
-#| message: false
-```
+# 1. Diwali Sales Data
 
 ### Introduction to the Dataset
 
@@ -48,13 +51,11 @@ This data was collected during the bustling Diwali season, a time when shopping 
 While the dataset doesn’t specify the exact methods used for collection, we can imagine that it was gathered through the store’s point-of-sale (POS) systems. These systems automatically record sales along with customer details right at the checkout, providing a comprehensive view of consumer behavior during this festive time. This means that the dataset reflects real shopping patterns during a significant cultural celebration, making it rich with insights into how people celebrate Diwali through their purchases.
 
 ```{r}
+#| label: load-diwali-sales-data
+#| message: false
+sales_data <- read.csv("data/diwali_sales_data.csv")
 
-library(dplyr)
-
-data <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-11-14/diwali_sales_data.csv')
-
-glimpse(data)
-
+glimpse(sales_data)
 ```
 
 ### Description of the Observations
@@ -134,3 +135,124 @@ This research explores the influence of geographic location and marital status o
 ## Analysis plan
 
 -   A plan for answering each of the questions including the variables involved, variables to be created (if any), external data to be merged in (if any).
+
+# 2. Tucson Police Reported Crime Analysis
+
+## Dataset
+
+```{r}
+#| label: load-tucson-police-reported-crime-data
+#| message: false
+
+crime_data <- read.csv("data/Tucson_Police_Reported_Crimes.csv")
+```
+
+## Introduction and Data
+
+### Data Source
+
+The **Tucson Police Reported Crime** dataset, which is sourced from the Tucson Police Department's official crime analysis portal (https://policeanalysis.tucsonaz.gov/pages/reported-crimes).
+
+### Reason for Dataset Selection
+
+1.  **Community Impact**
+
+-   Analyzing crime data can have a direct impact on the safety of Tucson residents. By understanding patterns and hotspots over the year, this project could help inform decisions around community safety and resource allocation, making it a meaningful effort with real world value.
+
+2.  **Tackling Real-World Questions**
+
+-   With this data, We can explore questions like, “Are certain crimes more common in specific areas or at certain times?” This analysis could lead to practical insights for crime prevention and public awareness, making the project both useful and engaging.
+
+### Data Collection
+
+The data was originally collected by the Tucson Police Department through police reports and crime records. It includes various reported crime incidents within the city of Tucson, categorized by type of crime, time of occurrence, and geographic location. The data is continually updated as new reports are filed, ensuring that it reflects recent crime activities.
+
+```{r}
+#| label: summary-of-data
+#| message: false
+crime_summary <- crime_data %>%
+  group_by(UCRDescription) %>%
+  summarize(
+    count = n(),
+    most_recent = max(as.Date(DateOccurred, format="%Y/%m/%d %H:%M:%S"))
+  ) %>%
+  arrange(desc(count))
+
+
+crime_summary_table <- crime_summary %>%
+  gt() %>%
+  tab_header(
+    title = "Summary of Reported Crimes in Tucson",
+    subtitle = "Count and Most Recent Occurrence by Crime Type"
+  ) %>%
+  cols_label(
+    UCRDescription = "Crime Type",
+    count = "Number of Reports",
+    most_recent = "Most Recent Reported Date"
+  ) %>%
+  fmt_number(
+    columns = vars(count),
+    decimals = 0
+  )
+
+crime_summary_table
+```
+
+### Description of Observations
+
+The dataset comprises observations related to different types of crimes such as theft, assault, burglary, and more, with attributes including:
+
+\- **Crime Type**: The nature of the crime (e.g., theft, assault).
+
+\- **Date and Time**: The timestamp of when the incident occurred.
+
+\- **Location**: Latitude and longitude coordinates, as well as divisions/wards within Tucson.
+
+\- **Incident ID**: Unique identifier for each crime report.
+
+This dataset allows for analysis of crime trends over time and across various regions in Tucson, providing insights into patterns and frequencies of different types of criminal activities.
+
+### Ethical Concerns
+
+This data contains sensitive information related to crime incidents and could potentially be used to stigmatize certain areas or populations.
+
+As such, care must be taken to:
+
+\- Ensure anonymity and privacy of the individuals involved in reported incidents.
+
+\- Avoid misinterpretation or misuse of the data that could reinforce negative stereotypes about specific areas.
+
+\- Highlight the context of the data analysis to focus on insights that can aid in improving public safety rather than assigning blame.
+
+## Questions
+
+1.  **Dashboard Representing Crime Patterns**:
+    -   **Research Question**: *What are the patterns of crime incidents across different types of crimes (e.g., theft, assault) over time in Tucson?*
+    -   **Importance**: This question aims to identify trends in crime activities, such as peak times or specific types of crimes that occur more frequently. Understanding these trends can help towards community safety initiatives.
+    -   **Variable Types**:
+        -   **Crime Type** (Categorical)
+        -   **Date/Time** (Quantitative - Time Series)
+        -   **Frequency of Occurrences** (Quantitative)
+2.  **Geographic Heat Maps of Crime Distribution**:
+    -   **Research Question**: *How is the distribution of different types of crimes spatially distributed across various wards and divisions in Tucson over the years?*
+    -   **Importance**: Understanding the geographic distribution of crimes can help law enforcement and community identify hotspots and allocate resources to areas with higher crime rates. It also provides insights into the social dynamics of different regions.
+    -   **Variable Types**:
+        -   **Location (Ward/Division)** (Categorical)
+        -   **Crime Type** (Categorical)
+        -   **Number of Incidents** (Quantitative)
+
+## Glimpse of Data
+
+```{r}
+#| label: print
+#| message: false
+# Head of the data
+print(head(crime_data, 10))
+```
+
+```{r}
+#| label: glimpse
+#| message: false
+# Glimpse of the data
+glimpse(crime_data)
+```
