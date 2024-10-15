@@ -256,3 +256,84 @@ print(head(crime_data, 10))
 # Glimpse of the data
 glimpse(crime_data)
 ```
+
+## 3. Carbon Major Emissions
+
+### Introduction to the Dataset
+
+This information relates to Carbon Majors' emissions data. It talks about past emissions statistics from 122 of the biggest producers of coal, cement, oil, and gas worldwide. More than 1.42 trillion tonnes of CO2e are included in the data, which dates back to 1854. Low, medium, and high levels of granularity are used to share the data. Year, entity, entity type, commodity, commodity output, commodity unit, and total emissions are all included in this dataset, which is the "medium" granularity.
+
+### Source of Data
+
+The Carbon Majors emissions dataset, used in the TidyTuesday project for the week of May 21, 2024, comes from the CarbonMajors.org initiative. This dataset focuses on emissions from major global companies, particularly tracking their contributions to greenhouse gas emissions over time. The data is often utilized to analyze corporate responsibility in climate change discussions, providing insights into how large-scale companies contribute to environmental issues.
+
+### Glimpse of data
+
+```{r}
+tuesdata <- tidytuesdayR::tt_load('2024-05-21')
+emissions <- tuesdata$emissions
+glimpse(emissions)
+
+```
+
+### Collection Method
+
+The dataset used in the Tidy Tuesday challenge on May 21, 2024, was sourced from Carbon Majors, a collaborative project aimed at holding major fossil fuel producers accountable for their emissions. The data was likely collected through a combination of company reports, government databases, and industry publications. The specific data collection methods are not explicitly stated in the article.
+
+### Description of Observations
+
+The data provides insights into various aspects of these emissions, including:
+
+**Entity Types:** The data categorizes emitters into three groups - investor-owned companies, state-owned entities, and nation states. This allows for analysis of emissions distribution across ownership structures.
+
+**Commodities:** The dataset distinguishes between different fossil fuels (oil, gas, coal) and cement, enabling exploration of emission trends by fuel type.
+
+**Production & Units:** The data provides both the quantity of each commodity produced and the corresponding unit (barrels, cubic feet, tonnes). This allows for calculations of emission intensity (emissions per unit of production).
+
+**Total Emissions:** The data includes the total CO2 equivalent emissions attributed to each entity for each year. This facilitates analysis of emission trends over time and identification of major emitters.
+
+This data offers a valuable opportunity to explore historical trends in global emissions, identify the major contributors, and analyze emission patterns across different fuel types and ownership structures.
+
+### Ethical Concerns
+
+**Data privacy:** There are worries about privacy violations if the dataset includes personally identifiable information (PII). To preserve privacy, sensitive data must be handled and maintained safely.
+
+**Data Bias:** Biases in the data collection process may be reflected in the dataset. For instance, the data might not fairly depict global emissions patterns if specific businesses or regions are underrepresented.
+
+**Misinterpretation:** If the data is not thoroughly examined, it may be misunderstood or exploited. For instance, comparing emissions across nations or regions may produce erroneous results if variables like population increase or economic development are not taken into account.
+
+**Potential for Harm:** The data could be used to justify harmful policies or actions. For example, the dataset may worsen social and economic inequality if it is used to support excessive environmental legislation against particular companies or nations.
+
+### Research Question 1
+
+**“What is the contribution of the top emitting companies to global greenhouse gas emissions over time, and how does this align with their public environmental commitments?”**
+
+**Importance:**
+
+This research provides insights that can influence policy decisions, guiding governments and organizations in setting sustainable practices and ensuring compliance with climate agreements. Moreover, it promotes accountability by highlighting key contributors to emissions, thereby fostering transparency among corporations and governments.
+
+Additionally, analyzing emissions data helps raise public awareness about the urgency of reducing carbon pollution, encouraging behavioral changes across society. Ultimately, such research plays a significant role in shaping environmental policy, sustainability initiatives, and global climate action efforts, making it essential for informed decision-making and collective action toward a sustainable future.
+
+**Types of Variables:**
+
+-   **Country**-(Categorical)
+
+-   **Total Emissions**-(Quantitative)
+
+-   **Year**-(Quantitative)
+
+### Research Question 2
+
+**Has the relative contribution of different entity types (investor-owned companies, state-owned companies, nation states) to global CO2 emissions changed over time (since 1854)?**
+
+**Importance:**
+
+Understanding how the responsibility for global emissions is distributed across different ownership structures can inform policy decisions. For example, if state-owned companies are shown to be disproportionately responsible, regulations or international agreements might target these entities.
+
+**Variable Types:**
+
+-   **Country**-(Categorical)
+
+-   **Total Emissions**-(Quantitative)
+
+-   **Year**-(Quantitative)

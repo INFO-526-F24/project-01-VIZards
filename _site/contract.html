@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Author names">
 
-<title>Project title – Project Title</title>
+<title>Tucson Police Data and Analysis – Project Title</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -69,38 +68,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -130,7 +98,7 @@ window.Quarto = {
 <span class="menu-text">Proposal</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./presentation.html" aria-current="page"> 
+    <a class="nav-link" href="./presentation.html"> 
 <span class="menu-text">Presentation</span></a>
   </li>  
   <li class="nav-item">
@@ -156,51 +124,21 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#using-quarto-for-presentations" id="toc-using-quarto-for-presentations" class="nav-link active" data-scroll-target="#using-quarto-for-presentations">Using Quarto for presentations</a>
-  <ul class="collapse">
-  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto">Quarto</a></li>
-  <li><a href="#layouts" id="toc-layouts" class="nav-link" data-scroll-target="#layouts">Layouts</a></li>
-  <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code">Code</a></li>
-  <li><a href="#plots" id="toc-plots" class="nav-link" data-scroll-target="#plots">Plots</a></li>
-  <li><a href="#plot-and-text" id="toc-plot-and-text" class="nav-link" data-scroll-target="#plot-and-text">Plot and text</a></li>
-  </ul></li>
-  <li><a href="#a-new-section" id="toc-a-new-section" class="nav-link" data-scroll-target="#a-new-section">A new section…</a>
-  <ul class="collapse">
-  <li><a href="#tables" id="toc-tables" class="nav-link" data-scroll-target="#tables">Tables</a></li>
-  <li><a href="#images" id="toc-images" class="nav-link" data-scroll-target="#images">Images</a></li>
-  <li><a href="#math-expressions" id="toc-math-expressions" class="nav-link" data-scroll-target="#math-expressions">Math Expressions</a></li>
-  </ul></li>
-  <li><a href="#wrap-up" id="toc-wrap-up" class="nav-link" data-scroll-target="#wrap-up">Wrap up</a>
-  <ul class="collapse">
-  <li><a href="#feeling-adventurous" id="toc-feeling-adventurous" class="nav-link" data-scroll-target="#feeling-adventurous">Feeling adventurous?</a></li>
-  </ul></li>
-  </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="presentation.html"><i class="bi bi-file-slides"></i>RevealJS</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Project title</h1>
-<p class="subtitle lead">INFO 526 - Fall 2023 - Project 1</p>
+<h1 class="title">Tucson Police Data and Analysis</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Author names </p>
-          </div>
-  </div>
     
   
     
@@ -211,247 +149,129 @@ window.Quarto = {
 </header>
 
 
-<section id="using-quarto-for-presentations" class="level1">
-<h1>Using Quarto for presentations</h1>
-<section id="quarto" class="level2">
-<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
-<ul>
-<li><p>The presentation is created using the Quarto CLI</p></li>
-<li><p><code>##</code> sets the start of a new slide</p></li>
-</ul>
-</section>
-<section id="layouts" class="level2">
-<h2 class="anchored" data-anchor-id="layouts">Layouts</h2>
-<p>You can use plain text</p>
-<div class="columns">
-<div class="column" style="width:40%;">
-<ul>
-<li>or bullet points<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
-</ul>
-</div><div class="column" style="width:60%;">
-<p>or in two columns</p>
-</div>
-</div>
-<ul>
-<li><p>like</p></li>
-<li><p>this</p></li>
-</ul>
-</section>
-<section id="code" class="level2">
-<h2 class="anchored" data-anchor-id="code">Code</h2>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 5
-  term        estimate std.error statistic       p.value
-  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;         &lt;dbl&gt;
-1 (Intercept)   25.3      3.08        8.22 0.00000000358
-2 speed         -0.116    0.0642     -1.81 0.0806       </code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 12
-  r.squared adj.r.squared sigma statistic p.value    df logLik   AIC   BIC
-      &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-1    0.0983        0.0682  5.82      3.27  0.0806     1  -101.  207.  212.
-# ℹ 3 more variables: deviance &lt;dbl&gt;, df.residual &lt;int&gt;, nobs &lt;int&gt;</code></pre>
-</div>
-</div>
-</section>
-<section id="plots" class="level2">
-<h2 class="anchored" data-anchor-id="plots">Plots</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="presentation_files/figure-revealjs/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="1800"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="plot-and-text" class="level2">
-<h2 class="anchored" data-anchor-id="plot-and-text">Plot and text</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<ul>
-<li><p>Some text</p></li>
-<li><p>goes here</p></li>
-</ul>
-</div><div class="column" style="width:50%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="presentation_files/figure-revealjs/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="1650"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="a-new-section" class="level1">
-<h1>A new section…</h1>
-<section id="tables" class="level2">
-<h2 class="anchored" data-anchor-id="tables">Tables</h2>
-<p>If you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,</p>
-<div class="cell">
-<div class="cell-output-display">
-<table class="table caption-top table-sm table-striped small" data-quarto-postprocess="true">
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">species</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">island</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">bill_length_mm</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">bill_depth_mm</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">flipper_length_mm</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">body_mass_g</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">sex</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Adelie</td>
-<td style="text-align: left;">Torgersen</td>
-<td style="text-align: right;">39.1</td>
-<td style="text-align: right;">18.7</td>
-<td style="text-align: right;">181</td>
-<td style="text-align: right;">3750</td>
-<td style="text-align: left;">male</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Adelie</td>
-<td style="text-align: left;">Torgersen</td>
-<td style="text-align: right;">39.5</td>
-<td style="text-align: right;">17.4</td>
-<td style="text-align: right;">186</td>
-<td style="text-align: right;">3800</td>
-<td style="text-align: left;">female</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Adelie</td>
-<td style="text-align: left;">Torgersen</td>
-<td style="text-align: right;">40.3</td>
-<td style="text-align: right;">18.0</td>
-<td style="text-align: right;">195</td>
-<td style="text-align: right;">3250</td>
-<td style="text-align: left;">female</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Adelie</td>
-<td style="text-align: left;">Torgersen</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: right;">NA</td>
-<td style="text-align: left;">NA</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Adelie</td>
-<td style="text-align: left;">Torgersen</td>
-<td style="text-align: right;">36.7</td>
-<td style="text-align: right;">19.3</td>
-<td style="text-align: right;">193</td>
-<td style="text-align: right;">3450</td>
-<td style="text-align: left;">female</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Adelie</td>
-<td style="text-align: left;">Torgersen</td>
-<td style="text-align: right;">39.3</td>
-<td style="text-align: right;">20.6</td>
-<td style="text-align: right;">190</td>
-<td style="text-align: right;">3650</td>
-<td style="text-align: left;">male</td>
-</tr>
-</tbody>
-</table>
-
-
-</div>
-</div>
-</section>
-<section id="images" class="level2">
-<h2 class="anchored" data-anchor-id="images">Images</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/watercolour_sys02_img34_teacup-ocean.png" class="img-fluid figure-img" width="500"></p>
-<figcaption>Image credit: Danielle Navarro, Percolate.</figcaption>
-</figure>
-</div>
-</section>
-<section id="math-expressions" class="level2 smaller">
-<h2 class="smaller anchored" data-anchor-id="math-expressions">Math Expressions</h2>
-<p>You can write LaTeX math expressions inside a pair of dollar signs, e.g.&nbsp;$\alpha+\beta$ renders <span class="math inline">\(\alpha + \beta\)</span>. You can use the display style with double dollar signs:</p>
-<pre><code>$$\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i$$</code></pre>
-<p><span class="math display">\[
-\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i
-\]</span></p>
-<p>Limitations:</p>
+<p><strong>Team Project Contract</strong><br>
+<strong>Project Title:</strong> Tucson Police Data and Analysis<br>
+<strong>Team Members:</strong></p>
 <ol type="1">
-<li><p>The source code of a LaTeX math expression must be in one line, unless it is inside a pair of double dollar signs, in which case the starting <code>$$</code> must appear in the very beginning of a line, followed immediately by a non-space character, and the ending <code>$$</code> must be at the end of a line, led by a non-space character;</p></li>
-<li><p>There should not be spaces after the opening <code>$</code> or before the closing <code>$</code>.</p></li>
+<li><p>Ashwini R Jannu, ashwinijannu@arizona.edu</p></li>
+<li><p>Lekhashree Honnavalli Jayarama, lekhashreehj@arizona.edu</p></li>
+<li><p>Mridula Kalaisevan, lekhashreehj@arizona.edu</p></li>
+<li><p>Hitarth Bharad, hitarthbharad@arizona.edu</p></li>
+<li><p>Hardik Chemburkar, hardikchemburkar@arizona.edu</p></li>
+<li><p>Dhawal Gajwe, dhawalgajwe@arizona.edu</p></li>
 </ol>
-</section>
-</section>
-<section id="wrap-up" class="level1">
-<h1>Wrap up</h1>
-<section id="feeling-adventurous" class="level2">
-<h2 class="anchored" data-anchor-id="feeling-adventurous">Feeling adventurous?</h2>
+<p><strong>Project Overview</strong></p>
 <ul>
-<li><p>You are welcomed to use the default styling of the slides. In fact, that's what I expect majority of you will do. You will differentiate yourself with the content of your presentation.</p></li>
-<li><p>But some of you might want to play around with slide styling. Some solutions for this can be found at https://quarto.org/docs/presentations/revealjs.</p></li>
+<li><p><strong>Project Description:</strong> This project focuses on analyzing and visualizing crime data reported to the Tucson Police Department from 2018 to the present. The dataset contains over 181,000 incidents, including details such as crime type, location, and date. The primary objective is to gain insights into crime trends over time, geographic distribution of offenses, and other significant patterns. By using data visualization techniques, we aim to present the findings in an engaging and informative way for decision-makers, law enforcement agencies, and the public.</p></li>
+<li><p><strong>Expected Deliverables:</strong></p>
+<ul>
+<li><p>Dashboard representing crime patterns.</p></li>
+<li><p>A set of visualizations highlighting crime patterns over time (e.g., monthly/annual trends).</p></li>
 </ul>
-
-
-</section>
-</section>
-
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>And add footnotes<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<!-- -->
+<ul>
+<li><p>Geographic heat maps showing the distribution of crimes across different wards and divisions in Tucson.</p></li>
+<li><p>A detailed report summarizing key findings and visualizations.</p></li>
+<li><p>A final presentation to showcase the visualizations and insights derived from the data.</p></li>
+</ul></li>
+</ul>
+<p><strong>Team Goals</strong></p>
+<ul>
+<li><p><strong>Project Goals:</strong></p>
+<ul>
+<li><strong>Analyze crime trends</strong>: Identify patterns in reported crimes across different time periods (year, month, day) and locations (ward, division) in Tucson.</li>
+</ul>
+<!-- -->
+<ul>
+<li><p><strong>Visualize crime distribution</strong>: Create compelling visualizations such as heat maps, bar charts, and line graphs to showcase crime data trends over time and space.</p></li>
+<li><p><strong>Understand crime categories</strong>: Explore the types of crimes (e.g., burglary, homicide, assault) and their frequency to help uncover any significant trends or correlations.</p></li>
+<li><p><strong>Support decision-making</strong>: Provide insights through visualizations that could assist law enforcement, policy makers, and the community in understanding and responding to crime patterns effectively.</p></li>
+</ul></li>
+<li><p><strong>Learning Objectives:</strong></p>
+<ul>
+<li><strong>Data wrangling</strong>: Develop skills in cleaning, transforming, and preparing real-world datasets for analysis.</li>
+</ul>
+<!-- -->
+<ul>
+<li><p><strong>Data visualization</strong>: Learn to design and implement effective visualizations using tools like <code>ggplot2</code>.</p></li>
+<li><p><strong>Exploratory Data Analysis (EDA)</strong>: Strengthen the ability to extract meaningful insights from large datasets by identifying trends, patterns, and anomalies.</p></li>
+<li><p><strong>Collaboration and teamwork</strong>: Enhance communication and project management skills by working collaboratively within a team structure to deliver a data-driven project.</p></li>
+</ul></li>
+</ul>
+<p><strong>Team Roles and Responsibilities</strong></p>
+<ul>
+<li><strong>Roles (change as needed):</strong></li>
+</ul>
+<!-- -->
+<ul>
+<li><p><strong>Project Manager:</strong> [Ashwini R Jannu] – Ensures timelines are met, organizes meetings, and manages communications.</p></li>
+<li><p><strong>Data Analyst:</strong> [Lekhashree Honnavalli Jayarama, Mridula Kalaisevan] – Responsible for data cleaning, analysis, and exploratory</p></li>
+<li><p><strong>Visualization Specialist:</strong> [Dhawal Gajwe, Hitharth Bharad] – Designs the final visualizations and makes aesthetic choices.</p></li>
+<li><p><strong>Documentation Lead:</strong> [Hardik Chemburkar, Ashwini R Jannu] – Keeps detailed notes, ensures all project decisions are documented, and handles the final report.</p></li>
+</ul>
+<!-- -->
+<ul>
+<li><p><strong>Responsibilities:</strong></p></li>
+<li><p><strong>General Responsibilities:</strong> Each team member is responsible for:</p></li>
+</ul>
+<!-- -->
+<ul>
+<li><p>Participating actively in all meetings.</p></li>
+<li><p>Completing their assigned tasks on time.</p></li>
+</ul>
+<!-- -->
+<ul>
+<li>Communicating openly and promptly if issues arise.</li>
+</ul>
+<p><strong>Communication Plan</strong></p>
+<ul>
+<li><p><strong>Meeting Schedule:</strong> Weekly on Monday and Wed at 3.15 - 4.15 PM in person.</p></li>
+<li><p><strong>Primary Communication Platform:</strong> Whatsapp.</p></li>
+<li><p><strong>Decision-Making Process:</strong> Decisions will be made by consensus; if a consensus cannot be reached, a vote will be taken.</p></li>
+</ul>
+<p><strong>Work Plan and Timeline</strong></p>
+<ul>
+<li><p><strong>Milestones:</strong></p>
+<ul>
+<li>Milestone 1 - Completed</li>
+<li>Milestone 2 - In process</li>
+</ul></li>
+<li><p><strong>Data Collection and Cleaning:</strong> Completed by [Date].</p></li>
+<li><p><strong>Exploratory Data Analysis:</strong> Completed by [Date].</p></li>
+<li><p><strong>Design of Visualizations:</strong> Completed by [Date].</p></li>
+<li><p><strong>Final Presentation and Report:</strong> Completed by [Date].</p></li>
+<li><p><strong>Task Assignments:</strong> [Use a table to assign tasks to team members with due dates.]</p></li>
+</ul>
+<p><strong>Accountability and Expectations</strong></p>
+<ul>
+<li><p><strong>Attendance Policy:</strong> All team members are expected to attend scheduled meetings unless previously discussed.</p></li>
+<li><p><strong>Quality of Work:</strong> All deliverables should be completed to a professional standard.</p></li>
+<li><p><strong>Deadlines:</strong> All members are responsible for meeting deadlines. If someone cannot meet a deadline, they must notify the team in advance.</p></li>
+</ul>
+<p><strong>Conflict Resolution Plan</strong></p>
+<ul>
+<li><strong>Conflict Management:</strong> If a conflict arises, team members will:</li>
+</ul>
+<ol type="1">
+<li><p>Discuss the issue openly during a team meeting.</p></li>
+<li><p>Attempt to resolve the issue through compromise.</p></li>
+<li><p>If the conflict persists, consult the project supervisor for guidance.</p></li>
 </ol>
-</section></div></main> <!-- /main -->
+<p><strong>Signatures</strong><br>
+By signing below, each team member agrees to the terms of this contract and commits to working together effectively and respectfully.</p>
+<ul>
+<li><p>Ashwini R Jannu (30th Sept 2024)</p></li>
+<li><p>Lekhashree Honnavalli Jayarama (30th Sept 2024)</p></li>
+<li><p>Mridula Kalaisevan (30th Sept 2024)</p></li>
+<li><p>Hitarth Bharad (30th Sept 2024)</p></li>
+<li><p>Hardik Chemburkar (30th Sept 2024)</p></li>
+<li><p>Dhawal Gajwe (30th Sept 2024)</p></li>
+</ul>
+<p>This template ensures that everyone understands their roles, responsibilities, and the expectations for the project. It can help prevent misunderstandings and promote effective teamwork throughout the project.</p>
 
-<script>
-  // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-  // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-  // slide changes (different for each slide format).
-  (function () {
-    // dispatch for htmlwidgets
-    function fireSlideEnter() {
-      const event = window.document.createEvent("Event");
-      event.initEvent("slideenter", true, true);
-      window.document.dispatchEvent(event);
-    }
 
-    function fireSlideChanged(previousSlide, currentSlide) {
-      fireSlideEnter();
 
-      // dispatch for shiny
-      if (window.jQuery) {
-        if (previousSlide) {
-          window.jQuery(previousSlide).trigger("hidden");
-        }
-        if (currentSlide) {
-          window.jQuery(currentSlide).trigger("shown");
-        }
-      }
-    }
-
-    // hookup for slidy
-    if (window.w3c_slidy) {
-      window.w3c_slidy.add_observer(function (slide_num) {
-        // slide_num starts at position 1
-        fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-      });
-    }
-
-  })();
-</script>
-
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
