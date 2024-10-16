@@ -167,37 +167,6 @@ The **Tucson Police Reported Crime** dataset, which is sourced from the Tucson P
 
 The data was originally collected by the Tucson Police Department through police reports and crime records. It includes various reported crime incidents within the city of Tucson, categorized by type of crime, time of occurrence, and geographic location. The data is continually updated as new reports are filed, ensuring that it reflects recent crime activities.
 
-```{r}
-#| label: summary-of-data
-#| message: false
-crime_summary <- crime_data %>%
-  group_by(UCRDescription) %>%
-  summarize(
-    count = n(),
-    most_recent = max(as.Date(DateOccurred, format="%Y/%m/%d %H:%M:%S"))
-  ) %>%
-  arrange(desc(count))
-
-
-crime_summary_table <- crime_summary %>%
-  gt() %>%
-  tab_header(
-    title = "Summary of Reported Crimes in Tucson",
-    subtitle = "Count and Most Recent Occurrence by Crime Type"
-  ) %>%
-  cols_label(
-    UCRDescription = "Crime Type",
-    count = "Number of Reports",
-    most_recent = "Most Recent Reported Date"
-  ) %>%
-  fmt_number(
-    columns = vars(count),
-    decimals = 0
-  )
-
-crime_summary_table
-```
-
 ### Description of Observations
 
 The dataset comprises observations related to different types of crimes such as theft, assault, burglary, and more, with attributes including:
@@ -257,9 +226,41 @@ print(head(crime_data, 10))
 glimpse(crime_data)
 ```
 
-## 3. Carbon Major Emissions
+```{r}
+#| label: summary-of-data
+#| message: false
+crime_summary <- crime_data %>%
+  group_by(UCRDescription) %>%
+  summarize(
+    count = n(),
+    most_recent = max(as.Date(DateOccurred, format="%Y/%m/%d %H:%M:%S"))
+  ) %>%
+  arrange(desc(count))
 
-### Introduction to the Dataset
+
+crime_summary_table <- crime_summary %>%
+  gt() %>%
+  tab_header(
+    title = "Summary of Reported Crimes in Tucson",
+    subtitle = "Count and Most Recent Occurrence by Crime Type"
+  ) %>%
+  cols_label(
+    UCRDescription = "Crime Type",
+    count = "Number of Reports",
+    most_recent = "Most Recent Reported Date"
+  ) %>%
+  fmt_number(
+    columns = vars(count),
+    decimals = 0
+  )
+
+crime_summary_table
+```
+
+
+# 3. Carbon Major Emissions
+
+## Introduction to the Dataset
 
 This information relates to Carbon Majors' emissions data. It talks about past emissions statistics from 122 of the biggest producers of coal, cement, oil, and gas worldwide. More than 1.42 trillion tonnes of CO2e are included in the data, which dates back to 1854. Low, medium, and high levels of granularity are used to share the data. Year, entity, entity type, commodity, commodity output, commodity unit, and total emissions are all included in this dataset, which is the "medium" granularity.
 
@@ -267,14 +268,6 @@ This information relates to Carbon Majors' emissions data. It talks about past e
 
 The Carbon Majors emissions dataset, used in the TidyTuesday project for the week of May 21, 2024, comes from the CarbonMajors.org initiative. This dataset focuses on emissions from major global companies, particularly tracking their contributions to greenhouse gas emissions over time. The data is often utilized to analyze corporate responsibility in climate change discussions, providing insights into how large-scale companies contribute to environmental issues.
 
-### Glimpse of data
-
-```{r}
-tuesdata <- tidytuesdayR::tt_load('2024-05-21')
-emissions <- tuesdata$emissions
-glimpse(emissions)
-
-```
 
 ### Collection Method
 
@@ -304,9 +297,9 @@ This data offers a valuable opportunity to explore historical trends in global e
 
 **Potential for Harm:** The data could be used to justify harmful policies or actions. For example, the dataset may worsen social and economic inequality if it is used to support excessive environmental legislation against particular companies or nations.
 
-### Research Question 1
+## Research Questions
 
-**“What is the contribution of the top emitting companies to global greenhouse gas emissions over time, and how does this align with their public environmental commitments?”**
+1.  **“What is the contribution of the top emitting companies to global greenhouse gas emissions over time, and how does this align with their public environmental commitments?”**
 
 **Importance:**
 
@@ -322,9 +315,8 @@ Additionally, analyzing emissions data helps raise public awareness about the ur
 
 -   **Year**-(Quantitative)
 
-### Research Question 2
 
-**Has the relative contribution of different entity types (investor-owned companies, state-owned companies, nation states) to global CO2 emissions changed over time (since 1854)?**
+2.  **Has the relative contribution of different entity types (investor-owned companies, state-owned companies, nation states) to global CO2 emissions changed over time (since 1854)?**
 
 **Importance:**
 
@@ -337,3 +329,13 @@ Understanding how the responsibility for global emissions is distributed across 
 -   **Total Emissions**-(Quantitative)
 
 -   **Year**-(Quantitative)
+
+## Glimpse of data
+
+```{r}
+tuesdata <- tidytuesdayR::tt_load('2024-05-21')
+emissions <- tuesdata$emissions
+glimpse(emissions)
+
+```
+

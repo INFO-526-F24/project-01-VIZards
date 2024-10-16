@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.5.56">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -4827,17 +4827,18 @@ vertical-align: -.125em;
   </ul></li>
   <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a></li>
   <li><a href="#glimpse-of-data" id="toc-glimpse-of-data" class="nav-link" data-scroll-target="#glimpse-of-data">Glimpse of Data</a></li>
+  </ul></li>
   <li><a href="#carbon-major-emissions" id="toc-carbon-major-emissions" class="nav-link" data-scroll-target="#carbon-major-emissions">3. Carbon Major Emissions</a>
   <ul class="collapse">
-  <li><a href="#introduction-to-the-dataset-1" id="toc-introduction-to-the-dataset-1" class="nav-link" data-scroll-target="#introduction-to-the-dataset-1">Introduction to the Dataset</a></li>
+  <li><a href="#introduction-to-the-dataset-1" id="toc-introduction-to-the-dataset-1" class="nav-link" data-scroll-target="#introduction-to-the-dataset-1">Introduction to the Dataset</a>
+  <ul class="collapse">
   <li><a href="#source-of-data" id="toc-source-of-data" class="nav-link" data-scroll-target="#source-of-data">Source of Data</a></li>
-  <li><a href="#glimpse-of-data-1" id="toc-glimpse-of-data-1" class="nav-link" data-scroll-target="#glimpse-of-data-1">Glimpse of data</a></li>
   <li><a href="#collection-method-1" id="toc-collection-method-1" class="nav-link" data-scroll-target="#collection-method-1">Collection Method</a></li>
   <li><a href="#description-of-observations-1" id="toc-description-of-observations-1" class="nav-link" data-scroll-target="#description-of-observations-1">Description of Observations</a></li>
   <li><a href="#ethical-concerns-2" id="toc-ethical-concerns-2" class="nav-link" data-scroll-target="#ethical-concerns-2">Ethical Concerns</a></li>
-  <li><a href="#research-question-1" id="toc-research-question-1" class="nav-link" data-scroll-target="#research-question-1">Research Question 1</a></li>
-  <li><a href="#research-question-2" id="toc-research-question-2" class="nav-link" data-scroll-target="#research-question-2">Research Question 2</a></li>
   </ul></li>
+  <li><a href="#research-questions" id="toc-research-questions" class="nav-link" data-scroll-target="#research-questions">Research Questions</a></li>
+  <li><a href="#glimpse-of-data-1" id="toc-glimpse-of-data-1" class="nav-link" data-scroll-target="#glimpse-of-data-1">Glimpse of data</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -5039,48 +5040,157 @@ $ Amount           &lt;dbl&gt; 23952.00, 23934.00, 23924.00, 23912.00, 23877.00,
 <section id="data-collection" class="level3">
 <h3 class="anchored" data-anchor-id="data-collection">Data Collection</h3>
 <p>The data was originally collected by the Tucson Police Department through police reports and crime records. It includes various reported crime incidents within the city of Tucson, categorized by type of crime, time of occurrence, and geographic location. The data is continually updated as new reports are filed, ensuring that it reflects recent crime activities.</p>
+</section>
+<section id="description-of-observations" class="level3">
+<h3 class="anchored" data-anchor-id="description-of-observations">Description of Observations</h3>
+<p>The dataset comprises observations related to different types of crimes such as theft, assault, burglary, and more, with attributes including:</p>
+<p>- <strong>Crime Type</strong>: The nature of the crime (e.g., theft, assault).</p>
+<p>- <strong>Date and Time</strong>: The timestamp of when the incident occurred.</p>
+<p>- <strong>Location</strong>: Latitude and longitude coordinates, as well as divisions/wards within Tucson.</p>
+<p>- <strong>Incident ID</strong>: Unique identifier for each crime report.</p>
+<p>This dataset allows for analysis of crime trends over time and across various regions in Tucson, providing insights into patterns and frequencies of different types of criminal activities.</p>
+</section>
+<section id="ethical-concerns-1" class="level3">
+<h3 class="anchored" data-anchor-id="ethical-concerns-1">Ethical Concerns</h3>
+<p>This data contains sensitive information related to crime incidents and could potentially be used to stigmatize certain areas or populations.</p>
+<p>As such, care must be taken to:</p>
+<p>- Ensure anonymity and privacy of the individuals involved in reported incidents.</p>
+<p>- Avoid misinterpretation or misuse of the data that could reinforce negative stereotypes about specific areas.</p>
+<p>- Highlight the context of the data analysis to focus on insights that can aid in improving public safety rather than assigning blame.</p>
+</section>
+</section>
+<section id="questions" class="level2">
+<h2 class="anchored" data-anchor-id="questions">Questions</h2>
+<ol type="1">
+<li><strong>Dashboard Representing Crime Patterns</strong>:
+<ul>
+<li><strong>Research Question</strong>: <em>What are the patterns of crime incidents across different types of crimes (e.g., theft, assault) over time in Tucson?</em></li>
+<li><strong>Importance</strong>: This question aims to identify trends in crime activities, such as peak times or specific types of crimes that occur more frequently. Understanding these trends can help towards community safety initiatives.</li>
+<li><strong>Variable Types</strong>:
+<ul>
+<li><strong>Crime Type</strong> (Categorical)</li>
+<li><strong>Date/Time</strong> (Quantitative - Time Series)</li>
+<li><strong>Frequency of Occurrences</strong> (Quantitative)</li>
+</ul></li>
+</ul></li>
+<li><strong>Geographic Heat Maps of Crime Distribution</strong>:
+<ul>
+<li><strong>Research Question</strong>: <em>How is the distribution of different types of crimes spatially distributed across various wards and divisions in Tucson over the years?</em></li>
+<li><strong>Importance</strong>: Understanding the geographic distribution of crimes can help law enforcement and community identify hotspots and allocate resources to areas with higher crime rates. It also provides insights into the social dynamics of different regions.</li>
+<li><strong>Variable Types</strong>:
+<ul>
+<li><strong>Location (Ward/Division)</strong> (Categorical)</li>
+<li><strong>Crime Type</strong> (Categorical)</li>
+<li><strong>Number of Incidents</strong> (Quantitative)</li>
+</ul></li>
+</ul></li>
+</ol>
+</section>
+<section id="glimpse-of-data" class="level2">
+<h2 class="anchored" data-anchor-id="glimpse-of-data">Glimpse of Data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>crime_summary <span class="ot">&lt;-</span> crime_data <span class="sc">%&gt;%</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">group_by</span>(UCRDescription) <span class="sc">%&gt;%</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">summarize</span>(</span>
-<span id="cb5-4"><a href="#cb5-4"></a>    <span class="at">count =</span> <span class="fu">n</span>(),</span>
-<span id="cb5-5"><a href="#cb5-5"></a>    <span class="at">most_recent =</span> <span class="fu">max</span>(<span class="fu">as.Date</span>(DateOccurred, <span class="at">format=</span><span class="st">&quot;%Y/%m/%d %H:%M:%S&quot;</span>))</span>
-<span id="cb5-6"><a href="#cb5-6"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(count))</span>
-<span id="cb5-8"><a href="#cb5-8"></a></span>
-<span id="cb5-9"><a href="#cb5-9"></a></span>
-<span id="cb5-10"><a href="#cb5-10"></a>crime_summary_table <span class="ot">&lt;-</span> crime_summary <span class="sc">%&gt;%</span></span>
-<span id="cb5-11"><a href="#cb5-11"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb5-12"><a href="#cb5-12"></a>  <span class="fu">tab_header</span>(</span>
-<span id="cb5-13"><a href="#cb5-13"></a>    <span class="at">title =</span> <span class="st">&quot;Summary of Reported Crimes in Tucson&quot;</span>,</span>
-<span id="cb5-14"><a href="#cb5-14"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Count and Most Recent Occurrence by Crime Type&quot;</span></span>
-<span id="cb5-15"><a href="#cb5-15"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb5-16"><a href="#cb5-16"></a>  <span class="fu">cols_label</span>(</span>
-<span id="cb5-17"><a href="#cb5-17"></a>    <span class="at">UCRDescription =</span> <span class="st">&quot;Crime Type&quot;</span>,</span>
-<span id="cb5-18"><a href="#cb5-18"></a>    <span class="at">count =</span> <span class="st">&quot;Number of Reports&quot;</span>,</span>
-<span id="cb5-19"><a href="#cb5-19"></a>    <span class="at">most_recent =</span> <span class="st">&quot;Most Recent Reported Date&quot;</span></span>
-<span id="cb5-20"><a href="#cb5-20"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb5-21"><a href="#cb5-21"></a>  <span class="fu">fmt_number</span>(</span>
-<span id="cb5-22"><a href="#cb5-22"></a>    <span class="at">columns =</span> <span class="fu">vars</span>(count),</span>
-<span id="cb5-23"><a href="#cb5-23"></a>    <span class="at">decimals =</span> <span class="dv">0</span></span>
-<span id="cb5-24"><a href="#cb5-24"></a>  )</span>
-<span id="cb5-25"><a href="#cb5-25"></a></span>
-<span id="cb5-26"><a href="#cb5-26"></a>crime_summary_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Head of the data</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">print</span>(<span class="fu">head</span>(crime_data, <span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   IncidentID           DateOccurred Year    Month Day TimeOccur Division Ward
+1  1800330010 2018/03/30 00:00:00+00 2018    March Fri      2054  Midtown    6
+2   807190154 2018/06/15 00:00:00+00 2018     June Fri      0243    South    1
+3  1801010138 2018/01/01 00:00:00+00 2018  January Mon      0412  Midtown    3
+4  1801010111 2018/01/01 00:00:00+00 2018  January Mon      0324    South    1
+5  1801010244 2018/01/01 00:00:00+00 2018  January Mon      0950    South    5
+6  1705280069 2020/07/09 00:00:00+00 2020     July Thu      0136    South    5
+7  1801010253 2018/01/01 00:00:00+00 2018  January Mon      0724     East    2
+8  1801010335 2018/01/01 00:00:00+00 2018  January Mon      1351     West    3
+9  1801010192 2018/01/01 00:00:00+00 2018  January Mon      0254    South    5
+10 1210180043 2019/02/12 00:00:00+00 2019 February Tue      0302    South    5
+   UCR           UCRDescription Offense
+1    5            05 - BURGLARY     501
+2    1            01 - HOMICIDE     101
+3    3             03 - ROBBERY     304
+4    4 04 - ASSAULT, AGGRAVATED     413
+5    6             06 - LARCENY     610
+6    1            01 - HOMICIDE     101
+7    6             06 - LARCENY     607
+8    6             06 - LARCENY     603
+9    6             06 - LARCENY     607
+10   1            01 - HOMICIDE     101
+                            OffenseDescription        CallSource ESRI_OID
+1                             Burglary - Force                          1
+2                   Criminal Homicide - Murder                          2
+3                 Robbery - Convenience Stores  Call For Service        3
+4  Aggravated Assault - Domestic Violence (DV)  Call For Service        4
+5                          Larceny - All Other  Call For Service        5
+6                   Criminal Homicide - Murder  Call For Service        6
+7                     Larceny - From Residence  Call For Service        7
+8                        Larceny - Shoplifting Officer-Initiated        8
+9                     Larceny - From Residence  Call For Service        9
+10                  Criminal Homicide - Murder                         10</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># Glimpse of the data</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">glimpse</span>(crime_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 181,688
+Columns: 14
+$ IncidentID         &lt;dbl&gt; 1800330010, 807190154, 1801010138, 1801010111, 1801…
+$ DateOccurred       &lt;chr&gt; &quot;2018/03/30 00:00:00+00&quot;, &quot;2018/06/15 00:00:00+00&quot;,…
+$ Year               &lt;int&gt; 2018, 2018, 2018, 2018, 2018, 2020, 2018, 2018, 201…
+$ Month              &lt;chr&gt; &quot;March&quot;, &quot;June&quot;, &quot;January&quot;, &quot;January&quot;, &quot;January&quot;, &quot;…
+$ Day                &lt;chr&gt; &quot;Fri&quot;, &quot;Fri&quot;, &quot;Mon&quot;, &quot;Mon&quot;, &quot;Mon&quot;, &quot;Thu&quot;, &quot;Mon&quot;, &quot;M…
+$ TimeOccur          &lt;chr&gt; &quot;2054&quot;, &quot;0243&quot;, &quot;0412&quot;, &quot;0324&quot;, &quot;0950&quot;, &quot;0136&quot;, &quot;07…
+$ Division           &lt;chr&gt; &quot;Midtown&quot;, &quot;South&quot;, &quot;Midtown&quot;, &quot;South&quot;, &quot;South&quot;, &quot;S…
+$ Ward               &lt;int&gt; 6, 1, 3, 1, 5, 5, 2, 3, 5, 5, 6, 1, 5, 6, 6, 4, 5, …
+$ UCR                &lt;int&gt; 5, 1, 3, 4, 6, 1, 6, 6, 6, 1, 6, 6, 1, 1, 3, 3, 8, …
+$ UCRDescription     &lt;chr&gt; &quot;05 - BURGLARY&quot;, &quot;01 - HOMICIDE&quot;, &quot;03 - ROBBERY&quot;, &quot;…
+$ Offense            &lt;int&gt; 501, 101, 304, 413, 610, 101, 607, 603, 607, 101, 6…
+$ OffenseDescription &lt;chr&gt; &quot;Burglary - Force&quot;, &quot;Criminal Homicide - Murder&quot;, &quot;…
+$ CallSource         &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;Call For Service&quot;, &quot;Call For Service&quot;, &quot;Ca…
+$ ESRI_OID           &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, …</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>crime_summary <span class="ot">&lt;-</span> crime_data <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>  <span class="fu">group_by</span>(UCRDescription) <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb9-4"><a href="#cb9-4"></a>    <span class="at">count =</span> <span class="fu">n</span>(),</span>
+<span id="cb9-5"><a href="#cb9-5"></a>    <span class="at">most_recent =</span> <span class="fu">max</span>(<span class="fu">as.Date</span>(DateOccurred, <span class="at">format=</span><span class="st">&quot;%Y/%m/%d %H:%M:%S&quot;</span>))</span>
+<span id="cb9-6"><a href="#cb9-6"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(count))</span>
+<span id="cb9-8"><a href="#cb9-8"></a></span>
+<span id="cb9-9"><a href="#cb9-9"></a></span>
+<span id="cb9-10"><a href="#cb9-10"></a>crime_summary_table <span class="ot">&lt;-</span> crime_summary <span class="sc">%&gt;%</span></span>
+<span id="cb9-11"><a href="#cb9-11"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb9-12"><a href="#cb9-12"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb9-13"><a href="#cb9-13"></a>    <span class="at">title =</span> <span class="st">&quot;Summary of Reported Crimes in Tucson&quot;</span>,</span>
+<span id="cb9-14"><a href="#cb9-14"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Count and Most Recent Occurrence by Crime Type&quot;</span></span>
+<span id="cb9-15"><a href="#cb9-15"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb9-16"><a href="#cb9-16"></a>  <span class="fu">cols_label</span>(</span>
+<span id="cb9-17"><a href="#cb9-17"></a>    <span class="at">UCRDescription =</span> <span class="st">&quot;Crime Type&quot;</span>,</span>
+<span id="cb9-18"><a href="#cb9-18"></a>    <span class="at">count =</span> <span class="st">&quot;Number of Reports&quot;</span>,</span>
+<span id="cb9-19"><a href="#cb9-19"></a>    <span class="at">most_recent =</span> <span class="st">&quot;Most Recent Reported Date&quot;</span></span>
+<span id="cb9-20"><a href="#cb9-20"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb9-21"><a href="#cb9-21"></a>  <span class="fu">fmt_number</span>(</span>
+<span id="cb9-22"><a href="#cb9-22"></a>    <span class="at">columns =</span> <span class="fu">vars</span>(count),</span>
+<span id="cb9-23"><a href="#cb9-23"></a>    <span class="at">decimals =</span> <span class="dv">0</span></span>
+<span id="cb9-24"><a href="#cb9-24"></a>  )</span>
+<span id="cb9-25"><a href="#cb9-25"></a></span>
+<span id="cb9-26"><a href="#cb9-26"></a>crime_summary_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="niwwalmjxq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#niwwalmjxq table {
+<div id="mzfcymotea" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mzfcymotea table {
 font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 -webkit-font-smoothing: antialiased;
 -moz-osx-font-smoothing: grayscale;
 }
-#niwwalmjxq thead, #niwwalmjxq tbody, #niwwalmjxq tfoot, #niwwalmjxq tr, #niwwalmjxq td, #niwwalmjxq th {
+#mzfcymotea thead, #mzfcymotea tbody, #mzfcymotea tfoot, #mzfcymotea tr, #mzfcymotea td, #mzfcymotea th {
 border-style: none;
 }
-#niwwalmjxq p {
+#mzfcymotea p {
 margin: 0;
 padding: 0;
 }
-#niwwalmjxq .gt_table {
+#mzfcymotea .gt_table {
 display: table;
 border-collapse: collapse;
 line-height: normal;
@@ -5105,11 +5215,11 @@ border-left-style: none;
 border-left-width: 2px;
 border-left-color: #D3D3D3;
 }
-#niwwalmjxq .gt_caption {
+#mzfcymotea .gt_caption {
 padding-top: 4px;
 padding-bottom: 4px;
 }
-#niwwalmjxq .gt_title {
+#mzfcymotea .gt_title {
 color: #333333;
 font-size: 125%;
 font-weight: initial;
@@ -5120,7 +5230,7 @@ padding-right: 5px;
 border-bottom-color: #FFFFFF;
 border-bottom-width: 0;
 }
-#niwwalmjxq .gt_subtitle {
+#mzfcymotea .gt_subtitle {
 color: #333333;
 font-size: 85%;
 font-weight: initial;
@@ -5131,7 +5241,7 @@ padding-right: 5px;
 border-top-color: #FFFFFF;
 border-top-width: 0;
 }
-#niwwalmjxq .gt_heading {
+#mzfcymotea .gt_heading {
 background-color: #FFFFFF;
 text-align: center;
 border-bottom-color: #FFFFFF;
@@ -5142,12 +5252,12 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#niwwalmjxq .gt_bottom_border {
+#mzfcymotea .gt_bottom_border {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#niwwalmjxq .gt_col_headings {
+#mzfcymotea .gt_col_headings {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -5161,7 +5271,7 @@ border-right-style: none;
 border-right-width: 1px;
 border-right-color: #D3D3D3;
 }
-#niwwalmjxq .gt_col_heading {
+#mzfcymotea .gt_col_heading {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -5180,7 +5290,7 @@ padding-left: 5px;
 padding-right: 5px;
 overflow-x: hidden;
 }
-#niwwalmjxq .gt_column_spanner_outer {
+#mzfcymotea .gt_column_spanner_outer {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -5191,13 +5301,13 @@ padding-bottom: 0;
 padding-left: 4px;
 padding-right: 4px;
 }
-#niwwalmjxq .gt_column_spanner_outer:first-child {
+#mzfcymotea .gt_column_spanner_outer:first-child {
 padding-left: 0;
 }
-#niwwalmjxq .gt_column_spanner_outer:last-child {
+#mzfcymotea .gt_column_spanner_outer:last-child {
 padding-right: 0;
 }
-#niwwalmjxq .gt_column_spanner {
+#mzfcymotea .gt_column_spanner {
 border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
@@ -5208,10 +5318,10 @@ overflow-x: hidden;
 display: inline-block;
 width: 100%;
 }
-#niwwalmjxq .gt_spanner_row {
+#mzfcymotea .gt_spanner_row {
 border-bottom-style: hidden;
 }
-#niwwalmjxq .gt_group_heading {
+#mzfcymotea .gt_group_heading {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -5236,7 +5346,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 text-align: left;
 }
-#niwwalmjxq .gt_empty_group_heading {
+#mzfcymotea .gt_empty_group_heading {
 padding: 0.5px;
 color: #333333;
 background-color: #FFFFFF;
@@ -5250,13 +5360,13 @@ border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 vertical-align: middle;
 }
-#niwwalmjxq .gt_from_md > :first-child {
+#mzfcymotea .gt_from_md > :first-child {
 margin-top: 0;
 }
-#niwwalmjxq .gt_from_md > :last-child {
+#mzfcymotea .gt_from_md > :last-child {
 margin-bottom: 0;
 }
-#niwwalmjxq .gt_row {
+#mzfcymotea .gt_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -5274,7 +5384,7 @@ border-right-color: #D3D3D3;
 vertical-align: middle;
 overflow-x: hidden;
 }
-#niwwalmjxq .gt_stub {
+#mzfcymotea .gt_stub {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -5286,7 +5396,7 @@ border-right-color: #D3D3D3;
 padding-left: 5px;
 padding-right: 5px;
 }
-#niwwalmjxq .gt_stub_row_group {
+#mzfcymotea .gt_stub_row_group {
 color: #333333;
 background-color: #FFFFFF;
 font-size: 100%;
@@ -5299,13 +5409,13 @@ padding-left: 5px;
 padding-right: 5px;
 vertical-align: top;
 }
-#niwwalmjxq .gt_row_group_first td {
+#mzfcymotea .gt_row_group_first td {
 border-top-width: 2px;
 }
-#niwwalmjxq .gt_row_group_first th {
+#mzfcymotea .gt_row_group_first th {
 border-top-width: 2px;
 }
-#niwwalmjxq .gt_summary_row {
+#mzfcymotea .gt_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -5314,14 +5424,14 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#niwwalmjxq .gt_first_summary_row {
+#mzfcymotea .gt_first_summary_row {
 border-top-style: solid;
 border-top-color: #D3D3D3;
 }
-#niwwalmjxq .gt_first_summary_row.thick {
+#mzfcymotea .gt_first_summary_row.thick {
 border-top-width: 2px;
 }
-#niwwalmjxq .gt_last_summary_row {
+#mzfcymotea .gt_last_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -5330,7 +5440,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#niwwalmjxq .gt_grand_summary_row {
+#mzfcymotea .gt_grand_summary_row {
 color: #333333;
 background-color: #FFFFFF;
 text-transform: inherit;
@@ -5339,7 +5449,7 @@ padding-bottom: 8px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#niwwalmjxq .gt_first_grand_summary_row {
+#mzfcymotea .gt_first_grand_summary_row {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -5348,7 +5458,7 @@ border-top-style: double;
 border-top-width: 6px;
 border-top-color: #D3D3D3;
 }
-#niwwalmjxq .gt_last_grand_summary_row_top {
+#mzfcymotea .gt_last_grand_summary_row_top {
 padding-top: 8px;
 padding-bottom: 8px;
 padding-left: 5px;
@@ -5357,10 +5467,10 @@ border-bottom-style: double;
 border-bottom-width: 6px;
 border-bottom-color: #D3D3D3;
 }
-#niwwalmjxq .gt_striped {
+#mzfcymotea .gt_striped {
 background-color: rgba(128, 128, 128, 0.05);
 }
-#niwwalmjxq .gt_table_body {
+#mzfcymotea .gt_table_body {
 border-top-style: solid;
 border-top-width: 2px;
 border-top-color: #D3D3D3;
@@ -5368,7 +5478,7 @@ border-bottom-style: solid;
 border-bottom-width: 2px;
 border-bottom-color: #D3D3D3;
 }
-#niwwalmjxq .gt_footnotes {
+#mzfcymotea .gt_footnotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -5381,7 +5491,7 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#niwwalmjxq .gt_footnote {
+#mzfcymotea .gt_footnote {
 margin: 0px;
 font-size: 90%;
 padding-top: 4px;
@@ -5389,7 +5499,7 @@ padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#niwwalmjxq .gt_sourcenotes {
+#mzfcymotea .gt_sourcenotes {
 color: #333333;
 background-color: #FFFFFF;
 border-bottom-style: none;
@@ -5402,64 +5512,64 @@ border-right-style: none;
 border-right-width: 2px;
 border-right-color: #D3D3D3;
 }
-#niwwalmjxq .gt_sourcenote {
+#mzfcymotea .gt_sourcenote {
 font-size: 90%;
 padding-top: 4px;
 padding-bottom: 4px;
 padding-left: 5px;
 padding-right: 5px;
 }
-#niwwalmjxq .gt_left {
+#mzfcymotea .gt_left {
 text-align: left;
 }
-#niwwalmjxq .gt_center {
+#mzfcymotea .gt_center {
 text-align: center;
 }
-#niwwalmjxq .gt_right {
+#mzfcymotea .gt_right {
 text-align: right;
 font-variant-numeric: tabular-nums;
 }
-#niwwalmjxq .gt_font_normal {
+#mzfcymotea .gt_font_normal {
 font-weight: normal;
 }
-#niwwalmjxq .gt_font_bold {
+#mzfcymotea .gt_font_bold {
 font-weight: bold;
 }
-#niwwalmjxq .gt_font_italic {
+#mzfcymotea .gt_font_italic {
 font-style: italic;
 }
-#niwwalmjxq .gt_super {
+#mzfcymotea .gt_super {
 font-size: 65%;
 }
-#niwwalmjxq .gt_footnote_marks {
+#mzfcymotea .gt_footnote_marks {
 font-size: 75%;
 vertical-align: 0.4em;
 position: initial;
 }
-#niwwalmjxq .gt_asterisk {
+#mzfcymotea .gt_asterisk {
 font-size: 100%;
 vertical-align: 0;
 }
-#niwwalmjxq .gt_indent_1 {
+#mzfcymotea .gt_indent_1 {
 text-indent: 5px;
 }
-#niwwalmjxq .gt_indent_2 {
+#mzfcymotea .gt_indent_2 {
 text-indent: 10px;
 }
-#niwwalmjxq .gt_indent_3 {
+#mzfcymotea .gt_indent_3 {
 text-indent: 15px;
 }
-#niwwalmjxq .gt_indent_4 {
+#mzfcymotea .gt_indent_4 {
 text-indent: 20px;
 }
-#niwwalmjxq .gt_indent_5 {
+#mzfcymotea .gt_indent_5 {
 text-indent: 25px;
 }
-#niwwalmjxq .katex-display {
+#mzfcymotea .katex-display {
 display: inline-flex !important;
 margin-bottom: 0.75em !important;
 }
-#niwwalmjxq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#mzfcymotea div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
 height: 0px !important;
 }
 </style>
@@ -5526,143 +5636,15 @@ height: 0px !important;
 </div>
 </div>
 </section>
-<section id="description-of-observations" class="level3">
-<h3 class="anchored" data-anchor-id="description-of-observations">Description of Observations</h3>
-<p>The dataset comprises observations related to different types of crimes such as theft, assault, burglary, and more, with attributes including:</p>
-<p>- <strong>Crime Type</strong>: The nature of the crime (e.g., theft, assault).</p>
-<p>- <strong>Date and Time</strong>: The timestamp of when the incident occurred.</p>
-<p>- <strong>Location</strong>: Latitude and longitude coordinates, as well as divisions/wards within Tucson.</p>
-<p>- <strong>Incident ID</strong>: Unique identifier for each crime report.</p>
-<p>This dataset allows for analysis of crime trends over time and across various regions in Tucson, providing insights into patterns and frequencies of different types of criminal activities.</p>
 </section>
-<section id="ethical-concerns-1" class="level3">
-<h3 class="anchored" data-anchor-id="ethical-concerns-1">Ethical Concerns</h3>
-<p>This data contains sensitive information related to crime incidents and could potentially be used to stigmatize certain areas or populations.</p>
-<p>As such, care must be taken to:</p>
-<p>- Ensure anonymity and privacy of the individuals involved in reported incidents.</p>
-<p>- Avoid misinterpretation or misuse of the data that could reinforce negative stereotypes about specific areas.</p>
-<p>- Highlight the context of the data analysis to focus on insights that can aid in improving public safety rather than assigning blame.</p>
-</section>
-</section>
-<section id="questions" class="level2">
-<h2 class="anchored" data-anchor-id="questions">Questions</h2>
-<ol type="1">
-<li><strong>Dashboard Representing Crime Patterns</strong>:
-<ul>
-<li><strong>Research Question</strong>: <em>What are the patterns of crime incidents across different types of crimes (e.g., theft, assault) over time in Tucson?</em></li>
-<li><strong>Importance</strong>: This question aims to identify trends in crime activities, such as peak times or specific types of crimes that occur more frequently. Understanding these trends can help towards community safety initiatives.</li>
-<li><strong>Variable Types</strong>:
-<ul>
-<li><strong>Crime Type</strong> (Categorical)</li>
-<li><strong>Date/Time</strong> (Quantitative - Time Series)</li>
-<li><strong>Frequency of Occurrences</strong> (Quantitative)</li>
-</ul></li>
-</ul></li>
-<li><strong>Geographic Heat Maps of Crime Distribution</strong>:
-<ul>
-<li><strong>Research Question</strong>: <em>How is the distribution of different types of crimes spatially distributed across various wards and divisions in Tucson over the years?</em></li>
-<li><strong>Importance</strong>: Understanding the geographic distribution of crimes can help law enforcement and community identify hotspots and allocate resources to areas with higher crime rates. It also provides insights into the social dynamics of different regions.</li>
-<li><strong>Variable Types</strong>:
-<ul>
-<li><strong>Location (Ward/Division)</strong> (Categorical)</li>
-<li><strong>Crime Type</strong> (Categorical)</li>
-<li><strong>Number of Incidents</strong> (Quantitative)</li>
-</ul></li>
-</ul></li>
-</ol>
-</section>
-<section id="glimpse-of-data" class="level2">
-<h2 class="anchored" data-anchor-id="glimpse-of-data">Glimpse of Data</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Head of the data</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="fu">print</span>(<span class="fu">head</span>(crime_data, <span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   IncidentID           DateOccurred Year    Month Day TimeOccur Division Ward
-1  1800330010 2018/03/30 00:00:00+00 2018    March Fri      2054  Midtown    6
-2   807190154 2018/06/15 00:00:00+00 2018     June Fri      0243    South    1
-3  1801010138 2018/01/01 00:00:00+00 2018  January Mon      0412  Midtown    3
-4  1801010111 2018/01/01 00:00:00+00 2018  January Mon      0324    South    1
-5  1801010244 2018/01/01 00:00:00+00 2018  January Mon      0950    South    5
-6  1705280069 2020/07/09 00:00:00+00 2020     July Thu      0136    South    5
-7  1801010253 2018/01/01 00:00:00+00 2018  January Mon      0724     East    2
-8  1801010335 2018/01/01 00:00:00+00 2018  January Mon      1351     West    3
-9  1801010192 2018/01/01 00:00:00+00 2018  January Mon      0254    South    5
-10 1210180043 2019/02/12 00:00:00+00 2019 February Tue      0302    South    5
-   UCR           UCRDescription Offense
-1    5            05 - BURGLARY     501
-2    1            01 - HOMICIDE     101
-3    3             03 - ROBBERY     304
-4    4 04 - ASSAULT, AGGRAVATED     413
-5    6             06 - LARCENY     610
-6    1            01 - HOMICIDE     101
-7    6             06 - LARCENY     607
-8    6             06 - LARCENY     603
-9    6             06 - LARCENY     607
-10   1            01 - HOMICIDE     101
-                            OffenseDescription        CallSource ESRI_OID
-1                             Burglary - Force                          1
-2                   Criminal Homicide - Murder                          2
-3                 Robbery - Convenience Stores  Call For Service        3
-4  Aggravated Assault - Domestic Violence (DV)  Call For Service        4
-5                          Larceny - All Other  Call For Service        5
-6                   Criminal Homicide - Murder  Call For Service        6
-7                     Larceny - From Residence  Call For Service        7
-8                        Larceny - Shoplifting Officer-Initiated        8
-9                     Larceny - From Residence  Call For Service        9
-10                  Criminal Homicide - Murder                         10</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># Glimpse of the data</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">glimpse</span>(crime_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 181,688
-Columns: 14
-$ IncidentID         &lt;dbl&gt; 1800330010, 807190154, 1801010138, 1801010111, 1801…
-$ DateOccurred       &lt;chr&gt; &quot;2018/03/30 00:00:00+00&quot;, &quot;2018/06/15 00:00:00+00&quot;,…
-$ Year               &lt;int&gt; 2018, 2018, 2018, 2018, 2018, 2020, 2018, 2018, 201…
-$ Month              &lt;chr&gt; &quot;March&quot;, &quot;June&quot;, &quot;January&quot;, &quot;January&quot;, &quot;January&quot;, &quot;…
-$ Day                &lt;chr&gt; &quot;Fri&quot;, &quot;Fri&quot;, &quot;Mon&quot;, &quot;Mon&quot;, &quot;Mon&quot;, &quot;Thu&quot;, &quot;Mon&quot;, &quot;M…
-$ TimeOccur          &lt;chr&gt; &quot;2054&quot;, &quot;0243&quot;, &quot;0412&quot;, &quot;0324&quot;, &quot;0950&quot;, &quot;0136&quot;, &quot;07…
-$ Division           &lt;chr&gt; &quot;Midtown&quot;, &quot;South&quot;, &quot;Midtown&quot;, &quot;South&quot;, &quot;South&quot;, &quot;S…
-$ Ward               &lt;int&gt; 6, 1, 3, 1, 5, 5, 2, 3, 5, 5, 6, 1, 5, 6, 6, 4, 5, …
-$ UCR                &lt;int&gt; 5, 1, 3, 4, 6, 1, 6, 6, 6, 1, 6, 6, 1, 1, 3, 3, 8, …
-$ UCRDescription     &lt;chr&gt; &quot;05 - BURGLARY&quot;, &quot;01 - HOMICIDE&quot;, &quot;03 - ROBBERY&quot;, &quot;…
-$ Offense            &lt;int&gt; 501, 101, 304, 413, 610, 101, 607, 603, 607, 101, 6…
-$ OffenseDescription &lt;chr&gt; &quot;Burglary - Force&quot;, &quot;Criminal Homicide - Murder&quot;, &quot;…
-$ CallSource         &lt;chr&gt; &quot;&quot;, &quot;&quot;, &quot;Call For Service&quot;, &quot;Call For Service&quot;, &quot;Ca…
-$ ESRI_OID           &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, …</code></pre>
-</div>
-</div>
-</section>
-<section id="carbon-major-emissions" class="level2">
-<h2 class="anchored" data-anchor-id="carbon-major-emissions">3. Carbon Major Emissions</h2>
-<section id="introduction-to-the-dataset-1" class="level3">
-<h3 class="anchored" data-anchor-id="introduction-to-the-dataset-1">Introduction to the Dataset</h3>
+<section id="carbon-major-emissions" class="level1">
+<h1>3. Carbon Major Emissions</h1>
+<section id="introduction-to-the-dataset-1" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-to-the-dataset-1">Introduction to the Dataset</h2>
 <p>This information relates to Carbon Majors’ emissions data. It talks about past emissions statistics from 122 of the biggest producers of coal, cement, oil, and gas worldwide. More than 1.42 trillion tonnes of CO2e are included in the data, which dates back to 1854. Low, medium, and high levels of granularity are used to share the data. Year, entity, entity type, commodity, commodity output, commodity unit, and total emissions are all included in this dataset, which is the “medium” granularity.</p>
-</section>
 <section id="source-of-data" class="level3">
 <h3 class="anchored" data-anchor-id="source-of-data">Source of Data</h3>
 <p>The Carbon Majors emissions dataset, used in the TidyTuesday project for the week of May 21, 2024, comes from the CarbonMajors.org initiative. This dataset focuses on emissions from major global companies, particularly tracking their contributions to greenhouse gas emissions over time. The data is often utilized to analyze corporate responsibility in climate change discussions, providing insights into how large-scale companies contribute to environmental issues.</p>
-</section>
-<section id="glimpse-of-data-1" class="level3">
-<h3 class="anchored" data-anchor-id="glimpse-of-data-1">Glimpse of data</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>tuesdata <span class="ot">&lt;-</span> tidytuesdayR<span class="sc">::</span><span class="fu">tt_load</span>(<span class="st">&#39;2024-05-21&#39;</span>)</span>
-<span id="cb10-2"><a href="#cb10-2"></a>emissions <span class="ot">&lt;-</span> tuesdata<span class="sc">$</span>emissions</span>
-<span id="cb10-3"><a href="#cb10-3"></a><span class="fu">glimpse</span>(emissions)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 12,551
-Columns: 7
-$ year                   &lt;dbl&gt; 1962, 1962, 1963, 1963, 1964, 1964, 1965, 1965,…
-$ parent_entity          &lt;chr&gt; &quot;Abu Dhabi National Oil Company&quot;, &quot;Abu Dhabi Na…
-$ parent_type            &lt;chr&gt; &quot;State-owned Entity&quot;, &quot;State-owned Entity&quot;, &quot;St…
-$ commodity              &lt;chr&gt; &quot;Oil &amp; NGL&quot;, &quot;Natural Gas&quot;, &quot;Oil &amp; NGL&quot;, &quot;Natur…
-$ production_value       &lt;dbl&gt; 0.91250, 1.84325, 1.82500, 4.42380, 7.30000, 17…
-$ production_unit        &lt;chr&gt; &quot;Million bbl/yr&quot;, &quot;Bcf/yr&quot;, &quot;Million bbl/yr&quot;, &quot;…
-$ total_emissions_MtCO2e &lt;dbl&gt; 0.3638848, 0.1343552, 0.7277697, 0.3224525, 2.9…</code></pre>
-</div>
-</div>
 </section>
 <section id="collection-method-1" class="level3">
 <h3 class="anchored" data-anchor-id="collection-method-1">Collection Method</h3>
@@ -5684,9 +5666,12 @@ $ total_emissions_MtCO2e &lt;dbl&gt; 0.3638848, 0.1343552, 0.7277697, 0.3224525,
 <p><strong>Misinterpretation:</strong> If the data is not thoroughly examined, it may be misunderstood or exploited. For instance, comparing emissions across nations or regions may produce erroneous results if variables like population increase or economic development are not taken into account.</p>
 <p><strong>Potential for Harm:</strong> The data could be used to justify harmful policies or actions. For example, the dataset may worsen social and economic inequality if it is used to support excessive environmental legislation against particular companies or nations.</p>
 </section>
-<section id="research-question-1" class="level3">
-<h3 class="anchored" data-anchor-id="research-question-1">Research Question 1</h3>
-<p><strong>“What is the contribution of the top emitting companies to global greenhouse gas emissions over time, and how does this align with their public environmental commitments?”</strong></p>
+</section>
+<section id="research-questions" class="level2">
+<h2 class="anchored" data-anchor-id="research-questions">Research Questions</h2>
+<ol type="1">
+<li><strong>“What is the contribution of the top emitting companies to global greenhouse gas emissions over time, and how does this align with their public environmental commitments?”</strong></li>
+</ol>
 <p><strong>Importance:</strong></p>
 <p>This research provides insights that can influence policy decisions, guiding governments and organizations in setting sustainable practices and ensuring compliance with climate agreements. Moreover, it promotes accountability by highlighting key contributors to emissions, thereby fostering transparency among corporations and governments.</p>
 <p>Additionally, analyzing emissions data helps raise public awareness about the urgency of reducing carbon pollution, encouraging behavioral changes across society. Ultimately, such research plays a significant role in shaping environmental policy, sustainability initiatives, and global climate action efforts, making it essential for informed decision-making and collective action toward a sustainable future.</p>
@@ -5696,10 +5681,9 @@ $ total_emissions_MtCO2e &lt;dbl&gt; 0.3638848, 0.1343552, 0.7277697, 0.3224525,
 <li><p><strong>Total Emissions</strong>-(Quantitative)</p></li>
 <li><p><strong>Year</strong>-(Quantitative)</p></li>
 </ul>
-</section>
-<section id="research-question-2" class="level3">
-<h3 class="anchored" data-anchor-id="research-question-2">Research Question 2</h3>
-<p><strong>Has the relative contribution of different entity types (investor-owned companies, state-owned companies, nation states) to global CO2 emissions changed over time (since 1854)?</strong></p>
+<ol start="2" type="1">
+<li><strong>Has the relative contribution of different entity types (investor-owned companies, state-owned companies, nation states) to global CO2 emissions changed over time (since 1854)?</strong></li>
+</ol>
 <p><strong>Importance:</strong></p>
 <p>Understanding how the responsibility for global emissions is distributed across different ownership structures can inform policy decisions. For example, if state-owned companies are shown to be disproportionately responsible, regulations or international agreements might target these entities.</p>
 <p><strong>Variable Types:</strong></p>
@@ -5708,11 +5692,29 @@ $ total_emissions_MtCO2e &lt;dbl&gt; 0.3638848, 0.1343552, 0.7277697, 0.3224525,
 <li><p><strong>Total Emissions</strong>-(Quantitative)</p></li>
 <li><p><strong>Year</strong>-(Quantitative)</p></li>
 </ul>
+</section>
+<section id="glimpse-of-data-1" class="level2">
+<h2 class="anchored" data-anchor-id="glimpse-of-data-1">Glimpse of data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>tuesdata <span class="ot">&lt;-</span> tidytuesdayR<span class="sc">::</span><span class="fu">tt_load</span>(<span class="st">&#39;2024-05-21&#39;</span>)</span>
+<span id="cb10-2"><a href="#cb10-2"></a>emissions <span class="ot">&lt;-</span> tuesdata<span class="sc">$</span>emissions</span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="fu">glimpse</span>(emissions)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 12,551
+Columns: 7
+$ year                   &lt;dbl&gt; 1962, 1962, 1963, 1963, 1964, 1964, 1965, 1965,…
+$ parent_entity          &lt;chr&gt; &quot;Abu Dhabi National Oil Company&quot;, &quot;Abu Dhabi Na…
+$ parent_type            &lt;chr&gt; &quot;State-owned Entity&quot;, &quot;State-owned Entity&quot;, &quot;St…
+$ commodity              &lt;chr&gt; &quot;Oil &amp; NGL&quot;, &quot;Natural Gas&quot;, &quot;Oil &amp; NGL&quot;, &quot;Natur…
+$ production_value       &lt;dbl&gt; 0.91250, 1.84325, 1.82500, 4.42380, 7.30000, 17…
+$ production_unit        &lt;chr&gt; &quot;Million bbl/yr&quot;, &quot;Bcf/yr&quot;, &quot;Million bbl/yr&quot;, &quot;…
+$ total_emissions_MtCO2e &lt;dbl&gt; 0.3638848, 0.1343552, 0.7277697, 0.3224525, 2.9…</code></pre>
+</div>
+</div>
 
 
 <!-- -->
 
-</section>
 </section>
 </section>
 
@@ -6540,176 +6542,177 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb12-173"><a href="#cb12-173"></a></span>
 <span id="cb12-174"><a href="#cb12-174"></a>The data was originally collected by the Tucson Police Department through police reports and crime records. It includes various reported crime incidents within the city of Tucson, categorized by type of crime, time of occurrence, and geographic location. The data is continually updated as new reports are filed, ensuring that it reflects recent crime activities.</span>
 <span id="cb12-175"><a href="#cb12-175"></a></span>
-<span id="cb12-178"><a href="#cb12-178"></a><span class="in">```{r}</span></span>
-<span id="cb12-179"><a href="#cb12-179"></a><span class="co">#| label: summary-of-data</span></span>
-<span id="cb12-180"><a href="#cb12-180"></a><span class="co">#| message: false</span></span>
-<span id="cb12-181"><a href="#cb12-181"></a>crime_summary <span class="ot">&lt;-</span> crime_data <span class="sc">%&gt;%</span></span>
-<span id="cb12-182"><a href="#cb12-182"></a>  <span class="fu">group_by</span>(UCRDescription) <span class="sc">%&gt;%</span></span>
-<span id="cb12-183"><a href="#cb12-183"></a>  <span class="fu">summarize</span>(</span>
-<span id="cb12-184"><a href="#cb12-184"></a>    <span class="at">count =</span> <span class="fu">n</span>(),</span>
-<span id="cb12-185"><a href="#cb12-185"></a>    <span class="at">most_recent =</span> <span class="fu">max</span>(<span class="fu">as.Date</span>(DateOccurred, <span class="at">format=</span><span class="st">&quot;%Y/%m/%d %H:%M:%S&quot;</span>))</span>
-<span id="cb12-186"><a href="#cb12-186"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb12-187"><a href="#cb12-187"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(count))</span>
-<span id="cb12-188"><a href="#cb12-188"></a></span>
+<span id="cb12-176"><a href="#cb12-176"></a><span class="fu">### Description of Observations</span></span>
+<span id="cb12-177"><a href="#cb12-177"></a></span>
+<span id="cb12-178"><a href="#cb12-178"></a>The dataset comprises observations related to different types of crimes such as theft, assault, burglary, and more, with attributes including:</span>
+<span id="cb12-179"><a href="#cb12-179"></a></span>
+<span id="cb12-180"><a href="#cb12-180"></a><span class="sc">\-</span> **Crime Type**: The nature of the crime (e.g., theft, assault).</span>
+<span id="cb12-181"><a href="#cb12-181"></a></span>
+<span id="cb12-182"><a href="#cb12-182"></a><span class="sc">\-</span> **Date and Time**: The timestamp of when the incident occurred.</span>
+<span id="cb12-183"><a href="#cb12-183"></a></span>
+<span id="cb12-184"><a href="#cb12-184"></a><span class="sc">\-</span> **Location**: Latitude and longitude coordinates, as well as divisions/wards within Tucson.</span>
+<span id="cb12-185"><a href="#cb12-185"></a></span>
+<span id="cb12-186"><a href="#cb12-186"></a><span class="sc">\-</span> **Incident ID**: Unique identifier for each crime report.</span>
+<span id="cb12-187"><a href="#cb12-187"></a></span>
+<span id="cb12-188"><a href="#cb12-188"></a>This dataset allows for analysis of crime trends over time and across various regions in Tucson, providing insights into patterns and frequencies of different types of criminal activities.</span>
 <span id="cb12-189"><a href="#cb12-189"></a></span>
-<span id="cb12-190"><a href="#cb12-190"></a>crime_summary_table <span class="ot">&lt;-</span> crime_summary <span class="sc">%&gt;%</span></span>
-<span id="cb12-191"><a href="#cb12-191"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb12-192"><a href="#cb12-192"></a>  <span class="fu">tab_header</span>(</span>
-<span id="cb12-193"><a href="#cb12-193"></a>    <span class="at">title =</span> <span class="st">&quot;Summary of Reported Crimes in Tucson&quot;</span>,</span>
-<span id="cb12-194"><a href="#cb12-194"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Count and Most Recent Occurrence by Crime Type&quot;</span></span>
-<span id="cb12-195"><a href="#cb12-195"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb12-196"><a href="#cb12-196"></a>  <span class="fu">cols_label</span>(</span>
-<span id="cb12-197"><a href="#cb12-197"></a>    <span class="at">UCRDescription =</span> <span class="st">&quot;Crime Type&quot;</span>,</span>
-<span id="cb12-198"><a href="#cb12-198"></a>    <span class="at">count =</span> <span class="st">&quot;Number of Reports&quot;</span>,</span>
-<span id="cb12-199"><a href="#cb12-199"></a>    <span class="at">most_recent =</span> <span class="st">&quot;Most Recent Reported Date&quot;</span></span>
-<span id="cb12-200"><a href="#cb12-200"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb12-201"><a href="#cb12-201"></a>  <span class="fu">fmt_number</span>(</span>
-<span id="cb12-202"><a href="#cb12-202"></a>    <span class="at">columns =</span> <span class="fu">vars</span>(count),</span>
-<span id="cb12-203"><a href="#cb12-203"></a>    <span class="at">decimals =</span> <span class="dv">0</span></span>
-<span id="cb12-204"><a href="#cb12-204"></a>  )</span>
-<span id="cb12-205"><a href="#cb12-205"></a></span>
-<span id="cb12-206"><a href="#cb12-206"></a>crime_summary_table</span>
-<span id="cb12-207"><a href="#cb12-207"></a><span class="in">```</span></span>
-<span id="cb12-208"><a href="#cb12-208"></a></span>
-<span id="cb12-209"><a href="#cb12-209"></a><span class="fu">### Description of Observations</span></span>
-<span id="cb12-210"><a href="#cb12-210"></a></span>
-<span id="cb12-211"><a href="#cb12-211"></a>The dataset comprises observations related to different types of crimes such as theft, assault, burglary, and more, with attributes including:</span>
-<span id="cb12-212"><a href="#cb12-212"></a></span>
-<span id="cb12-213"><a href="#cb12-213"></a><span class="sc">\-</span> **Crime Type**: The nature of the crime (e.g., theft, assault).</span>
-<span id="cb12-214"><a href="#cb12-214"></a></span>
-<span id="cb12-215"><a href="#cb12-215"></a><span class="sc">\-</span> **Date and Time**: The timestamp of when the incident occurred.</span>
-<span id="cb12-216"><a href="#cb12-216"></a></span>
-<span id="cb12-217"><a href="#cb12-217"></a><span class="sc">\-</span> **Location**: Latitude and longitude coordinates, as well as divisions/wards within Tucson.</span>
+<span id="cb12-190"><a href="#cb12-190"></a><span class="fu">### Ethical Concerns</span></span>
+<span id="cb12-191"><a href="#cb12-191"></a></span>
+<span id="cb12-192"><a href="#cb12-192"></a>This data contains sensitive information related to crime incidents and could potentially be used to stigmatize certain areas or populations.</span>
+<span id="cb12-193"><a href="#cb12-193"></a></span>
+<span id="cb12-194"><a href="#cb12-194"></a>As such, care must be taken to:</span>
+<span id="cb12-195"><a href="#cb12-195"></a></span>
+<span id="cb12-196"><a href="#cb12-196"></a><span class="sc">\-</span> Ensure anonymity and privacy of the individuals involved in reported incidents.</span>
+<span id="cb12-197"><a href="#cb12-197"></a></span>
+<span id="cb12-198"><a href="#cb12-198"></a><span class="sc">\-</span> Avoid misinterpretation or misuse of the data that could reinforce negative stereotypes about specific areas.</span>
+<span id="cb12-199"><a href="#cb12-199"></a></span>
+<span id="cb12-200"><a href="#cb12-200"></a><span class="sc">\-</span> Highlight the context of the data analysis to focus on insights that can aid in improving public safety rather than assigning blame.</span>
+<span id="cb12-201"><a href="#cb12-201"></a></span>
+<span id="cb12-202"><a href="#cb12-202"></a><span class="fu">## Questions</span></span>
+<span id="cb12-203"><a href="#cb12-203"></a></span>
+<span id="cb12-204"><a href="#cb12-204"></a><span class="ss">1.  </span>**Dashboard Representing Crime Patterns**:</span>
+<span id="cb12-205"><a href="#cb12-205"></a><span class="ss">    -   </span>**Research Question**: *What are the patterns of crime incidents across different types of crimes (e.g., theft, assault) over time in Tucson?*</span>
+<span id="cb12-206"><a href="#cb12-206"></a><span class="ss">    -   </span>**Importance**: This question aims to identify trends in crime activities, such as peak times or specific types of crimes that occur more frequently. Understanding these trends can help towards community safety initiatives.</span>
+<span id="cb12-207"><a href="#cb12-207"></a><span class="ss">    -   </span>**Variable Types**:</span>
+<span id="cb12-208"><a href="#cb12-208"></a><span class="ss">        -   </span>**Crime Type** (Categorical)</span>
+<span id="cb12-209"><a href="#cb12-209"></a><span class="ss">        -   </span>**Date/Time** (Quantitative - Time Series)</span>
+<span id="cb12-210"><a href="#cb12-210"></a><span class="ss">        -   </span>**Frequency of Occurrences** (Quantitative)</span>
+<span id="cb12-211"><a href="#cb12-211"></a><span class="ss">2.  </span>**Geographic Heat Maps of Crime Distribution**:</span>
+<span id="cb12-212"><a href="#cb12-212"></a><span class="ss">    -   </span>**Research Question**: *How is the distribution of different types of crimes spatially distributed across various wards and divisions in Tucson over the years?*</span>
+<span id="cb12-213"><a href="#cb12-213"></a><span class="ss">    -   </span>**Importance**: Understanding the geographic distribution of crimes can help law enforcement and community identify hotspots and allocate resources to areas with higher crime rates. It also provides insights into the social dynamics of different regions.</span>
+<span id="cb12-214"><a href="#cb12-214"></a><span class="ss">    -   </span>**Variable Types**:</span>
+<span id="cb12-215"><a href="#cb12-215"></a><span class="ss">        -   </span>**Location (Ward/Division)** (Categorical)</span>
+<span id="cb12-216"><a href="#cb12-216"></a><span class="ss">        -   </span>**Crime Type** (Categorical)</span>
+<span id="cb12-217"><a href="#cb12-217"></a><span class="ss">        -   </span>**Number of Incidents** (Quantitative)</span>
 <span id="cb12-218"><a href="#cb12-218"></a></span>
-<span id="cb12-219"><a href="#cb12-219"></a><span class="sc">\-</span> **Incident ID**: Unique identifier for each crime report.</span>
+<span id="cb12-219"><a href="#cb12-219"></a><span class="fu">## Glimpse of Data</span></span>
 <span id="cb12-220"><a href="#cb12-220"></a></span>
-<span id="cb12-221"><a href="#cb12-221"></a>This dataset allows for analysis of crime trends over time and across various regions in Tucson, providing insights into patterns and frequencies of different types of criminal activities.</span>
-<span id="cb12-222"><a href="#cb12-222"></a></span>
-<span id="cb12-223"><a href="#cb12-223"></a><span class="fu">### Ethical Concerns</span></span>
-<span id="cb12-224"><a href="#cb12-224"></a></span>
-<span id="cb12-225"><a href="#cb12-225"></a>This data contains sensitive information related to crime incidents and could potentially be used to stigmatize certain areas or populations.</span>
-<span id="cb12-226"><a href="#cb12-226"></a></span>
-<span id="cb12-227"><a href="#cb12-227"></a>As such, care must be taken to:</span>
-<span id="cb12-228"><a href="#cb12-228"></a></span>
-<span id="cb12-229"><a href="#cb12-229"></a><span class="sc">\-</span> Ensure anonymity and privacy of the individuals involved in reported incidents.</span>
-<span id="cb12-230"><a href="#cb12-230"></a></span>
-<span id="cb12-231"><a href="#cb12-231"></a><span class="sc">\-</span> Avoid misinterpretation or misuse of the data that could reinforce negative stereotypes about specific areas.</span>
-<span id="cb12-232"><a href="#cb12-232"></a></span>
-<span id="cb12-233"><a href="#cb12-233"></a><span class="sc">\-</span> Highlight the context of the data analysis to focus on insights that can aid in improving public safety rather than assigning blame.</span>
-<span id="cb12-234"><a href="#cb12-234"></a></span>
-<span id="cb12-235"><a href="#cb12-235"></a><span class="fu">## Questions</span></span>
-<span id="cb12-236"><a href="#cb12-236"></a></span>
-<span id="cb12-237"><a href="#cb12-237"></a><span class="ss">1.  </span>**Dashboard Representing Crime Patterns**:</span>
-<span id="cb12-238"><a href="#cb12-238"></a><span class="ss">    -   </span>**Research Question**: *What are the patterns of crime incidents across different types of crimes (e.g., theft, assault) over time in Tucson?*</span>
-<span id="cb12-239"><a href="#cb12-239"></a><span class="ss">    -   </span>**Importance**: This question aims to identify trends in crime activities, such as peak times or specific types of crimes that occur more frequently. Understanding these trends can help towards community safety initiatives.</span>
-<span id="cb12-240"><a href="#cb12-240"></a><span class="ss">    -   </span>**Variable Types**:</span>
-<span id="cb12-241"><a href="#cb12-241"></a><span class="ss">        -   </span>**Crime Type** (Categorical)</span>
-<span id="cb12-242"><a href="#cb12-242"></a><span class="ss">        -   </span>**Date/Time** (Quantitative - Time Series)</span>
-<span id="cb12-243"><a href="#cb12-243"></a><span class="ss">        -   </span>**Frequency of Occurrences** (Quantitative)</span>
-<span id="cb12-244"><a href="#cb12-244"></a><span class="ss">2.  </span>**Geographic Heat Maps of Crime Distribution**:</span>
-<span id="cb12-245"><a href="#cb12-245"></a><span class="ss">    -   </span>**Research Question**: *How is the distribution of different types of crimes spatially distributed across various wards and divisions in Tucson over the years?*</span>
-<span id="cb12-246"><a href="#cb12-246"></a><span class="ss">    -   </span>**Importance**: Understanding the geographic distribution of crimes can help law enforcement and community identify hotspots and allocate resources to areas with higher crime rates. It also provides insights into the social dynamics of different regions.</span>
-<span id="cb12-247"><a href="#cb12-247"></a><span class="ss">    -   </span>**Variable Types**:</span>
-<span id="cb12-248"><a href="#cb12-248"></a><span class="ss">        -   </span>**Location (Ward/Division)** (Categorical)</span>
-<span id="cb12-249"><a href="#cb12-249"></a><span class="ss">        -   </span>**Crime Type** (Categorical)</span>
-<span id="cb12-250"><a href="#cb12-250"></a><span class="ss">        -   </span>**Number of Incidents** (Quantitative)</span>
+<span id="cb12-223"><a href="#cb12-223"></a><span class="in">```{r}</span></span>
+<span id="cb12-224"><a href="#cb12-224"></a><span class="co">#| label: print</span></span>
+<span id="cb12-225"><a href="#cb12-225"></a><span class="co">#| message: false</span></span>
+<span id="cb12-226"><a href="#cb12-226"></a><span class="co"># Head of the data</span></span>
+<span id="cb12-227"><a href="#cb12-227"></a><span class="fu">print</span>(<span class="fu">head</span>(crime_data, <span class="dv">10</span>))</span>
+<span id="cb12-228"><a href="#cb12-228"></a><span class="in">```</span></span>
+<span id="cb12-229"><a href="#cb12-229"></a></span>
+<span id="cb12-232"><a href="#cb12-232"></a><span class="in">```{r}</span></span>
+<span id="cb12-233"><a href="#cb12-233"></a><span class="co">#| label: glimpse</span></span>
+<span id="cb12-234"><a href="#cb12-234"></a><span class="co">#| message: false</span></span>
+<span id="cb12-235"><a href="#cb12-235"></a><span class="co"># Glimpse of the data</span></span>
+<span id="cb12-236"><a href="#cb12-236"></a><span class="fu">glimpse</span>(crime_data)</span>
+<span id="cb12-237"><a href="#cb12-237"></a><span class="in">```</span></span>
+<span id="cb12-238"><a href="#cb12-238"></a></span>
+<span id="cb12-241"><a href="#cb12-241"></a><span class="in">```{r}</span></span>
+<span id="cb12-242"><a href="#cb12-242"></a><span class="co">#| label: summary-of-data</span></span>
+<span id="cb12-243"><a href="#cb12-243"></a><span class="co">#| message: false</span></span>
+<span id="cb12-244"><a href="#cb12-244"></a>crime_summary <span class="ot">&lt;-</span> crime_data <span class="sc">%&gt;%</span></span>
+<span id="cb12-245"><a href="#cb12-245"></a>  <span class="fu">group_by</span>(UCRDescription) <span class="sc">%&gt;%</span></span>
+<span id="cb12-246"><a href="#cb12-246"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb12-247"><a href="#cb12-247"></a>    <span class="at">count =</span> <span class="fu">n</span>(),</span>
+<span id="cb12-248"><a href="#cb12-248"></a>    <span class="at">most_recent =</span> <span class="fu">max</span>(<span class="fu">as.Date</span>(DateOccurred, <span class="at">format=</span><span class="st">&quot;%Y/%m/%d %H:%M:%S&quot;</span>))</span>
+<span id="cb12-249"><a href="#cb12-249"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb12-250"><a href="#cb12-250"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(count))</span>
 <span id="cb12-251"><a href="#cb12-251"></a></span>
-<span id="cb12-252"><a href="#cb12-252"></a><span class="fu">## Glimpse of Data</span></span>
-<span id="cb12-253"><a href="#cb12-253"></a></span>
-<span id="cb12-256"><a href="#cb12-256"></a><span class="in">```{r}</span></span>
-<span id="cb12-257"><a href="#cb12-257"></a><span class="co">#| label: print</span></span>
-<span id="cb12-258"><a href="#cb12-258"></a><span class="co">#| message: false</span></span>
-<span id="cb12-259"><a href="#cb12-259"></a><span class="co"># Head of the data</span></span>
-<span id="cb12-260"><a href="#cb12-260"></a><span class="fu">print</span>(<span class="fu">head</span>(crime_data, <span class="dv">10</span>))</span>
-<span id="cb12-261"><a href="#cb12-261"></a><span class="in">```</span></span>
-<span id="cb12-262"><a href="#cb12-262"></a></span>
-<span id="cb12-265"><a href="#cb12-265"></a><span class="in">```{r}</span></span>
-<span id="cb12-266"><a href="#cb12-266"></a><span class="co">#| label: glimpse</span></span>
-<span id="cb12-267"><a href="#cb12-267"></a><span class="co">#| message: false</span></span>
-<span id="cb12-268"><a href="#cb12-268"></a><span class="co"># Glimpse of the data</span></span>
-<span id="cb12-269"><a href="#cb12-269"></a><span class="fu">glimpse</span>(crime_data)</span>
+<span id="cb12-252"><a href="#cb12-252"></a></span>
+<span id="cb12-253"><a href="#cb12-253"></a>crime_summary_table <span class="ot">&lt;-</span> crime_summary <span class="sc">%&gt;%</span></span>
+<span id="cb12-254"><a href="#cb12-254"></a>  <span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb12-255"><a href="#cb12-255"></a>  <span class="fu">tab_header</span>(</span>
+<span id="cb12-256"><a href="#cb12-256"></a>    <span class="at">title =</span> <span class="st">&quot;Summary of Reported Crimes in Tucson&quot;</span>,</span>
+<span id="cb12-257"><a href="#cb12-257"></a>    <span class="at">subtitle =</span> <span class="st">&quot;Count and Most Recent Occurrence by Crime Type&quot;</span></span>
+<span id="cb12-258"><a href="#cb12-258"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb12-259"><a href="#cb12-259"></a>  <span class="fu">cols_label</span>(</span>
+<span id="cb12-260"><a href="#cb12-260"></a>    <span class="at">UCRDescription =</span> <span class="st">&quot;Crime Type&quot;</span>,</span>
+<span id="cb12-261"><a href="#cb12-261"></a>    <span class="at">count =</span> <span class="st">&quot;Number of Reports&quot;</span>,</span>
+<span id="cb12-262"><a href="#cb12-262"></a>    <span class="at">most_recent =</span> <span class="st">&quot;Most Recent Reported Date&quot;</span></span>
+<span id="cb12-263"><a href="#cb12-263"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb12-264"><a href="#cb12-264"></a>  <span class="fu">fmt_number</span>(</span>
+<span id="cb12-265"><a href="#cb12-265"></a>    <span class="at">columns =</span> <span class="fu">vars</span>(count),</span>
+<span id="cb12-266"><a href="#cb12-266"></a>    <span class="at">decimals =</span> <span class="dv">0</span></span>
+<span id="cb12-267"><a href="#cb12-267"></a>  )</span>
+<span id="cb12-268"><a href="#cb12-268"></a></span>
+<span id="cb12-269"><a href="#cb12-269"></a>crime_summary_table</span>
 <span id="cb12-270"><a href="#cb12-270"></a><span class="in">```</span></span>
 <span id="cb12-271"><a href="#cb12-271"></a></span>
-<span id="cb12-272"><a href="#cb12-272"></a><span class="fu">## 3. Carbon Major Emissions</span></span>
-<span id="cb12-273"><a href="#cb12-273"></a></span>
-<span id="cb12-274"><a href="#cb12-274"></a><span class="fu">### Introduction to the Dataset</span></span>
-<span id="cb12-275"><a href="#cb12-275"></a></span>
-<span id="cb12-276"><a href="#cb12-276"></a>This information relates to Carbon Majors&#39; emissions data. It talks about past emissions statistics from 122 of the biggest producers of coal, cement, oil, and gas worldwide. More than 1.42 trillion tonnes of CO2e are included in the data, which dates back to 1854. Low, medium, and high levels of granularity are used to share the data. Year, entity, entity type, commodity, commodity output, commodity unit, and total emissions are all included in this dataset, which is the &quot;medium&quot; granularity.</span>
-<span id="cb12-277"><a href="#cb12-277"></a></span>
-<span id="cb12-278"><a href="#cb12-278"></a><span class="fu">### Source of Data</span></span>
-<span id="cb12-279"><a href="#cb12-279"></a></span>
-<span id="cb12-280"><a href="#cb12-280"></a>The Carbon Majors emissions dataset, used in the TidyTuesday project for the week of May 21, 2024, comes from the CarbonMajors.org initiative. This dataset focuses on emissions from major global companies, particularly tracking their contributions to greenhouse gas emissions over time. The data is often utilized to analyze corporate responsibility in climate change discussions, providing insights into how large-scale companies contribute to environmental issues.</span>
-<span id="cb12-281"><a href="#cb12-281"></a></span>
-<span id="cb12-282"><a href="#cb12-282"></a><span class="fu">### Glimpse of data</span></span>
+<span id="cb12-272"><a href="#cb12-272"></a></span>
+<span id="cb12-273"><a href="#cb12-273"></a><span class="fu"># 3. Carbon Major Emissions</span></span>
+<span id="cb12-274"><a href="#cb12-274"></a></span>
+<span id="cb12-275"><a href="#cb12-275"></a><span class="fu">## Introduction to the Dataset</span></span>
+<span id="cb12-276"><a href="#cb12-276"></a></span>
+<span id="cb12-277"><a href="#cb12-277"></a>This information relates to Carbon Majors&#39; emissions data. It talks about past emissions statistics from 122 of the biggest producers of coal, cement, oil, and gas worldwide. More than 1.42 trillion tonnes of CO2e are included in the data, which dates back to 1854. Low, medium, and high levels of granularity are used to share the data. Year, entity, entity type, commodity, commodity output, commodity unit, and total emissions are all included in this dataset, which is the &quot;medium&quot; granularity.</span>
+<span id="cb12-278"><a href="#cb12-278"></a></span>
+<span id="cb12-279"><a href="#cb12-279"></a><span class="fu">### Source of Data</span></span>
+<span id="cb12-280"><a href="#cb12-280"></a></span>
+<span id="cb12-281"><a href="#cb12-281"></a>The Carbon Majors emissions dataset, used in the TidyTuesday project for the week of May 21, 2024, comes from the CarbonMajors.org initiative. This dataset focuses on emissions from major global companies, particularly tracking their contributions to greenhouse gas emissions over time. The data is often utilized to analyze corporate responsibility in climate change discussions, providing insights into how large-scale companies contribute to environmental issues.</span>
+<span id="cb12-282"><a href="#cb12-282"></a></span>
 <span id="cb12-283"><a href="#cb12-283"></a></span>
-<span id="cb12-286"><a href="#cb12-286"></a><span class="in">```{r}</span></span>
-<span id="cb12-287"><a href="#cb12-287"></a>tuesdata <span class="ot">&lt;-</span> tidytuesdayR<span class="sc">::</span><span class="fu">tt_load</span>(<span class="st">&#39;2024-05-21&#39;</span>)</span>
-<span id="cb12-288"><a href="#cb12-288"></a>emissions <span class="ot">&lt;-</span> tuesdata<span class="sc">$</span>emissions</span>
-<span id="cb12-289"><a href="#cb12-289"></a><span class="fu">glimpse</span>(emissions)</span>
-<span id="cb12-290"><a href="#cb12-290"></a></span>
-<span id="cb12-291"><a href="#cb12-291"></a><span class="in">```</span></span>
-<span id="cb12-292"><a href="#cb12-292"></a></span>
-<span id="cb12-293"><a href="#cb12-293"></a><span class="fu">### Collection Method</span></span>
-<span id="cb12-294"><a href="#cb12-294"></a></span>
-<span id="cb12-295"><a href="#cb12-295"></a>The dataset used in the Tidy Tuesday challenge on May 21, 2024, was sourced from Carbon Majors, a collaborative project aimed at holding major fossil fuel producers accountable for their emissions. The data was likely collected through a combination of company reports, government databases, and industry publications. The specific data collection methods are not explicitly stated in the article.</span>
-<span id="cb12-296"><a href="#cb12-296"></a></span>
-<span id="cb12-297"><a href="#cb12-297"></a><span class="fu">### Description of Observations</span></span>
-<span id="cb12-298"><a href="#cb12-298"></a></span>
-<span id="cb12-299"><a href="#cb12-299"></a>The data provides insights into various aspects of these emissions, including:</span>
-<span id="cb12-300"><a href="#cb12-300"></a></span>
-<span id="cb12-301"><a href="#cb12-301"></a>**Entity Types:** The data categorizes emitters into three groups - investor-owned companies, state-owned entities, and nation states. This allows for analysis of emissions distribution across ownership structures.</span>
-<span id="cb12-302"><a href="#cb12-302"></a></span>
-<span id="cb12-303"><a href="#cb12-303"></a>**Commodities:** The dataset distinguishes between different fossil fuels (oil, gas, coal) and cement, enabling exploration of emission trends by fuel type.</span>
-<span id="cb12-304"><a href="#cb12-304"></a></span>
-<span id="cb12-305"><a href="#cb12-305"></a>**Production &amp; Units:** The data provides both the quantity of each commodity produced and the corresponding unit (barrels, cubic feet, tonnes). This allows for calculations of emission intensity (emissions per unit of production).</span>
-<span id="cb12-306"><a href="#cb12-306"></a></span>
-<span id="cb12-307"><a href="#cb12-307"></a>**Total Emissions:** The data includes the total CO2 equivalent emissions attributed to each entity for each year. This facilitates analysis of emission trends over time and identification of major emitters.</span>
-<span id="cb12-308"><a href="#cb12-308"></a></span>
-<span id="cb12-309"><a href="#cb12-309"></a>This data offers a valuable opportunity to explore historical trends in global emissions, identify the major contributors, and analyze emission patterns across different fuel types and ownership structures.</span>
-<span id="cb12-310"><a href="#cb12-310"></a></span>
-<span id="cb12-311"><a href="#cb12-311"></a><span class="fu">### Ethical Concerns</span></span>
-<span id="cb12-312"><a href="#cb12-312"></a></span>
-<span id="cb12-313"><a href="#cb12-313"></a>**Data privacy:** There are worries about privacy violations if the dataset includes personally identifiable information (PII). To preserve privacy, sensitive data must be handled and maintained safely.</span>
-<span id="cb12-314"><a href="#cb12-314"></a></span>
-<span id="cb12-315"><a href="#cb12-315"></a>**Data Bias:** Biases in the data collection process may be reflected in the dataset. For instance, the data might not fairly depict global emissions patterns if specific businesses or regions are underrepresented.</span>
-<span id="cb12-316"><a href="#cb12-316"></a></span>
-<span id="cb12-317"><a href="#cb12-317"></a>**Misinterpretation:** If the data is not thoroughly examined, it may be misunderstood or exploited. For instance, comparing emissions across nations or regions may produce erroneous results if variables like population increase or economic development are not taken into account.</span>
-<span id="cb12-318"><a href="#cb12-318"></a></span>
-<span id="cb12-319"><a href="#cb12-319"></a>**Potential for Harm:** The data could be used to justify harmful policies or actions. For example, the dataset may worsen social and economic inequality if it is used to support excessive environmental legislation against particular companies or nations.</span>
-<span id="cb12-320"><a href="#cb12-320"></a></span>
-<span id="cb12-321"><a href="#cb12-321"></a><span class="fu">### Research Question 1</span></span>
-<span id="cb12-322"><a href="#cb12-322"></a></span>
-<span id="cb12-323"><a href="#cb12-323"></a>**“What is the contribution of the top emitting companies to global greenhouse gas emissions over time, and how does this align with their public environmental commitments?”**</span>
-<span id="cb12-324"><a href="#cb12-324"></a></span>
-<span id="cb12-325"><a href="#cb12-325"></a>**Importance:**</span>
-<span id="cb12-326"><a href="#cb12-326"></a></span>
-<span id="cb12-327"><a href="#cb12-327"></a>This research provides insights that can influence policy decisions, guiding governments and organizations in setting sustainable practices and ensuring compliance with climate agreements. Moreover, it promotes accountability by highlighting key contributors to emissions, thereby fostering transparency among corporations and governments.</span>
-<span id="cb12-328"><a href="#cb12-328"></a></span>
-<span id="cb12-329"><a href="#cb12-329"></a>Additionally, analyzing emissions data helps raise public awareness about the urgency of reducing carbon pollution, encouraging behavioral changes across society. Ultimately, such research plays a significant role in shaping environmental policy, sustainability initiatives, and global climate action efforts, making it essential for informed decision-making and collective action toward a sustainable future.</span>
+<span id="cb12-284"><a href="#cb12-284"></a><span class="fu">### Collection Method</span></span>
+<span id="cb12-285"><a href="#cb12-285"></a></span>
+<span id="cb12-286"><a href="#cb12-286"></a>The dataset used in the Tidy Tuesday challenge on May 21, 2024, was sourced from Carbon Majors, a collaborative project aimed at holding major fossil fuel producers accountable for their emissions. The data was likely collected through a combination of company reports, government databases, and industry publications. The specific data collection methods are not explicitly stated in the article.</span>
+<span id="cb12-287"><a href="#cb12-287"></a></span>
+<span id="cb12-288"><a href="#cb12-288"></a><span class="fu">### Description of Observations</span></span>
+<span id="cb12-289"><a href="#cb12-289"></a></span>
+<span id="cb12-290"><a href="#cb12-290"></a>The data provides insights into various aspects of these emissions, including:</span>
+<span id="cb12-291"><a href="#cb12-291"></a></span>
+<span id="cb12-292"><a href="#cb12-292"></a>**Entity Types:** The data categorizes emitters into three groups - investor-owned companies, state-owned entities, and nation states. This allows for analysis of emissions distribution across ownership structures.</span>
+<span id="cb12-293"><a href="#cb12-293"></a></span>
+<span id="cb12-294"><a href="#cb12-294"></a>**Commodities:** The dataset distinguishes between different fossil fuels (oil, gas, coal) and cement, enabling exploration of emission trends by fuel type.</span>
+<span id="cb12-295"><a href="#cb12-295"></a></span>
+<span id="cb12-296"><a href="#cb12-296"></a>**Production &amp; Units:** The data provides both the quantity of each commodity produced and the corresponding unit (barrels, cubic feet, tonnes). This allows for calculations of emission intensity (emissions per unit of production).</span>
+<span id="cb12-297"><a href="#cb12-297"></a></span>
+<span id="cb12-298"><a href="#cb12-298"></a>**Total Emissions:** The data includes the total CO2 equivalent emissions attributed to each entity for each year. This facilitates analysis of emission trends over time and identification of major emitters.</span>
+<span id="cb12-299"><a href="#cb12-299"></a></span>
+<span id="cb12-300"><a href="#cb12-300"></a>This data offers a valuable opportunity to explore historical trends in global emissions, identify the major contributors, and analyze emission patterns across different fuel types and ownership structures.</span>
+<span id="cb12-301"><a href="#cb12-301"></a></span>
+<span id="cb12-302"><a href="#cb12-302"></a><span class="fu">### Ethical Concerns</span></span>
+<span id="cb12-303"><a href="#cb12-303"></a></span>
+<span id="cb12-304"><a href="#cb12-304"></a>**Data privacy:** There are worries about privacy violations if the dataset includes personally identifiable information (PII). To preserve privacy, sensitive data must be handled and maintained safely.</span>
+<span id="cb12-305"><a href="#cb12-305"></a></span>
+<span id="cb12-306"><a href="#cb12-306"></a>**Data Bias:** Biases in the data collection process may be reflected in the dataset. For instance, the data might not fairly depict global emissions patterns if specific businesses or regions are underrepresented.</span>
+<span id="cb12-307"><a href="#cb12-307"></a></span>
+<span id="cb12-308"><a href="#cb12-308"></a>**Misinterpretation:** If the data is not thoroughly examined, it may be misunderstood or exploited. For instance, comparing emissions across nations or regions may produce erroneous results if variables like population increase or economic development are not taken into account.</span>
+<span id="cb12-309"><a href="#cb12-309"></a></span>
+<span id="cb12-310"><a href="#cb12-310"></a>**Potential for Harm:** The data could be used to justify harmful policies or actions. For example, the dataset may worsen social and economic inequality if it is used to support excessive environmental legislation against particular companies or nations.</span>
+<span id="cb12-311"><a href="#cb12-311"></a></span>
+<span id="cb12-312"><a href="#cb12-312"></a><span class="fu">## Research Questions</span></span>
+<span id="cb12-313"><a href="#cb12-313"></a></span>
+<span id="cb12-314"><a href="#cb12-314"></a><span class="ss">1.  </span>**“What is the contribution of the top emitting companies to global greenhouse gas emissions over time, and how does this align with their public environmental commitments?”**</span>
+<span id="cb12-315"><a href="#cb12-315"></a></span>
+<span id="cb12-316"><a href="#cb12-316"></a>**Importance:**</span>
+<span id="cb12-317"><a href="#cb12-317"></a></span>
+<span id="cb12-318"><a href="#cb12-318"></a>This research provides insights that can influence policy decisions, guiding governments and organizations in setting sustainable practices and ensuring compliance with climate agreements. Moreover, it promotes accountability by highlighting key contributors to emissions, thereby fostering transparency among corporations and governments.</span>
+<span id="cb12-319"><a href="#cb12-319"></a></span>
+<span id="cb12-320"><a href="#cb12-320"></a>Additionally, analyzing emissions data helps raise public awareness about the urgency of reducing carbon pollution, encouraging behavioral changes across society. Ultimately, such research plays a significant role in shaping environmental policy, sustainability initiatives, and global climate action efforts, making it essential for informed decision-making and collective action toward a sustainable future.</span>
+<span id="cb12-321"><a href="#cb12-321"></a></span>
+<span id="cb12-322"><a href="#cb12-322"></a>**Types of Variables:**</span>
+<span id="cb12-323"><a href="#cb12-323"></a></span>
+<span id="cb12-324"><a href="#cb12-324"></a><span class="ss">-   </span>**Country**-(Categorical)</span>
+<span id="cb12-325"><a href="#cb12-325"></a></span>
+<span id="cb12-326"><a href="#cb12-326"></a><span class="ss">-   </span>**Total Emissions**-(Quantitative)</span>
+<span id="cb12-327"><a href="#cb12-327"></a></span>
+<span id="cb12-328"><a href="#cb12-328"></a><span class="ss">-   </span>**Year**-(Quantitative)</span>
+<span id="cb12-329"><a href="#cb12-329"></a></span>
 <span id="cb12-330"><a href="#cb12-330"></a></span>
-<span id="cb12-331"><a href="#cb12-331"></a>**Types of Variables:**</span>
+<span id="cb12-331"><a href="#cb12-331"></a><span class="ss">2.  </span>**Has the relative contribution of different entity types (investor-owned companies, state-owned companies, nation states) to global CO2 emissions changed over time (since 1854)?**</span>
 <span id="cb12-332"><a href="#cb12-332"></a></span>
-<span id="cb12-333"><a href="#cb12-333"></a><span class="ss">-   </span>**Country**-(Categorical)</span>
+<span id="cb12-333"><a href="#cb12-333"></a>**Importance:**</span>
 <span id="cb12-334"><a href="#cb12-334"></a></span>
-<span id="cb12-335"><a href="#cb12-335"></a><span class="ss">-   </span>**Total Emissions**-(Quantitative)</span>
+<span id="cb12-335"><a href="#cb12-335"></a>Understanding how the responsibility for global emissions is distributed across different ownership structures can inform policy decisions. For example, if state-owned companies are shown to be disproportionately responsible, regulations or international agreements might target these entities.</span>
 <span id="cb12-336"><a href="#cb12-336"></a></span>
-<span id="cb12-337"><a href="#cb12-337"></a><span class="ss">-   </span>**Year**-(Quantitative)</span>
+<span id="cb12-337"><a href="#cb12-337"></a>**Variable Types:**</span>
 <span id="cb12-338"><a href="#cb12-338"></a></span>
-<span id="cb12-339"><a href="#cb12-339"></a><span class="fu">### Research Question 2</span></span>
+<span id="cb12-339"><a href="#cb12-339"></a><span class="ss">-   </span>**Country**-(Categorical)</span>
 <span id="cb12-340"><a href="#cb12-340"></a></span>
-<span id="cb12-341"><a href="#cb12-341"></a>**Has the relative contribution of different entity types (investor-owned companies, state-owned companies, nation states) to global CO2 emissions changed over time (since 1854)?**</span>
+<span id="cb12-341"><a href="#cb12-341"></a><span class="ss">-   </span>**Total Emissions**-(Quantitative)</span>
 <span id="cb12-342"><a href="#cb12-342"></a></span>
-<span id="cb12-343"><a href="#cb12-343"></a>**Importance:**</span>
+<span id="cb12-343"><a href="#cb12-343"></a><span class="ss">-   </span>**Year**-(Quantitative)</span>
 <span id="cb12-344"><a href="#cb12-344"></a></span>
-<span id="cb12-345"><a href="#cb12-345"></a>Understanding how the responsibility for global emissions is distributed across different ownership structures can inform policy decisions. For example, if state-owned companies are shown to be disproportionately responsible, regulations or international agreements might target these entities.</span>
+<span id="cb12-345"><a href="#cb12-345"></a><span class="fu">## Glimpse of data</span></span>
 <span id="cb12-346"><a href="#cb12-346"></a></span>
-<span id="cb12-347"><a href="#cb12-347"></a>**Variable Types:**</span>
-<span id="cb12-348"><a href="#cb12-348"></a></span>
-<span id="cb12-349"><a href="#cb12-349"></a><span class="ss">-   </span>**Country**-(Categorical)</span>
-<span id="cb12-350"><a href="#cb12-350"></a></span>
-<span id="cb12-351"><a href="#cb12-351"></a><span class="ss">-   </span>**Total Emissions**-(Quantitative)</span>
-<span id="cb12-352"><a href="#cb12-352"></a></span>
-<span id="cb12-353"><a href="#cb12-353"></a><span class="ss">-   </span>**Year**-(Quantitative)</span>
+<span id="cb12-349"><a href="#cb12-349"></a><span class="in">```{r}</span></span>
+<span id="cb12-350"><a href="#cb12-350"></a>tuesdata <span class="ot">&lt;-</span> tidytuesdayR<span class="sc">::</span><span class="fu">tt_load</span>(<span class="st">&#39;2024-05-21&#39;</span>)</span>
+<span id="cb12-351"><a href="#cb12-351"></a>emissions <span class="ot">&lt;-</span> tuesdata<span class="sc">$</span>emissions</span>
+<span id="cb12-352"><a href="#cb12-352"></a><span class="fu">glimpse</span>(emissions)</span>
+<span id="cb12-353"><a href="#cb12-353"></a></span>
+<span id="cb12-354"><a href="#cb12-354"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
