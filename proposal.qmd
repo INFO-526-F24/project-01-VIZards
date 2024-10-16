@@ -29,22 +29,23 @@ pacman::p_load(countdown,
                tidyverse,
                scales,
                ggthemes,
-               gt)
+               gt,
+               tidytuesdayR)
 ```
 
 # 1. Diwali Sales Data
 
-### Introduction to the Dataset
+## Introduction and Data
 
 The Diwali Sales dataset offers a fascinating look at shopping behavior during Diwali, one of India’s most celebrated festivals. Shared by Saad Haroon on Kaggle, it includes sales transactions from a retail store during this vibrant period.
 
 This dataset captures key details about customers, such as their age, gender, and location, along with information on what they bought and how much they spent. By exploring this data, we can uncover insights into consumer trends and preferences during the festive season, helping retailers better understand how to connect with their customers during this joyful time.
 
-### Source of the Data
+#### Source of the Data
 
 The dataset comes from Kaggle, a well-known platform where data enthusiasts and professionals share and explore various datasets. It was shared by Saad Haroon and focuses on sales data from a retail store during the vibrant Diwali festival in India.
 
-### Collection Method
+#### Collection Method
 
 This data was collected during the bustling Diwali season, a time when shopping is at its peak in India. It likely includes records from the store’s transactions, capturing essential details about each purchase, such as who bought what and how much they spent.
 
@@ -53,52 +54,57 @@ While the dataset doesn’t specify the exact methods used for collection, we ca
 ```{r}
 #| label: load-diwali-sales-data
 #| message: false
+
+# Load the csv file
 sales_data <- read.csv("data/diwali_sales_data.csv")
 
+# Glimpse of the data
 glimpse(sales_data)
 ```
 
-### Description of the Observations
+#### Description of the Observations
 
 The Diwali sales dataset offers a fascinating look into consumer behavior during one of India’s most celebrated festivals. It contains valuable information about customers and their purchases at a retail store during the Diwali period. Here are some key insights:
 
-Customer Demographics: The dataset includes details such as age, gender, marital status, and occupation. This demographic information helps us understand how different groups of people shop during this festive season.
+**Customer Demographics:** The dataset includes details such as age, gender, marital status, and occupation. This demographic information helps us understand how different groups of people shop during this festive season.
 
-Sales Metrics: It tracks the total amount each customer spent and the number of orders they placed, revealing trends in purchasing behavior. Given that Diwali often sees a surge in shopping, these metrics can highlight which groups are most engaged in the festivities.
+**Sales Metrics:** It tracks the total amount each customer spent and the number of orders they placed, revealing trends in purchasing behavior. Given that Diwali often sees a surge in shopping, these metrics can highlight which groups are most engaged in the festivities.
 
-Geographic Distribution: By including the state and geographic zone of each customer, the dataset allows us to explore regional differences in spending habits and preferences, adding depth to our understanding of cultural influences on shopping.
+**Geographic Distribution:** By including the state and geographic zone of each customer, the dataset allows us to explore regional differences in spending habits and preferences, adding depth to our understanding of cultural influences on shopping.
 
-Product Categories: The dataset also categorizes the types of products purchased, helping to identify which items are popular during Diwali celebrations. This information can be particularly useful for retailers planning their inventory and marketing strategies.
+**Product Categories:** The dataset also categorizes the types of products purchased, helping to identify which items are popular during Diwali celebrations. This information can be particularly useful for retailers planning their inventory and marketing strategies.
 
-### Ethical Concerns
+#### Ethical Concerns
 
 When analyzing this dataset, it’s important to be mindful of several ethical considerations:
 
-Data Privacy: The dataset includes identifiers like User_ID and Cust_name. We must ensure that this information is kept confidential to protect individuals' privacy. Anonymizing the data is crucial to prevent any potential misuse.
+**Data Privacy:** The dataset includes identifiers like User_ID and Cust_name. We must ensure that this information is kept confidential to protect individuals' privacy. Anonymizing the data is crucial to prevent any potential misuse.
 
-Informed Consent: It’s essential to think about whether customers were aware that their data would be used in this way. Understanding the context in which the data was collected can guide us in using it ethically.
+**Informed Consent:** It’s essential to think about whether customers were aware that their data would be used in this way. Understanding the context in which the data was collected can guide us in using it ethically.
 
-Fair Representation: We need to be careful not to reinforce stereotypes or biases when analyzing demographic information like gender and age. Our findings should be presented fairly and thoughtfully, avoiding any narratives that could misrepresent these groups.
+**Fair Representation:** We need to be careful not to reinforce stereotypes or biases when analyzing demographic information like gender and age. Our findings should be presented fairly and thoughtfully, avoiding any narratives that could misrepresent these groups.
 
-Impact on Stakeholders: Finally, we should consider how our analyses might affect those involved, including customers and the retail organization. The insights we gather should aim to improve business practices and customer experiences rather than exploit demographic trends.
+**Impact on Stakeholders:** Finally, we should consider how our analyses might affect those involved, including customers and the retail organization. The insights we gather should aim to improve business practices and customer experiences rather than exploit demographic trends.
 
-### Research Question 1 : **How do customer demographics—specifically age group and gender—influence spending behavior during the Diwali sales period?**
+## Research Question 
 
-#### Importance
+#### **1 : How do customer demographics—specifically age group and gender—influence spending behavior during the Diwali sales period?**
+
+##### Importance
 
 Understanding how different age groups and genders spend during the Diwali season is crucial for retailers. This knowledge can help businesses tailor their marketing strategies and product offerings to better meet the needs and preferences of their customers. By identifying trends in spending behavior, retailers can create targeted promotions that resonate with specific demographics, ultimately driving sales and enhancing customer satisfaction during this festive time.
 
-#### Topic Description
+##### Topic Description
 
 This research investigates how customer demographics—specifically age group and gender—affect spending behavior during the Diwali sales period. Understanding these relationships can help retailers tailor their marketing strategies and product offerings.
 
-#### Hypotheses
+##### Hypotheses
 
 1.  **H1:** Younger age groups will spend less than older age groups during the Diwali sales.
 
 2.  **H2:** Female customers will make more orders than male customers, resulting in a higher total amount spent.
 
-#### Types of Variables
+##### Types of Variables
 
 -   **Amount spent:** Quantitative (e.g., in Indian Rupees)
 
@@ -108,23 +114,23 @@ This research investigates how customer demographics—specifically age group an
 
 -   **Total number of orders:** Quantitative (e.g., count of orders)
 
-### Research Question 2 : **What role do geographic location and marital status play in shaping spending patterns during the Diwali sales period?**
+#### **2 : What role do geographic location and marital status play in shaping spending patterns during the Diwali sales period?**
 
-#### Importance
+##### Importance
 
 Exploring the impact of geographic location and marital status on spending can provide valuable insights for retailers looking to connect with their customers more effectively. Different regions and demographic groups may have unique shopping behaviors and preferences, especially during a culturally significant time like Diwali. By understanding these dynamics, businesses can craft targeted marketing campaigns and tailor their product selections, ensuring they cater to the specific needs of various communities and enhance the overall shopping experience.
 
-#### Research Topic Description
+##### Research Topic Description
 
 This research explores the influence of geographic location and marital status on spending patterns during the Diwali sales period. By understanding these dynamics, retailers can better target their promotions and products based on the demographic characteristics of different regions.
 
-#### Hypotheses
+##### Hypotheses
 
 1.  **H1:** Customers in urban zones will spend more on average than those in rural zones.
 
 2.  **H2:** Married customers will spend more than single customers during the Diwali sales.
 
-#### Types of Variables
+##### Types of Variables
 
 -   **Geographic zone:** Categorical (e.g., Urban, Suburban, Rural)
 
@@ -132,56 +138,59 @@ This research explores the influence of geographic location and marital status o
 
 -   **Total amount spent:** Quantitative (e.g., in Indian Rupees)
 
-## Analysis plan
+#### Analysis plan
 
 -   A plan for answering each of the questions including the variables involved, variables to be created (if any), external data to be merged in (if any).
 
-# 2. Tucson Police Reported Crime Analysis
-
-## Dataset
+## Glimpse of Data
 
 ```{r}
-#| label: load-tucson-police-reported-crime-data
+#| label: glimpse_diwali_sales_data
 #| message: false
 
-crime_data <- read.csv("data/Tucson_Police_Reported_Crimes.csv")
+# Load the data
+diwali_sales <- read.csv("data/diwali_sales_data.csv")
+
+# Glimpse of the data
+glimpse(diwali_sales)
 ```
+
+# 2. Tucson Police Reported Crime Analysis
 
 ## Introduction and Data
 
-### Data Source
+#### Data Source
 
 The **Tucson Police Reported Crime** dataset, which is sourced from the Tucson Police Department's official crime analysis portal (https://policeanalysis.tucsonaz.gov/pages/reported-crimes).
 
-### Reason for Dataset Selection
+#### Reason for Dataset Selection
 
-1.  **Community Impact**
+1.  **Community Impact:** Analyzing crime data can have a direct impact on the safety of Tucson residents. By understanding patterns and hotspots over the year, this project could help inform decisions around community safety and resource allocation, making it a meaningful effort with real world value.
 
--   Analyzing crime data can have a direct impact on the safety of Tucson residents. By understanding patterns and hotspots over the year, this project could help inform decisions around community safety and resource allocation, making it a meaningful effort with real world value.
+```{=html}
+<!-- -->
+```
+2.  **Tackling Real-World Questions:** With this data, We can explore questions like, “Are certain crimes more common in specific areas or at certain times?” This analysis could lead to practical insights for crime prevention and public awareness, making the project both useful and engaging.
 
-2.  **Tackling Real-World Questions**
-
--   With this data, We can explore questions like, “Are certain crimes more common in specific areas or at certain times?” This analysis could lead to practical insights for crime prevention and public awareness, making the project both useful and engaging.
-
-### Data Collection
+#### Data Collection
 
 The data was originally collected by the Tucson Police Department through police reports and crime records. It includes various reported crime incidents within the city of Tucson, categorized by type of crime, time of occurrence, and geographic location. The data is continually updated as new reports are filed, ensuring that it reflects recent crime activities.
 
-### Description of Observations
+#### Description of Observations
 
 The dataset comprises observations related to different types of crimes such as theft, assault, burglary, and more, with attributes including:
 
-\- **Crime Type**: The nature of the crime (e.g., theft, assault).
+\- **Crime Type:** The nature of the crime (e.g., theft, assault).
 
-\- **Date and Time**: The timestamp of when the incident occurred.
+\- **Date and Time:** The timestamp of when the incident occurred.
 
-\- **Location**: Latitude and longitude coordinates, as well as divisions/wards within Tucson.
+\- **Location:** Latitude and longitude coordinates, as well as divisions/wards within Tucson.
 
-\- **Incident ID**: Unique identifier for each crime report.
+\- **Incident ID:** Unique identifier for each crime report.
 
 This dataset allows for analysis of crime trends over time and across various regions in Tucson, providing insights into patterns and frequencies of different types of criminal activities.
 
-### Ethical Concerns
+#### Ethical Concerns
 
 This data contains sensitive information related to crime incidents and could potentially be used to stigmatize certain areas or populations.
 
@@ -193,35 +202,42 @@ As such, care must be taken to:
 
 \- Highlight the context of the data analysis to focus on insights that can aid in improving public safety rather than assigning blame.
 
-## Questions
+## Research Questions
 
-1.  **Dashboard Representing Crime Patterns**:
-    -   **Research Question**: *What are the patterns of crime incidents across different types of crimes (e.g., theft, assault) over time in Tucson?*
-    -   **Importance**: This question aims to identify trends in crime activities, such as peak times or specific types of crimes that occur more frequently. Understanding these trends can help towards community safety initiatives.
-    -   **Variable Types**:
-        -   **Crime Type** (Categorical)
-        -   **Date/Time** (Quantitative - Time Series)
-        -   **Frequency of Occurrences** (Quantitative)
-2.  **Geographic Heat Maps of Crime Distribution**:
-    -   **Research Question**: *How is the distribution of different types of crimes spatially distributed across various wards and divisions in Tucson over the years?*
-    -   **Importance**: Understanding the geographic distribution of crimes can help law enforcement and community identify hotspots and allocate resources to areas with higher crime rates. It also provides insights into the social dynamics of different regions.
-    -   **Variable Types**:
-        -   **Location (Ward/Division)** (Categorical)
-        -   **Crime Type** (Categorical)
-        -   **Number of Incidents** (Quantitative)
+#### **1. What are the patterns of crime incidents across different types of crimes (e.g., theft, assault) over time in Tucson?**
+
+##### Importance
+
+This question aims to identify trends in crime activities, such as peak times or specific types of crimes that occur more frequently. Understanding these trends can help towards community safety initiatives.
+
+##### Types of Variables
+
+-   **Crime Type** **:** Categorical
+-   **Date/Time** **:** Quantitative - Time Series
+-   **Frequency of Occurrences** **:** Quantitative
+
+#### **2. How is the distribution of different types of crimes spatially distributed across various wards and divisions in Tucson over the years?**
+
+##### Importance
+
+Understanding the geographic distribution of crimes can help law enforcement and community identify hotspots and allocate resources to areas with higher crime rates. It also provides insights into the social dynamics of different regions.
+
+##### Types of Variables
+
+-   **Location (Ward/Division):** Categorical
+-   **Crime Type** **:** Categorical
+-   **Number of Incidents** **:** Quantitative
 
 ## Glimpse of Data
 
 ```{r}
-#| label: print
-#| message: false
-# Head of the data
-print(head(crime_data, 10))
-```
-
-```{r}
 #| label: glimpse
 #| message: false
+
+
+# Load the data
+crime_data <- read.csv("data/Tucson_Police_Reported_Crimes.csv")
+
 # Glimpse of the data
 glimpse(crime_data)
 ```
@@ -257,23 +273,21 @@ crime_summary_table <- crime_summary %>%
 crime_summary_table
 ```
 
-
 # 3. Carbon Major Emissions
 
-## Introduction to the Dataset
+## Introduction and Data
 
 This information relates to Carbon Majors' emissions data. It talks about past emissions statistics from 122 of the biggest producers of coal, cement, oil, and gas worldwide. More than 1.42 trillion tonnes of CO2e are included in the data, which dates back to 1854. Low, medium, and high levels of granularity are used to share the data. Year, entity, entity type, commodity, commodity output, commodity unit, and total emissions are all included in this dataset, which is the "medium" granularity.
 
-### Source of Data
+#### Source of Data
 
 The Carbon Majors emissions dataset, used in the TidyTuesday project for the week of May 21, 2024, comes from the CarbonMajors.org initiative. This dataset focuses on emissions from major global companies, particularly tracking their contributions to greenhouse gas emissions over time. The data is often utilized to analyze corporate responsibility in climate change discussions, providing insights into how large-scale companies contribute to environmental issues.
 
-
-### Collection Method
+#### Collection Method
 
 The dataset used in the Tidy Tuesday challenge on May 21, 2024, was sourced from Carbon Majors, a collaborative project aimed at holding major fossil fuel producers accountable for their emissions. The data was likely collected through a combination of company reports, government databases, and industry publications. The specific data collection methods are not explicitly stated in the article.
 
-### Description of Observations
+#### Description of Observations
 
 The data provides insights into various aspects of these emissions, including:
 
@@ -287,7 +301,7 @@ The data provides insights into various aspects of these emissions, including:
 
 This data offers a valuable opportunity to explore historical trends in global emissions, identify the major contributors, and analyze emission patterns across different fuel types and ownership structures.
 
-### Ethical Concerns
+#### Ethical Concerns
 
 **Data privacy:** There are worries about privacy violations if the dataset includes personally identifiable information (PII). To preserve privacy, sensitive data must be handled and maintained safely.
 
@@ -299,43 +313,49 @@ This data offers a valuable opportunity to explore historical trends in global e
 
 ## Research Questions
 
-1.  **“What is the contribution of the top emitting companies to global greenhouse gas emissions over time, and how does this align with their public environmental commitments?”**
+#### **1. “What is the contribution of the top emitting companies to global greenhouse gas emissions over time, and how does this align with their public environmental commitments?”**
 
-**Importance:**
+##### Importance
 
 This research provides insights that can influence policy decisions, guiding governments and organizations in setting sustainable practices and ensuring compliance with climate agreements. Moreover, it promotes accountability by highlighting key contributors to emissions, thereby fostering transparency among corporations and governments.
 
 Additionally, analyzing emissions data helps raise public awareness about the urgency of reducing carbon pollution, encouraging behavioral changes across society. Ultimately, such research plays a significant role in shaping environmental policy, sustainability initiatives, and global climate action efforts, making it essential for informed decision-making and collective action toward a sustainable future.
 
-**Types of Variables:**
+##### Types of Variables
 
--   **Country**-(Categorical)
+-   **Country** **:** Categorical
 
--   **Total Emissions**-(Quantitative)
+-   **Total Emissions** **:** Quantitative
 
--   **Year**-(Quantitative)
+-   **Year** **:** Quantitative
 
+#### **2. Has the relative contribution of different entity types (investor-owned companies, state-owned companies, nation states) to global CO2 emissions changed over time (since 1854)?**
 
-2.  **Has the relative contribution of different entity types (investor-owned companies, state-owned companies, nation states) to global CO2 emissions changed over time (since 1854)?**
-
-**Importance:**
+##### Importance
 
 Understanding how the responsibility for global emissions is distributed across different ownership structures can inform policy decisions. For example, if state-owned companies are shown to be disproportionately responsible, regulations or international agreements might target these entities.
 
-**Variable Types:**
+##### Variable Types
 
--   **Country**-(Categorical)
+-   **Country** **:** Categorical
 
--   **Total Emissions**-(Quantitative)
+-   **Total Emissions** **:** Quantitative
 
--   **Year**-(Quantitative)
+-   **Year** **:** Quantitative
 
 ## Glimpse of data
 
 ```{r}
+#| label: globalemission
+#| message: false
+
+# Load data
 tuesdata <- tidytuesdayR::tt_load('2024-05-21')
+
+# Load emission data
 emissions <- tuesdata$emissions
+
+# Glimpse data
 glimpse(emissions)
 
 ```
-
