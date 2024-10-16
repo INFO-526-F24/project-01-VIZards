@@ -33,6 +33,8 @@ pacman::p_load(countdown,
                tidytuesdayR)
 ```
 
+In the following project proposal, we analyzed three datasets—Diwali Sales Data, Tucson Police Reported Crime Analysis, and Carbon Major Emissions—providing an introduction to each dataset, its source, and addressing two research questions for each.
+
 # 1. Diwali Sales Data
 
 ## Introduction and Data
@@ -359,3 +361,7 @@ emissions <- tuesdata$emissions
 glimpse(emissions)
 
 ```
+
+## 
+
+After thoroughly analyzing the three datasets, we have decided to move forward with the **Tucson Police Reported Crime Analysis dataset** for the remainder of the project. This decision was made based on the depth of insights that can be derived from the dataset, its relevance to the research questions, and the potential impact of the findings on understanding crime patterns in Tucson. By focusing on this dataset, we aim to conduct a comprehensive analysis and effectively address the research questions that align with our project's objectives.
