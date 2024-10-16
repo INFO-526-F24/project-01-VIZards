@@ -4,7 +4,7 @@
     "href": "proposal.html",
     "title": "Tucson Police Reported Crime Data Analysis",
     "section": "",
-    "text": "if(!require(pacman))\n  install.packages(\"pacman\")\n\npacman::p_load(countdown,\n               tidyverse,\n               scales,\n               ggthemes,\n               gt,\n               tidytuesdayR)"
+    "text": "if(!require(pacman))\n  install.packages(\"pacman\")\n\npacman::p_load(countdown,\n               tidyverse,\n               scales,\n               ggthemes,\n               gt,\n               tidytuesdayR)\nIn the following project proposal, we analyzed three datasets—Diwali Sales Data, Tucson Police Reported Crime Analysis, and Carbon Major Emissions—providing an introduction to each dataset, its source, and addressing two research questions for each."
   },
   {
     "objectID": "proposal.html#introduction-and-data",
@@ -68,6 +68,13 @@
     "title": "Tucson Police Reported Crime Data Analysis",
     "section": "Glimpse of data",
     "text": "Glimpse of data\n\n# Load data\ntuesdata &lt;- tidytuesdayR::tt_load('2024-05-21')\n\n# Load emission data\nemissions &lt;- tuesdata$emissions\n\n# Glimpse data\nglimpse(emissions)\n\nRows: 12,551\nColumns: 7\n$ year                   &lt;dbl&gt; 1962, 1962, 1963, 1963, 1964, 1964, 1965, 1965,~\n$ parent_entity          &lt;chr&gt; \"Abu Dhabi National Oil Company\", \"Abu Dhabi Na~\n$ parent_type            &lt;chr&gt; \"State-owned Entity\", \"State-owned Entity\", \"St~\n$ commodity              &lt;chr&gt; \"Oil & NGL\", \"Natural Gas\", \"Oil & NGL\", \"Natur~\n$ production_value       &lt;dbl&gt; 0.91250, 1.84325, 1.82500, 4.42380, 7.30000, 17~\n$ production_unit        &lt;chr&gt; \"Million bbl/yr\", \"Bcf/yr\", \"Million bbl/yr\", \"~\n$ total_emissions_MtCO2e &lt;dbl&gt; 0.3638848, 0.1343552, 0.7277697, 0.3224525, 2.9~"
+  },
+  {
+    "objectID": "proposal.html#section",
+    "href": "proposal.html#section",
+    "title": "Tucson Police Reported Crime Data Analysis",
+    "section": "",
+    "text": "After thoroughly analyzing the three datasets, we have decided to move forward with the Tucson Police Reported Crime Analysis dataset for the remainder of the project. This decision was made based on the depth of insights that can be derived from the dataset, its relevance to the research questions, and the potential impact of the findings on understanding crime patterns in Tucson. By focusing on this dataset, we aim to conduct a comprehensive analysis and effectively address the research questions that align with our project’s objectives."
   },
   {
     "objectID": "index.html",
