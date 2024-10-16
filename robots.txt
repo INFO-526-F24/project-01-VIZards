@@ -1,1 +1,1 @@
-Sitemap: git@github-personal:INFO-526-F24/project-01-VIZards.git/sitemap.xml
+Sitemap: https://INFO-526-F24.github.io/project-01-VIZards/sitemap.xml
