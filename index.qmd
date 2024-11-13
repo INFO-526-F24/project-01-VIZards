@@ -1,11 +1,11 @@
 ---
-title: "Project Title"
+title: "Tucson Crime Data Analysis"
 subtitle: "INFO 526 - Fall 2024 - Project 01"
 author: 
-  - name: "Team name"
+  - name: "VIZards"
     affiliations:
       - name: "School of Information, University of Arizona"
-description: "Project description"
+description: "Tucson Police Reported Crime Data Analysis"
 format:
    html:
     code-tools: true
@@ -19,4 +19,62 @@ execute:
 
 ## Abstract
 
-Add project abstract here.
+This project will analyze the Tucson Police Department’s Reported Crime dataset to gain insights into crime patterns, distributions, and trends in Tucson. By focusing on both temporal and spatial characteristics of criminal incidents, we aim to answer crucial questions around the frequency, type, and geographic distribution of crimes. The ultimate goal is to provide data-driven recommendations that could enhance public safety and assist in resource allocation. This analysis will offer the Tucson community meaningful insights, empowering both local authorities and residents with a better understanding of crime trends and potential preventative measures. Ethical considerations, including privacy and the potential for data misuse, will be prioritized to ensure that the findings are responsibly and constructively framed.
+
+## Analysis Plan
+
+### **Data Preparation and Cleaning**
+
+• **Objective**: Ensure data quality by handling missing values, ensuring data consistency, and checking for duplicates.
+
+• **Steps**:
+
+1.  Import the dataset and inspect for any missing or anomalous values in key fields like Crime Type, Date and Time, Location, and Incident ID.
+
+2.  Correct data types, especially for time-related fields, converting timestamps to a consistent format.
+
+3.  Remove any duplicates or records with incomplete critical fields (e.g., missing Crime Type or Location).
+
+### **Exploratory Data Analysis (EDA)**
+
+• **Objective**: Gain an initial understanding of the distribution and patterns within the dataset.
+
+• **Steps**:
+
+1.  **Frequency Analysis**: Calculate the frequency of each Crime Type and examine the yearly/monthly trends to identify any seasonal patterns.
+
+2.  **Temporal Analysis**: Plot the occurrence of crime incidents over time to detect trends. Aggregate the data at different time intervals (e.g., daily, weekly, monthly) to observe fluctuations in crime rates.
+
+3.  **Spatial Analysis**: Map the distribution of crime incidents across Tucson to identify crime hotspots. This includes visualizing crime locations on a map and examining the concentration in different wards or divisions.
+
+4.  **Incident Analysis by Time of Day**: Segment crimes by time of day (e.g., morning, afternoon, night) to see if certain types of crimes are more common at specific times.
+
+### **Spatial Distribution and Hotspot Analysis**
+
+• **Objective**: Understand the geographic distribution of crime and pinpoint high-risk areas.
+
+• **Steps**:
+
+1.  Use choropleth maps to show the density of incidents across Tucson’s wards or divisions.
+
+2.  Analyze the spatial distribution of specific crime types across wards/divisions to see if certain crimes are more prevalent in particular areas.
+
+### **Data Interpretation and Visualization**
+
+• **Objective**: Present findings in a way that highlights key insights and supports evidence-based decision-making.
+
+• **Steps**:
+
+1.  Develop dashboards to dynamically display crime trends, with filters for Crime Type, Time Period, and Location.
+
+2.  Create clear visualizations, such as heat maps for spatial distribution and bar charts for frequency analysis by crime type.
+
+3.  Include annotated charts and narrative text to explain findings, especially for non-technical stakeholders.
+
+## Action Plan & Deliverables
+
+1.  **Comprehensive Report**: Includes detailed explanations, visualizations, and findings on crime patterns and hotspots.
+
+2.  **Interactive Dashboard**: Provides real-time insights into crime distribution, allowing users to filter by type, time, and location.
+
+3.  **Presentation of Insights**: Summarizes key findings and actionable insights for stakeholders, with recommendations for improving public safety in Tucson.

@@ -1,5 +1,5 @@
 ---
-title: "Tucson Police Data and Analysis"
+title: "Tucson Crime Data Analysis"
 format: html
 editor: visual
 ---
@@ -30,9 +30,8 @@ editor: visual
 
     -   A set of visualizations highlighting crime patterns over time (e.g., monthly/annual trends).
 
-    ```{=html}
     <!-- -->
-    ```
+
     -   Geographic heat maps showing the distribution of crimes across different wards and divisions in Tucson.
 
     -   A detailed report summarizing key findings and visualizations.
@@ -45,9 +44,8 @@ editor: visual
 
     -   **Analyze crime trends**: Identify patterns in reported crimes across different time periods (year, month, day) and locations (ward, division) in Tucson.
 
-    ```{=html}
     <!-- -->
-    ```
+
     -   **Visualize crime distribution**: Create compelling visualizations such as heat maps, bar charts, and line graphs to showcase crime data trends over time and space.
 
     -   **Understand crime categories**: Explore the types of crimes (e.g., burglary, homicide, assault) and their frequency to help uncover any significant trends or correlations.
@@ -58,9 +56,8 @@ editor: visual
 
     -   **Data wrangling**: Develop skills in cleaning, transforming, and preparing real-world datasets for analysis.
 
-    ```{=html}
     <!-- -->
-    ```
+
     -   **Data visualization**: Learn to design and implement effective visualizations using tools like `ggplot2`.
 
     -   **Exploratory Data Analysis (EDA)**: Strengthen the ability to extract meaningful insights from large datasets by identifying trends, patterns, and anomalies.
