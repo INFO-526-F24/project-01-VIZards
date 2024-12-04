@@ -1,0 +1,143 @@
+---
+title: "EDA"
+editor: visual
+author: 
+  - name: "VIZards"
+    affiliations:
+      - name: "College of Information, University of Arizona"
+description: "Tucson Crime Analysis"
+format:
+   html:
+    code-tools: true
+    code-overflow: wrap
+    embed-resources: true
+editor: visual
+runtime: shiny
+execute:
+  warning: false
+  echo: false
+---
+
+```{r}
+if(!require(pacman))
+  install.packages("pacman")
+
+pacman::p_load(stringr,
+               sparkline,
+               reactable,
+               tidyr,
+               dplyr,
+               htmltools,
+               reactable)
+```
+
+```{r}
+crime_data <- read.csv("./data/Tucson_Police_Reported_Crimes.csv")
+
+# Major Crime Type
+main_crime_types <- c(
+  "Homicide",
+  "Sexual Assault",
+  "Robbery",
+  "Assault, Aggravated",
+  "Burglary",
+  "Larceny",
+  "GTA",
+  "Other"
+)
+```
+
+```{r}
+# Data Preparation
+crime_trend_data <- crime_data %>%
+  mutate(
+    UCRDescription = str_replace(UCRDescription, "^[0-9]+ - ", ""),
+    UCRDescription = str_to_title(UCRDescription),
+    UCRDescription = ifelse(UCRDescription %in% main_crime_types, UCRDescription, "Other")
+  ) %>%
+  group_by(UCRDescription, Year) %>%
+  summarise(CrimeCount = n(), .groups = "drop") %>%
+  group_by(Year) %>%
+  mutate(TotalCrimes = sum(CrimeCount)) %>%
+  ungroup() %>%
+  mutate(Percentage = round((CrimeCount / TotalCrimes) * 100, 1)) %>%
+  select(UCRDescription, Year, Percentage) %>%
+  pivot_wider(names_from = Year, values_from = Percentage, values_fill = NA) %>%
+  rowwise() %>%
+  mutate(Trend = list(c_across(starts_with("20")))) %>%
+  ungroup()
+
+# Remove null crime type
+crime_trend_data <- crime_trend_data %>%
+  filter(UCRDescription %in% main_crime_types)
+
+crime_trend_data
+```
+
+```{r}
+output <- browsable(
+  tagList(
+    div(
+      "Tucson Crime Analysis",
+      style = "font-family: Arial, sans-serif; font-size: 20px; font-weight: bold; margin-bottom: 10px; text-align: center;"
+    ),
+    reactable(
+      crime_trend_data,
+      columns = list(
+        UCRDescription = colDef(
+          name = "Field",
+          style = list(fontWeight = "bold")
+        ),
+        Trend = colDef(
+          name = "Trend",
+          cell = function(value) sparkline(value, type = "line", width = 120, height = 30)
+        ),
+        `2018` = colDef(
+          name = "2018",
+          cell = function(value) paste0(value, "%") 
+        ),
+        `2019` = colDef(
+          name = "2019",
+          cell = function(value) paste0(value, "%")
+        ),
+        `2020` = colDef(
+          name = "2020",
+          cell = function(value) paste0(value, "%")
+        ),
+        `2021` = colDef(
+          name = "2021",
+          cell = function(value) paste0(value, "%")
+        ),
+        `2022` = colDef(
+          name = "2022",
+          cell = function(value) paste0(value, "%")
+        )
+      ),
+      bordered = TRUE,
+      highlight = TRUE,
+      defaultColDef = colDef(
+        align = "center",
+        style = list(
+          fontFamily = "Arial, sans-serif",
+          fontSize = "14px",      
+          padding = "5px"       
+        )
+      ),
+      theme = reactableTheme(
+        stripedColor = "#f9f9f9",
+        highlightColor = "#f0f0f0",
+        headerStyle = list(
+          background = "#f4f4f4",
+          fontWeight = "bold", 
+          fontSize = "15px", 
+          borderBottom = "2px solid #ddd"
+        ),
+        borderColor = "#ddd"
+      ),
+      fullWidth = TRUE
+    )
+  )
+)
+
+output
+```

@@ -1,0 +1,217 @@
+---
+title: "Question 1 Visualization"
+editor: visual
+author: 
+  - name: "VIZards"
+    affiliations:
+      - name: "College of Information, University of Arizona"
+description: "Tucson Police Reported Crime Data Analysis"
+format:
+   html:
+    code-tools: true
+    code-overflow: wrap
+    embed-resources: true
+editor: visual
+runtime: shiny
+execute:
+  warning: false
+  echo: false
+---
+```{r}
+if(!require(pacman))
+  install.packages("pacman")
+
+pacman::p_load(tidyverse,
+               dplyr,
+               tigris,
+               sf,
+               ggplot2,
+               ggrepel,
+               readxl,
+               patchwork,
+               scales,
+               png,
+               jpeg,
+               grid,
+               ggnewscale,
+               gridExtra,
+               extrafont)
+```
+
+```{r}
+# Load data
+crime_data <- read.csv("./data/Tucson_Police_Reported_Crimes.csv")
+tucson_wards <- st_read("Wards_-_City_of_Tucson.geojson") %>%
+  mutate(Ward = as.character(WARD))
+
+# Define the major crime types
+main_crime_types <- c(
+  "Homicide",
+  "Sexual Assault",
+  "Robbery",
+  "Assault, Aggravated",
+  "Burglary",
+  "Larceny",
+  "GTA"
+)
+```
+
+
+```{r}
+# UI
+ui <- fluidPage(
+  titlePanel("Tucson Crime Analysis"),
+  sidebarLayout(
+    sidebarPanel(
+      selectInput(
+        inputId = "year_filter",
+        label = "Select Year:",
+        choices = c("All", sort(unique(crime_data$Year))),
+        selected = "All"
+      ),
+      selectInput(
+        inputId = "crime_type_filter",
+        label = "Select Crime Type:",
+        choices = c("All", sort(unique(crime_data$UCRDescription))),
+        selected = "All"
+      )
+    ),
+    mainPanel(
+      tabsetPanel(
+        tabPanel("Crime Map", tmapOutput("crime_map", height = "600px")),
+        tabPanel("Crime Type Distribution", plotOutput("crime_chart", height = "600px"))
+      )
+    )
+  )
+)
+```
+
+
+```{r}
+server <- function(input, output, session) {
+  
+  filtered_data <- reactive({
+    data <- crime_data
+    
+    if (input$year_filter != "All") {
+      data <- data %>% filter(Year == input$year_filter)
+    }
+    
+    if (input$crime_type_filter != "All") {
+      data <- data %>% filter(UCRDescription == input$crime_type_filter)
+    }
+    
+    data %>%
+      group_by(Ward) %>%
+      summarise(CrimeCount = n()) %>%
+      mutate(Ward = as.character(Ward))
+  })
+
+    merged_data <- reactive({
+    merged <- tucson_wards %>%
+      left_join(filtered_data(), by = "Ward")
+    
+    merged <- merged %>%
+      mutate(CrimeCount = as.numeric(CrimeCount)) 
+    
+    return(merged)
+  })
+
+  output$crime_map <- renderTmap({
+    merged_data_check <- merged_data()
+    tmap_mode("view")
+
+    tm_shape(merged_data_check) +
+      tm_fill(
+        "CrimeCount",
+        palette = "Reds",
+        title = "Crime Count",
+        popup.vars = c("Crime Count :  " = "CrimeCount"),        
+        border.col = "black", border.alpha = .5,
+        id = "Label"
+      ) +
+      tm_borders() +
+      tm_layout(title = "Tucson Crime Analysis") +
+      tm_text("Label") +
+      tm_legend(position = c("left", "bottom")) +
+      tm_layout(frame = FALSE)
+  })
+
+  processed_data <- reactive({
+    data <- crime_data
+    if (input$year_filter != "All") {
+      data <- data %>% filter(Year == input$year_filter)
+    }
+    
+    data %>%
+      filter(Division != "" & !is.na(Division)) %>% 
+      mutate(
+        UCRDescription = str_replace(UCRDescription, "^[0-9]+ - ", ""), 
+        UCRDescription = str_to_title(UCRDescription),  
+        UCRDescription = ifelse(UCRDescription %in% main_crime_types, UCRDescription, "Other") 
+      ) %>%
+      group_by(Division, UCRDescription) %>%
+      summarise(CrimeCount = n(), .groups = "drop") %>%
+      group_by(Division) %>%
+      mutate(Percentage = CrimeCount / sum(CrimeCount) * 100) %>%
+      mutate(Division = factor(Division, levels = c("Other Jurisdiction", "Midtown", "South", "West", "East"))) %>%
+      arrange(desc(CrimeCount))
+  })
+
+  output$crime_chart <- renderPlot({
+    data <- processed_data()
+    
+    crime_colors <- c(
+      "Homicide" = "#b2182b",
+      "Sexual Assault" = "#d6604d",
+      "Robbery" = "#f4a582",
+      "Assault, Aggravated" = "#878787",
+      "Burglary" = "#92c5de",
+      "Larceny" = "#2166ac",
+      "GTA" = "#fee090",
+      "Other" = "#bcbcbc"
+    )
+    
+    ggplot(data, aes(y = Division, x = Percentage, fill = UCRDescription)) +
+      geom_bar(stat = "identity", position = "stack", color = "black") +
+      geom_text(
+        aes(label = ifelse(Percentage > 2, paste0(round(Percentage, 1), "%"), "")), 
+        position = position_stack(vjust = 0.5),
+        size = 3,
+        color = "white"
+      ) +
+      scale_fill_manual(values = crime_colors, na.translate = FALSE) +
+      labs(
+        title = "Crime Type Distribution by Division in Tucson",
+        x = "Percentage",
+        y = "Division",
+        fill = "Crime Type"
+      ) +
+      theme_minimal() +
+      theme(
+        axis.text.x = element_text(size = 12),
+        axis.text.y = element_text(size = 12),
+        axis.title = element_text(size = 14),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        legend.position = c(0.505, 1),
+        legend.direction = "horizontal",
+        legend.title = element_blank(),
+        legend.text = element_text(family = "sans", 
+                                   size = 10),
+        legend.key.height = unit(0.3, "cm"),
+        plot.title = element_text(
+          hjust = 0.4,
+          vjust = 4,
+          size = 22
+        ),
+        plot.margin = unit(c(2, 2, 2, 2), "cm")
+      ) +
+      guides(fill = guide_legend(label.position = "top"))
+  }) 
+}
+```
+
+```{r}
+shinyApp(ui = ui, server = server)
+```
