@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>git@github-personal:INFO-526-F24/project-01-VIZards.git/proposal.html</loc>
-    <lastmod>2024-11-13T21:04:53.798Z</lastmod>
+    <loc>https://INFO-526-F24.github.io/project-01-VIZards/proposal.html</loc>
+    <lastmod>2024-12-04T22:21:42.914Z</lastmod>
   </url>
   <url>
-    <loc>git@github-personal:INFO-526-F24/project-01-VIZards.git/about.html</loc>
-    <lastmod>2024-10-14T22:07:16.780Z</lastmod>
+    <loc>https://INFO-526-F24.github.io/project-01-VIZards/index.html</loc>
+    <lastmod>2024-12-04T22:21:44.569Z</lastmod>
   </url>
   <url>
-    <loc>git@github-personal:INFO-526-F24/project-01-VIZards.git/presentation.html</loc>
-    <lastmod>2024-10-14T23:44:19.494Z</lastmod>
+    <loc>https://INFO-526-F24.github.io/project-01-VIZards/contract.html</loc>
+    <lastmod>2024-11-25T21:58:53.559Z</lastmod>
   </url>
   <url>
-    <loc>git@github-personal:INFO-526-F24/project-01-VIZards.git/index.html</loc>
-    <lastmod>2024-11-13T21:40:32.774Z</lastmod>
+    <loc>https://INFO-526-F24.github.io/project-01-VIZards/about.html</loc>
+    <lastmod>2024-11-25T21:58:53.559Z</lastmod>
   </url>
   <url>
-    <loc>git@github-personal:INFO-526-F24/project-01-VIZards.git/contract.html</loc>
-    <lastmod>2024-11-13T21:40:36.939Z</lastmod>
+    <loc>https://INFO-526-F24.github.io/project-01-VIZards/EDA.html</loc>
+    <lastmod>2024-11-25T22:49:31.235Z</lastmod>
+  </url>
+  <url>
+    <loc>https://INFO-526-F24.github.io/project-01-VIZards/presentation.html</loc>
+    <lastmod>2024-11-25T21:58:53.713Z</lastmod>
   </url>
 </urlset>
