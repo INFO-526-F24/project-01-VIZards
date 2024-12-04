@@ -57,7 +57,13 @@ Understanding the geographic distribution of crimes can help law enforcement and
 
 -   **Number of Incidents** **:** Quantitative
 
-### Data Description
+### Data Source : 
+
+The data for this crime analysis project is sourced from the Tucson Police Department's Crime Reporting System, specifically the publicly available records on reported crimes from their official crime data portal. This dataset includes detailed information about incidents reported to the police, including crime types, locations, and timestamps, as well as demographic details related to the offenses. By leveraging this data, collected through official police reports, we can ensure accuracy and reliability in understanding crime trends across Tucson. The data is continuously updated and reflects a wide range of criminal activities, providing a comprehensive view of the city's crime landscape for analysis and informed decision-making.
+
+Website link : <https://policeanalysis.tucsonaz.gov/pages/reported-crimes>
+
+### Data description
 
 This dataset contains incident reports related to various criminal activities recorded by a police department. It includes information about the date and time of the incident, the location, nature of the crime, and offense descriptions. Each row represents a unique incident (identified by `IncidentID`) with additional details such as the specific offense category, location, call source, and related timestamps.
 
