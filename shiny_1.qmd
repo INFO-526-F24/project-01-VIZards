@@ -35,7 +35,9 @@ pacman::p_load(tidyverse,
                grid,
                ggnewscale,
                gridExtra,
-               extrafont)
+               extrafont,
+               shiny,
+               tmap)
 ```
 
 ```{r}

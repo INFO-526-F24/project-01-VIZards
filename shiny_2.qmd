@@ -1,0 +1,281 @@
+---
+title: "Question 2 Visualization"
+editor: visual
+author: 
+  - name: "VIZards"
+    affiliations:
+      - name: "College of Information, University of Arizona"
+description: "Tucson Police Reported Crime Data Analysis"
+format:
+   html:
+    code-tools: true
+    code-overflow: wrap
+    embed-resources: true
+editor: visual
+runtime: shiny
+execute:
+  warning: false
+  echo: false
+---
+
+```{r}
+if(!require(pacman))
+  install.packages("pacman")
+
+pacman::p_load(shiny,
+               dplyr,
+               ggplot2,
+               lubridate,
+               stringr)
+```
+
+```{r}
+crime_data <- read.csv("data/Tucson_Police_Reported_Crimes.csv")
+```
+
+```{r}
+crime_colors <- c(
+  "Homicide" = "red",
+  "Sexual Assault" = "purple",
+  "Robbery" = "orange",
+  "Assault, Aggravated" = "blue",
+  "Burglary" = "green",
+  "Larceny" = "brown",
+  "GTA" = "pink",
+  "Other" = "gray"
+)
+
+crime_data_processed <- crime_data %>%
+  mutate(
+    DateOccurred = as.Date(DateOccurred),
+    Year = year(DateOccurred),
+    HalfYear = ifelse(month(DateOccurred) <= 6, 1, 2),
+    Period = paste0(Year, ifelse(HalfYear == 1, "-H1", "-H2"))
+  ) %>%
+  group_by(Period, UCRDescription) %>%
+  summarise(CrimeCount = n(), .groups = "drop") %>%
+  mutate(Period = factor(Period, levels = sort(unique(Period))))
+
+crime_hour_data <- crime_data %>%
+  mutate(
+    Hour = as.numeric(substr(TimeOccur, 1, 2))
+  ) %>%
+  filter(!is.na(Hour)) %>%        
+  group_by(Hour) %>%
+  summarise(CrimeCount = n(), .groups = "drop")
+```
+
+```{r}
+ui <- fluidPage(
+  titlePanel("Crime Trends in Tucson (2018-2024)"),
+  sidebarLayout(
+    sidebarPanel(
+      selectInput(
+        inputId = "crime_type",
+        label = "Select Crime Type:",
+        choices = sort(unique(crime_data_processed$UCRDescription)),
+        selected = sort(unique(crime_data_processed$UCRDescription))[1]
+      )
+    ),
+    mainPanel(
+      tabsetPanel(
+        tabPanel("Line Chart", plotOutput("line_chart", height = "600px")),
+        tabPanel("Bar Chart", plotOutput("bar_chart", height = "600px"))
+      )
+    )
+  )
+)
+```
+
+```{r}
+server <- function(input, output, session) {
+  # Reactive data for filtered bar chart
+  filtered_hourly_data <- reactive({
+    crime_data %>%
+      filter(UCRDescription == input$crime_type) %>%  # Filter for selected crime type
+      mutate(
+        Hour = as.numeric(substr(TimeOccur, 1, 2))  # Extract hour from TimeOccur
+      ) %>%
+      filter(!is.na(Hour) & Hour >= 0 & Hour <= 23) %>%  # Remove invalid hours
+      group_by(Hour) %>%
+      summarise(CrimeCount = n(), .groups = "drop")
+  })
+
+  # Render the line chart
+  output$line_chart <- renderPlot({
+    selected_crime <- input$crime_type
+
+    ggplot(crime_data_processed, aes(x = Period, y = CrimeCount, group = UCRDescription)) +
+      geom_line(
+        aes(
+          color = ifelse(UCRDescription == selected_crime, "Selected", "Other"),
+          size = ifelse(UCRDescription == selected_crime, 1.2, 0.6)
+        )
+      ) +
+      scale_color_manual(
+        values = c("Selected" = "red", "Other" = "lightgray"),
+        guide = "none"
+      ) +
+      scale_size_identity() +
+      labs(
+        title = "Crime Trends in Tucson (2018-2024)",
+        x = NULL,  # Remove X-axis title
+        y = "Number of Incidents",
+        color = NULL
+      ) +
+      theme_minimal() +
+      theme(
+        plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
+        axis.text.x = element_text(angle = 45, hjust = 1),
+        legend.position = "none"
+      )
+  })
+
+  # Render the bar chart
+  output$bar_chart <- renderPlot({
+    hourly_data <- filtered_hourly_data()
+    bar_color <- crime_colors[input$crime_type]  # Get the color for the selected crime type
+
+    ggplot(hourly_data, aes(x = Hour, y = CrimeCount)) +
+      geom_bar(stat = "identity", fill = bar_color, color = "black") +
+      scale_x_continuous(breaks = 0:23) +
+      labs(
+        title = paste("Crime Incidents by Hour of the Day for", input$crime_type),
+        x = "Hour of the Day",
+        y = "Number of Incidents"
+      ) +
+      theme_minimal() +
+      theme(
+        plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
+        axis.text.x = element_text(angle = 0, hjust = 0.5)
+      )
+  })
+}
+```
+
+```{r}
+# Load data
+crime_data <- read.csv("./data/Tucson_Police_Reported_Crimes.csv")
+
+
+# Define color palette based on time of day
+time_of_day_colors <- c(
+  "Night" = "#1c2833",        # Dark Blue
+  "Dawn" = "#1c2833",         # Light Blue with Dawn Feel
+  "Morning" = "#f1c40f",      # Bright Yellow
+  "Afternoon" = "#f1c40f",    # Amber
+  "Evening" = "#f1c40f",      # Deep Orange
+  "Dusk" = "#1c2833"          # Dark Navy Blue with Black Shade
+)
+
+# Data preprocessing
+crime_data <- crime_data %>%
+  mutate(
+    # Remove prefixes like '06-' and standardize crime type names
+    ProcessedCrimeType = str_remove(UCRDescription, "^[0-9]+-") %>% str_trim(),
+    # Extract the hour from the TimeOccur column
+    Hour = as.numeric(substr(TimeOccur, 1, 2)),
+    # Categorize the hour into segments
+    TimeOfDay = case_when(
+      Hour >= 0 & Hour < 4  ~ "Night",
+      Hour >= 4 & Hour < 6  ~ "Dawn",
+      Hour >= 6 & Hour < 12 ~ "Morning",
+      Hour >= 12 & Hour < 16 ~ "Afternoon",
+      Hour >= 16 & Hour < 19 ~ "Evening",
+      Hour >= 19 & Hour <= 23 ~ "Dusk",
+      TRUE ~ NA_character_
+    )
+  ) %>%
+  filter(!is.na(ProcessedCrimeType) & !is.na(Hour) & !is.na(TimeOfDay))  # Remove invalid rows
+
+# Prepare the list of unique processed crime types
+unique_crime_types <- crime_data %>%
+  distinct(ProcessedCrimeType) %>%
+  pull(ProcessedCrimeType)
+
+# UI
+ui <- fluidPage(
+  titlePanel("Crime Trends in Tucson (2018-2024)"),
+  sidebarLayout(
+    sidebarPanel(
+      selectInput(
+        inputId = "crime_type",
+        label = "Select Crime Type:",
+        choices = sort(unique_crime_types),
+        selected = sort(unique_crime_types)[1]
+      )
+    ),
+    mainPanel(
+      tabsetPanel(
+        tabPanel("Line Chart", plotOutput("line_chart", height = "600px")),
+        tabPanel("Bar Chart", plotOutput("bar_chart", height = "600px"))
+      )
+    )
+  )
+)
+
+# Server
+server <- function(input, output, session) {
+  # Reactive data for filtered bar chart
+  filtered_hourly_data <- reactive({
+    crime_data %>%
+      filter(ProcessedCrimeType == input$crime_type) %>%  # Filter for selected crime type
+      group_by(Hour, TimeOfDay) %>%
+      summarise(CrimeCount = n(), .groups = "drop")
+  })
+
+  # Render the line chart
+  output$line_chart <- renderPlot({
+    selected_crime <- input$crime_type
+
+    ggplot(crime_data_processed, aes(x = Period, y = CrimeCount, group = UCRDescription)) +
+      geom_line(
+        aes(
+          color = ifelse(UCRDescription == selected_crime, "Selected", "Other"),
+          size = ifelse(UCRDescription == selected_crime, 1.2, 0.6)
+        )
+      ) +
+      scale_color_manual(
+        values = c("Selected" = "red", "Other" = "lightgray"),
+        guide = "none"
+      ) +
+      scale_size_identity() +
+      labs(
+        title = "Crime Trends in Tucson (2018-2024)",
+        x = NULL,  # Remove X-axis title
+        y = "Number of Incidents",
+        color = NULL
+      ) +
+      theme_minimal() +
+      theme(
+        plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
+        axis.text.x = element_text(angle = 45, hjust = 1),
+        legend.position = "none"
+      )
+  })
+
+  # Render the bar chart
+  output$bar_chart <- renderPlot({
+    hourly_data <- filtered_hourly_data()
+
+    ggplot(hourly_data, aes(x = Hour, y = CrimeCount, fill = TimeOfDay)) +
+      geom_bar(stat = "identity", color = "black") +
+      scale_x_continuous(breaks = 0:23) +
+      scale_fill_manual(values = time_of_day_colors) +
+      labs(
+        title = paste("Crime Incidents by Hour of the Day for", input$crime_type),
+        x = "Hour of the Day",
+        y = "Number of Incidents",
+        fill = "Time of Day"
+      ) +
+      theme_minimal() +
+      theme(
+        plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
+        axis.text.x = element_text(angle = 0, hjust = 0.5)
+      )
+  })
+}
+
+# Run the app
+shinyApp(ui = ui, server = server)
+```
