@@ -11,12 +11,12 @@ format:
     code-tools: true
     code-overflow: wrap
     embed-resources: true
-editor: visual
 runtime: shiny
 execute:
   warning: false
   echo: false
 ---
+
 ```{r}
 if(!require(pacman))
   install.packages("pacman")
@@ -56,7 +56,6 @@ main_crime_types <- c(
 )
 ```
 
-
 ```{r}
 # UI
 ui <- fluidPage(
@@ -85,7 +84,6 @@ ui <- fluidPage(
   )
 )
 ```
-
 
 ```{r}
 server <- function(input, output, session) {

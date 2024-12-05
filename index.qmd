@@ -21,7 +21,7 @@ execute:
 
 Tucson, Arizona, like many cities, faces challenges related to crime and public safety. Crime analysis is an essential tool for local law enforcement, city planners, and community stakeholders to understand crime trends, allocate resources effectively, and improve overall public safety. By examining historical crime data, law enforcement agencies can identify patterns, develop strategic responses, and engage the community in crime prevention efforts.
 
-### **Motivation for the Project** 
+### **Motivation for the Project**
 
 The goal of this crime analysis project is to provide a clearer understanding of crime patterns in Tucson, enabling both law enforcement agencies and the local community to work together towards creating a safer environment. By analyzing historical crime data, we can uncover trends in the types, locations, and timing of criminal activity across the city. This project aims to shed light on areas that need more focused intervention, whether it’s tackling property crimes like burglary in specific neighborhoods or addressing violent offenses such as aggravated assault and homicides. The motivation behind this project is not just about tracking numbers; it's about finding actionable insights that can directly improve the quality of life for Tucson's residents, ensuring that law enforcement strategies are more effective and that the community feels safer.
 
@@ -57,7 +57,7 @@ Understanding the geographic distribution of crimes can help law enforcement and
 
 -   **Number of Incidents** **:** Quantitative
 
-### Data Source : 
+### Data Source :
 
 The data for this crime analysis project is sourced from the Tucson Police Department's Crime Reporting System, specifically the publicly available records on reported crimes from their official crime data portal. This dataset includes detailed information about incidents reported to the police, including crime types, locations, and timestamps, as well as demographic details related to the offenses. By leveraging this data, collected through official police reports, we can ensure accuracy and reliability in understanding crime trends across Tucson. The data is continuously updated and reflects a wide range of criminal activities, providing a comprehensive view of the city's crime landscape for analysis and informed decision-making.
 
@@ -151,4 +151,126 @@ This dataset can be used for analyzing crime patterns over time, geographic dist
 
 This dataset can be analyzed to identify trends in criminal activity, study the effectiveness of police response strategies, and potentially help inform resource allocation in different districts or wards.
 
-## 
+## Exploratory Data Analysis (EDA)
+
+This report summarizes the steps and insights derived from exploratory data analysis (EDA) of the Tucson crime dataset. It encompasses data preparation, filtering, geospatial analysis, crime categorization, and trend analysis to uncover patterns and variations in criminal activity over time.
+
+#### **1. Data Loading**
+
+The first step involved loading the Tucson crime dataset into the environment. Key highlights include:
+
+-   The dataset was read in a structured format (likely CSV or similar), and its structure was reviewed to ensure proper understanding of columns and data types.
+
+-   Summary statistics and data types were checked to verify the integrity of the dataset. Missing values and inconsistencies were identified for potential cleaning.
+
+**Purpose**: This step ensured that the data was ready for manipulation and subsequent analysis.
+
+#### **2. Data Filtering and Transformation**
+
+Data transformation and filtering were performed to make the dataset analysis-ready and to focus on relevant insights. Key actions taken include:
+
+1.  **Date and Time Parsing**:
+
+    -   Dates were parsed and converted into a standard format to enable temporal analysis.
+
+    -   A `year` column was extracted for tracking yearly trends in crime occurrences.
+
+2.  **Categorical Filtering**:
+
+    -   Crime types were categorized and grouped into broader classifications, such as *Larceny, Burglary, Aggravated Assault, Robbery,* and *Homicide*.
+
+    -   Filtering was applied to exclude irrelevant or incomplete records, improving dataset quality.
+
+3.  **Data Transformation**:
+
+    -   Aggregations were performed to calculate annual and ward-level crime counts.
+
+    -   Percentages of crime types were derived for understanding their distribution across different years and geographical regions.
+
+**Purpose**: This step ensured the dataset was cleaned, well-structured, and enriched with derived features for deeper analysis.
+
+#### **3. Geospatial Analysis**
+
+Geospatial analysis was a key component of the EDA, aimed at understanding the geographical distribution of crimes across Tucson. Key actions included:
+
+1.  **Mapping Crime Locations**:
+
+    -   Geospatial data (latitude and longitude) was used to visualize crime occurrences on a map.
+
+    -   Crime hotspots were identified, with a focus on wards and divisions in Tucson.
+
+2.  **Ward-Level Analysis**:
+
+    -   The dataset was grouped by wards to calculate total crimes reported in each area.
+
+    -   Wards with consistently high crime rates (e.g., Ward 3) were identified as high-priority areas for intervention.
+
+3.  **Heatmap Visualization**:
+
+    -   A heatmap was created to highlight regions with higher crime intensity, revealing the spatial concentration of criminal activities.
+
+**Purpose**: Geospatial analysis provided actionable insights into crime patterns, helping to pinpoint regions requiring focused law enforcement efforts.
+
+#### **4. Crime Type Categorization**
+
+Crime categorization involved grouping incidents into meaningful categories to analyze their distribution and trends. Key insights include:
+
+1.  **Major Crime Types**:
+
+    -   Crimes were categorized into primary types: *Larceny, Burglary, Aggravated Assault, Robbery,* and *Homicide.*
+
+    -   A separate category, *Other Crimes,* was used for less frequent or uncategorized incidents.
+
+2.  **Temporal Trends**:
+
+    -   The relative proportions of crime types were analyzed over the years (2018–2024), identifying shifts and emerging patterns.
+
+    -   Larceny was consistently the most reported crime, while homicides remained rare.
+
+3.  **Regional Variations**:
+
+    -   The distribution of crime types was compared across wards and divisions. For instance, Ward 3 showed a high prevalence of larceny and burglary.
+
+**Purpose**: Categorizing crimes allowed for focused analysis of trends and identification of priority areas for each crime type.
+
+#### **5. Trends Analysis**
+
+To understand the evolution of crime patterns over time, a detailed trend analysis was conducted.
+
+#### **Key Steps in Data Preparation for Trends Analysis**:
+
+1.  **Data Cleaning**:
+
+    -   Major crime types were retained, and lesser-reported crimes were consolidated into the *Other* category.
+
+2.  **Percentage Calculation**:
+
+    -   Crime counts for each type were converted into percentages relative to the total crimes reported annually. This standardized comparison across years.
+
+3.  **Trend Generation**:
+
+    -   A new `Trend` column was created by aggregating the percentage values across years into a list. This column captures the historical pattern of each crime type.
+
+4.  **Filtering Null Values**:
+
+    -   Null or missing values were removed to ensure accuracy in trend analysis.
+
+#### **Insights from Trends Analysis**:
+
+1.  **Dominant Crime Types**:
+
+    -   Over the years, *Larceny* and *Burglary* emerged as the most frequently reported crime categories, consistently making up the highest percentage of total crimes.
+
+2.  **Temporal Variations**:
+
+    -   Certain crime types (e.g., *Aggravated Assault*) showed steady trends, while others (e.g., *Robbery*) exhibited minor fluctuations in their annual percentages.
+
+3.  **Decline or Increase Trends**:
+
+    -   For specific categories such as *Burglary*, there appeared to be a gradual decline in the percentage contribution to overall crimes, possibly reflecting improved security measures or shifts in criminal activity.
+
+4.  **Visualization**:
+
+    -   Line graphs or bar charts of the `Trend` data visually depicted changes in the prevalence of each crime type, helping to identify increasing or decreasing trends.
+
+**Purpose**: Trend analysis provided insights into the dynamic nature of crime over time, helping to forecast potential future patterns and allocate law enforcement resources accordingly.
