@@ -84,7 +84,7 @@ output <- browsable(
       crime_trend_data,
       columns = list(
         UCRDescription = colDef(
-          name = "Field",
+          name = "Crime Type",
           style = list(fontWeight = "bold")
         ),
         Trend = colDef(
