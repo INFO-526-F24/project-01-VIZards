@@ -406,6 +406,12 @@ We utilized **R (ggplot2)** and **Shiny** to create an interactive dashboard for
 
 Each visualization method was carefully chosen to align with the data characteristics and research questions. Line and bar charts simplify temporal trends, while maps offer actionable insights into spatial distributions. The interactive design enhances user experience, making the analysis more accessible and engaging for both technical and non-technical audiences.
 
+### **Results**
+
+1. Research Question 1: [Tucson Crime Trend Analysis](https://hitarthbharadaz.shinyapps.io/dashboard-2/)
+
+2. Research Question 2: [Tucson Crime GeoSpatial Analysis](https://hitarthbharadaz.shinyapps.io/dashboard-1/)
+
 ### **Conclusion**  
 
 This project provides valuable insights into the patterns and trends of criminal activity across the city. It gives the key insights into crime patterns:  
