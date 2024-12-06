@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="VIZards">
+<meta name="description" content="Tucson Police Reported Crime Data Analysis">
 
-<title>Tucson Crime Data Analysis</title>
+<title>Question 1 Visualization – Tucson Crime Data Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -41,6 +43,14 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="site_libs/quarto-dashboard/quarto-dashboard.js"></script>
+<script src="site_libs/quarto-dashboard/stickythead.js"></script>
+<script src="site_libs/quarto-dashboard/datatables.min.js" kdttablesentinel="true"></script>
+<script src="site_libs/quarto-dashboard/pdfmake.min.js" kdttablesentinel="true"></script>
+<script src="site_libs/quarto-dashboard/vfs_fonts.js" kdttablesentinel="true"></script>
+<script src="site_libs/quarto-dashboard/web-components.js" type="module"></script>
+<script src="site_libs/quarto-dashboard/components.js"></script>
+<link href="site_libs/quarto-dashboard/datatables.min.css" rel="stylesheet" kdttablesentinel="true">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -72,7 +82,8 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-fixed">
+<body class="quarto-dashboard nav-fixed dashboard-fill fullcontent">
+
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -127,159 +138,71 @@ ul.task-list li input[type="checkbox"] {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-</header>
+<header id="quarto-dashboard-header">
+<nav class="navbar navbar-expand-md slim" data-bs-theme="dark">
+  <div class="navbar-container container-fluid">
+    <button class="navbar-toggler hidden" type="button" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-controls="dashboard-collapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>    
+
+
+    <div class="navbar-brand-container">       
+
+      <div class="navbar-title">
+        <div class="navbar-title-text"><a href="#">Question 1 Visualization</a></div>
+        
+        <div class="navbar-author">VIZards</div>
+      </div>
+    </div>
+</div>
+</nav>
+</header></header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-layout-custom page-navbar quarto-dashboard-content bslib-gap-spacing html-fill-container bslib-page-fill">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
-    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Tucson Crime Data Analysis</h1>
+<div class="bslib-grid-item html-fill-item bslib-grid" data-layout="fill" style="display: grid; grid-template-rows: minmax(3em, 1fr) minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell bslib-card html-fill-container" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output cell-output-stdout html-fill-item html-fill-container">
+<pre><code>Reading layer `Wards_-_City_of_Tucson' from data source 
+  `C:\Users\ual-laptop\Documents\project-01-VIZards\Wards_-_City_of_Tucson.geojson' 
+  using driver `GeoJSON'
+Simple feature collection with 6 features and 16 fields
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: -111.0588 ymin: 31.99027 xmax: -110.7062 ymax: 32.32086
+Geodetic CRS:  WGS 84</code></pre>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+<div class="card cell bslib-card html-fill-container" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<iframe data-deferred-src="app8c9a3cdb7202b83404eb7f92fbb411d4/?w=&amp;__subapp__=1" width="100%" height="400" class="shiny-frame shiny-frame-deferred"></iframe>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+
+
+<div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden">
+
+</div>
 </div>
 
 
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<p><strong>Team Project Contract</strong><br>
-<strong>Project Title:</strong> Tucson Police Data and Analysis<br>
-<strong>Team Members:</strong></p>
-<ol type="1">
-<li><p>Ashwini R Jannu, ashwinijannu@arizona.edu</p></li>
-<li><p>Lekhashree Honnavalli Jayarama, lekhashreehj@arizona.edu</p></li>
-<li><p>Mridula Kalaisevan, lekhashreehj@arizona.edu</p></li>
-<li><p>Hitarth Bharad, hitarthbharad@arizona.edu</p></li>
-<li><p>Hardik Chemburkar, hardikchemburkar@arizona.edu</p></li>
-<li><p>Dhawal Gajwe, dhawalgajwe@arizona.edu</p></li>
-</ol>
-<p><strong>Project Overview</strong></p>
-<ul>
-<li><p><strong>Project Description:</strong> This project focuses on analyzing and visualizing crime data reported to the Tucson Police Department from 2018 to the present. The dataset contains over 181,000 incidents, including details such as crime type, location, and date. The primary objective is to gain insights into crime trends over time, geographic distribution of offenses, and other significant patterns. By using data visualization techniques, we aim to present the findings in an engaging and informative way for decision-makers, law enforcement agencies, and the public.</p></li>
-<li><p><strong>Expected Deliverables:</strong></p>
-<ul>
-<li><p>Dashboard representing crime patterns.</p></li>
-<li><p>A set of visualizations highlighting crime patterns over time (e.g., monthly/annual trends).</p></li>
-</ul>
-<!-- -->
-<ul>
-<li><p>Geographic heat maps showing the distribution of crimes across different wards and divisions in Tucson.</p></li>
-<li><p>A detailed report summarizing key findings and visualizations.</p></li>
-<li><p>A final presentation to showcase the visualizations and insights derived from the data.</p></li>
-</ul></li>
-</ul>
-<p><strong>Team Goals</strong></p>
-<ul>
-<li><p><strong>Project Goals:</strong></p>
-<ul>
-<li><strong>Analyze crime trends</strong>: Identify patterns in reported crimes across different time periods (year, month, day) and locations (ward, division) in Tucson.</li>
-</ul>
-<!-- -->
-<ul>
-<li><p><strong>Visualize crime distribution</strong>: Create compelling visualizations such as heat maps, bar charts, and line graphs to showcase crime data trends over time and space.</p></li>
-<li><p><strong>Understand crime categories</strong>: Explore the types of crimes (e.g., burglary, homicide, assault) and their frequency to help uncover any significant trends or correlations.</p></li>
-<li><p><strong>Support decision-making</strong>: Provide insights through visualizations that could assist law enforcement, policy makers, and the community in understanding and responding to crime patterns effectively.</p></li>
-</ul></li>
-<li><p><strong>Learning Objectives:</strong></p>
-<ul>
-<li><strong>Data wrangling</strong>: Develop skills in cleaning, transforming, and preparing real-world datasets for analysis.</li>
-</ul>
-<!-- -->
-<ul>
-<li><p><strong>Data visualization</strong>: Learn to design and implement effective visualizations using tools like <code>ggplot2</code>.</p></li>
-<li><p><strong>Exploratory Data Analysis (EDA)</strong>: Strengthen the ability to extract meaningful insights from large datasets by identifying trends, patterns, and anomalies.</p></li>
-<li><p><strong>Collaboration and teamwork</strong>: Enhance communication and project management skills by working collaboratively within a team structure to deliver a data-driven project.</p></li>
-</ul></li>
-</ul>
-<p><strong>Team Roles and Responsibilities</strong></p>
-<ul>
-<li><strong>Roles (change as needed):</strong></li>
-</ul>
-<!-- -->
-<ul>
-<li><p><strong>Project Manager:</strong> [Ashwini R Jannu] – Ensures timelines are met, organizes meetings, and manages communications.</p></li>
-<li><p><strong>Data Analyst:</strong> [Lekhashree Honnavalli Jayarama, Mridula Kalaisevan] – Responsible for data cleaning, analysis, and exploratory</p></li>
-<li><p><strong>Visualization Specialist:</strong> [Dhawal Gajwe, Hitharth Bharad] – Designs the final visualizations and makes aesthetic choices.</p></li>
-<li><p><strong>Documentation Lead:</strong> [Hardik Chemburkar, Ashwini R Jannu] – Keeps detailed notes, ensures all project decisions are documented, and handles the final report.</p></li>
-</ul>
-<!-- -->
-<ul>
-<li><p><strong>Responsibilities:</strong></p></li>
-<li><p><strong>General Responsibilities:</strong> Each team member is responsible for:</p></li>
-</ul>
-<!-- -->
-<ul>
-<li><p>Participating actively in all meetings.</p></li>
-<li><p>Completing their assigned tasks on time.</p></li>
-</ul>
-<!-- -->
-<ul>
-<li>Communicating openly and promptly if issues arise.</li>
-</ul>
-<p><strong>Communication Plan</strong></p>
-<ul>
-<li><p><strong>Meeting Schedule:</strong> Weekly on Monday and Wed at 3.15 - 4.15 PM in person.</p></li>
-<li><p><strong>Primary Communication Platform:</strong> Whatsapp.</p></li>
-<li><p><strong>Decision-Making Process:</strong> Decisions will be made by consensus; if a consensus cannot be reached, a vote will be taken.</p></li>
-</ul>
-<p><strong>Work Plan and Timeline</strong></p>
-<ul>
-<li><p><strong>Milestones:</strong></p>
-<ul>
-<li>Milestone 1 - Completed</li>
-<li>Milestone 2 - In process</li>
-</ul></li>
-<li><p><strong>Data Collection and Cleaning:</strong> Completed by [Date].</p></li>
-<li><p><strong>Exploratory Data Analysis:</strong> Completed by [Date].</p></li>
-<li><p><strong>Design of Visualizations:</strong> Completed by [Date].</p></li>
-<li><p><strong>Final Presentation and Report:</strong> Completed by [Date].</p></li>
-<li><p><strong>Task Assignments:</strong> [Use a table to assign tasks to team members with due dates.]</p></li>
-</ul>
-<p><strong>Accountability and Expectations</strong></p>
-<ul>
-<li><p><strong>Attendance Policy:</strong> All team members are expected to attend scheduled meetings unless previously discussed.</p></li>
-<li><p><strong>Quality of Work:</strong> All deliverables should be completed to a professional standard.</p></li>
-<li><p><strong>Deadlines:</strong> All members are responsible for meeting deadlines. If someone cannot meet a deadline, they must notify the team in advance.</p></li>
-</ul>
-<p><strong>Conflict Resolution Plan</strong></p>
-<ul>
-<li><strong>Conflict Management:</strong> If a conflict arises, team members will:</li>
-</ul>
-<ol type="1">
-<li><p>Discuss the issue openly during a team meeting.</p></li>
-<li><p>Attempt to resolve the issue through compromise.</p></li>
-<li><p>If the conflict persists, consult the project supervisor for guidance.</p></li>
-</ol>
-<p><strong>Signatures</strong><br>
-By signing below, each team member agrees to the terms of this contract and commits to working together effectively and respectfully.</p>
-<ul>
-<li><p>Ashwini R Jannu (30th Sept 2024)</p></li>
-<li><p>Lekhashree Honnavalli Jayarama (30th Sept 2024)</p></li>
-<li><p>Mridula Kalaisevan (30th Sept 2024)</p></li>
-<li><p>Hitarth Bharad (30th Sept 2024)</p></li>
-<li><p>Hardik Chemburkar (30th Sept 2024)</p></li>
-<li><p>Dhawal Gajwe (30th Sept 2024)</p></li>
-</ul>
-<p>This template ensures that everyone understands their roles, responsibilities, and the expectations for the project. It can help prevent misunderstandings and promote effective teamwork throughout the project.</p>
-
-
-
-</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -846,6 +769,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 </div> <!-- /content -->
 
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (_event) {
+  if (window.bslib.Card) {
+    window.bslib.Card.initializeAllCards();
+  }
+}); 
+</script>
+  
 
 
 
