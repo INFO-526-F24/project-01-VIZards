@@ -17,9 +17,27 @@ execute:
   echo: false
 ---
 
+<<<<<<< Updated upstream
 ## Tucson Crime Analysis: An Overview
 
 ## Introduction and Data
+=======
+```{r} 
+#| label: setup
+#| message: false
+if(!require(pacman))
+  install.packages("pacman")
+
+pacman::p_load(countdown,
+               tidyverse,
+               scales,
+               ggthemes,
+               gt,
+               tidytuesdayR)
+```
+
+### Tucson Crime Analysis: An Overview
+>>>>>>> Stashed changes
 
 Tucson, Arizona, like many cities, faces challenges related to crime and public safety. Crime analysis is an essential tool for local law enforcement, city planners, and community stakeholders to understand crime trends, allocate resources effectively, and improve overall public safety. By examining historical crime data, law enforcement agencies can identify patterns, develop strategic responses, and engage the community in crime prevention efforts.
 
@@ -153,7 +171,54 @@ This dataset can be used for analyzing crime patterns over time, geographic dist
 
 This dataset can be analyzed to identify trends in criminal activity, study the effectiveness of police response strategies, and potentially help inform resource allocation in different districts or wards.
 
+<<<<<<< Updated upstream
 ### Exploratory Data Analysis (EDA)
+=======
+### Glimpse of the data 
+```{r}
+#| label: glimpse
+#| message: false
+
+
+# Load the data
+crime_data <- read.csv("data/Tucson_Police_Reported_Crimes.csv")
+
+# Glimpse of the data
+glimpse(crime_data)
+```
+```{r}
+#| label: summary-of-data
+#| message: false
+crime_summary <- crime_data %>%
+  group_by(UCRDescription) %>%
+  summarize(
+    count = n(),
+    most_recent = max(as.Date(DateOccurred, format="%Y/%m/%d %H:%M:%S"))
+  ) %>%
+  arrange(desc(count))
+
+
+crime_summary_table <- crime_summary %>%
+  gt() %>%
+  tab_header(
+    title = "Summary of Reported Crimes in Tucson",
+    subtitle = "Count and Most Recent Occurrence by Crime Type"
+  ) %>%
+  cols_label(
+    UCRDescription = "Crime Type",
+    count = "Number of Reports",
+    most_recent = "Most Recent Reported Date"
+  ) %>%
+  fmt_number(
+    columns = vars(count),
+    decimals = 0
+  )
+
+crime_summary_table
+```
+
+## Exploratory Data Analysis (EDA)
+>>>>>>> Stashed changes
 
 This report summarizes the steps and insights derived from exploratory data analysis (EDA) of the Tucson crime dataset. It encompasses data preparation, filtering, geospatial analysis, crime categorization, and trend analysis to uncover patterns and variations in criminal activity over time.
 
