@@ -405,3 +405,27 @@ We utilized **R (ggplot2)** and **Shiny** to create an interactive dashboard for
 ### Rationale Behind Visualization Choices
 
 Each visualization method was carefully chosen to align with the data characteristics and research questions. Line and bar charts simplify temporal trends, while maps offer actionable insights into spatial distributions. The interactive design enhances user experience, making the analysis more accessible and engaging for both technical and non-technical audiences.
+
+### **Conclusion**  
+
+This project provides valuable insights into the patterns and trends of criminal activity across the city. It gives the key insights into crime patterns:  
+
+1. **Temporal Trends**: Larceny and burglary were the most common crimes, though burglary declined over time. Certain categories like aggravated assault exhibited stable trends, while others, such as robbery, showed slight annual variations.
+
+2. **Geospatial Insights**: Crime hotspots were identified reporting higher crime rates, particularly for property crimes like larceny and burglary. Heatmaps and geographic visualizations highlighted areas requiring increased law enforcement attention and community safety initiatives.  
+
+3. **Crime Distribution**: Property crimes dominated, with clear regional differences highlighting the importance of localized strategies. Regional differences underscored the importance of tailoring law enforcement strategies to specific areas.
+
+4. **Community Impact**: The analysis emphasized a human-centered approach, aiming to reduce the fear and impact of crime by informing strategic interventions, emphasized actionable insights to reduce crime and strengthen police-community collaboration.  
+
+### **Future Work**  
+
+1. **Advanced Predictive Analytics**: Use machine learning to forecast crime trends and hotspots.  
+
+2. **Integrated Data**: Combine crime data with socioeconomic and urban factors for deeper insights.  
+
+3. **Community Engagement**: Develop tailored prevention programs and share findings through public dashboards.  
+
+4. **Focus on High-Impact Crimes**: Expand analysis to address less frequent but severe crimes like homicides.  
+
+These steps will further improve crime prevention, resource allocation, and public safety in Tucson.
