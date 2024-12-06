@@ -17,12 +17,7 @@ execute:
   echo: false
 ---
 
-<<<<<<< Updated upstream
-## Tucson Crime Analysis: An Overview
-
-## Introduction and Data
-=======
-```{r} 
+```{r}
 #| label: setup
 #| message: false
 if(!require(pacman))
@@ -36,12 +31,13 @@ pacman::p_load(countdown,
                tidytuesdayR)
 ```
 
-### Tucson Crime Analysis: An Overview
->>>>>>> Stashed changes
+## Tucson Crime Analysis: An Overview
+
+## Introduction and Data
 
 Tucson, Arizona, like many cities, faces challenges related to crime and public safety. Crime analysis is an essential tool for local law enforcement, city planners, and community stakeholders to understand crime trends, allocate resources effectively, and improve overall public safety. By examining historical crime data, law enforcement agencies can identify patterns, develop strategic responses, and engage the community in crime prevention efforts.
 
-#### **Motivation for the Project**
+### **Motivation for the Project**
 
 The goal of this crime analysis project is to provide a clearer understanding of crime patterns in Tucson, enabling both law enforcement agencies and the local community to work together towards creating a safer environment. By analyzing historical crime data, we can uncover trends in the types, locations, and timing of criminal activity across the city. This project aims to shed light on areas that need more focused intervention, whether it’s tackling property crimes like burglary in specific neighborhoods or addressing violent offenses such as aggravated assault and homicides. The motivation behind this project is not just about tracking numbers; it's about finding actionable insights that can directly improve the quality of life for Tucson's residents, ensuring that law enforcement strategies are more effective and that the community feels safer.
 
@@ -171,10 +167,8 @@ This dataset can be used for analyzing crime patterns over time, geographic dist
 
 This dataset can be analyzed to identify trends in criminal activity, study the effectiveness of police response strategies, and potentially help inform resource allocation in different districts or wards.
 
-<<<<<<< Updated upstream
-### Exploratory Data Analysis (EDA)
-=======
-### Glimpse of the data 
+#### Glimpse of the data
+
 ```{r}
 #| label: glimpse
 #| message: false
@@ -186,6 +180,7 @@ crime_data <- read.csv("data/Tucson_Police_Reported_Crimes.csv")
 # Glimpse of the data
 glimpse(crime_data)
 ```
+
 ```{r}
 #| label: summary-of-data
 #| message: false
@@ -217,8 +212,7 @@ crime_summary_table <- crime_summary %>%
 crime_summary_table
 ```
 
-## Exploratory Data Analysis (EDA)
->>>>>>> Stashed changes
+### Exploratory Data Analysis (EDA)
 
 This report summarizes the steps and insights derived from exploratory data analysis (EDA) of the Tucson crime dataset. It encompasses data preparation, filtering, geospatial analysis, crime categorization, and trend analysis to uncover patterns and variations in criminal activity over time.
 
@@ -342,6 +336,123 @@ To understand the evolution of crime patterns over time, a detailed trend analys
 
 **Purpose**: Trend analysis provided insights into the dynamic nature of crime over time, helping to forecast potential future patterns and allocate law enforcement resources accordingly.
 
+```{r echo=FALSE}
+
+if(!require(pacman))
+  install.packages("pacman")
+
+pacman::p_load(stringr,
+               sparkline,
+               reactable,
+               tidyr,
+               dplyr,
+               htmltools,
+               reactable)
+
+crime_data <- read.csv("./data/Tucson_Police_Reported_Crimes.csv")
+
+# Major Crime Type
+main_crime_types <- c(
+  "Homicide",
+  "Sexual Assault",
+  "Robbery",
+  "Assault, Aggravated",
+  "Burglary",
+  "Larceny",
+  "GTA",
+  "Other"
+)
+
+# Data Preparation
+crime_trend_data <- crime_data %>%
+  mutate(
+    UCRDescription = str_replace(UCRDescription, "^[0-9]+ - ", ""),
+    UCRDescription = str_to_title(UCRDescription),
+    UCRDescription = ifelse(UCRDescription %in% main_crime_types, UCRDescription, "Other")
+  ) %>%
+  group_by(UCRDescription, Year) %>%
+  summarise(CrimeCount = n(), .groups = "drop") %>%
+  group_by(Year) %>%
+  mutate(TotalCrimes = sum(CrimeCount)) %>%
+  ungroup() %>%
+  mutate(Percentage = round((CrimeCount / TotalCrimes) * 100, 1)) %>%
+  select(UCRDescription, Year, Percentage) %>%
+  pivot_wider(names_from = Year, values_from = Percentage, values_fill = NA) %>%
+  rowwise() %>%
+  mutate(Trend = list(c_across(starts_with("20")))) %>%
+  ungroup()
+
+# Remove null crime type
+crime_trend_data <- crime_trend_data %>%
+  filter(UCRDescription %in% main_crime_types)
+
+browsable(
+  tagList(
+    div(
+      "Tucson Crime Analysis",
+      style = "font-family: Arial, sans-serif; font-size: 20px; font-weight: bold; margin-bottom: 10px; text-align: center;"
+    ),
+    reactable(
+      crime_trend_data,
+      columns = list(
+        UCRDescription = colDef(
+          name = "Crime Type",
+          style = list(fontWeight = "bold")
+        ),
+        Trend = colDef(
+          name = "Trend",
+          cell = function(value) sparkline(value, type = "line", width = 120, height = 30)
+        ),
+        `2018` = colDef(
+          name = "2018",
+          cell = function(value) paste0(value, "%") 
+        ),
+        `2019` = colDef(
+          name = "2019",
+          cell = function(value) paste0(value, "%")
+        ),
+        `2020` = colDef(
+          name = "2020",
+          cell = function(value) paste0(value, "%")
+        ),
+        `2021` = colDef(
+          name = "2021",
+          cell = function(value) paste0(value, "%")
+        ),
+        `2022` = colDef(
+          name = "2022",
+          cell = function(value) paste0(value, "%")
+        )
+      ),
+      bordered = TRUE,
+      highlight = TRUE,
+      defaultColDef = colDef(
+        align = "center",
+        style = list(
+          fontFamily = "Arial, sans-serif",
+          fontSize = "14px",      
+          padding = "5px"       
+        )
+      ),
+      theme = reactableTheme(
+        stripedColor = "#f9f9f9",
+        highlightColor = "#f0f0f0",
+        headerStyle = list(
+          background = "#f4f4f4",
+          fontWeight = "bold", 
+          fontSize = "15px", 
+          borderBottom = "2px solid #ddd"
+        ),
+        borderColor = "#ddd"
+      ),
+      fullWidth = TRUE
+    )
+  )
+)
+
+
+```
+
 ## Methodology
 
 Our approach to analyzing and visualizing the Tucson Police Department's Reported Crime dataset emphasizes interactive and intuitive visual storytelling techniques. The methodology comprises several steps, including data preprocessing, exploration, transformation, and visualization, tailored to answer the research questions effectively.
@@ -408,30 +519,30 @@ Each visualization method was carefully chosen to align with the data characteri
 
 ### **Results**
 
-1. Research Question 1: [Tucson Crime Trend Analysis](https://hitarthbharadaz.shinyapps.io/dashboard-2/)
+1.  Research Question 1: [Tucson Crime Trend Analysis](https://hitarthbharadaz.shinyapps.io/dashboard-2/)
 
-2. Research Question 2: [Tucson Crime GeoSpatial Analysis](https://hitarthbharadaz.shinyapps.io/dashboard-1/)
+2.  Research Question 2: [Tucson Crime GeoSpatial Analysis](https://hitarthbharadaz.shinyapps.io/dashboard-1/)
 
-### **Conclusion**  
+### **Conclusion**
 
-This project provides valuable insights into the patterns and trends of criminal activity across the city. It gives the key insights into crime patterns:  
+This project provides valuable insights into the patterns and trends of criminal activity across the city. It gives the key insights into crime patterns:
 
-1. **Temporal Trends**: Larceny and burglary were the most common crimes, though burglary declined over time. Certain categories like aggravated assault exhibited stable trends, while others, such as robbery, showed slight annual variations.
+1.  **Temporal Trends**: Larceny and burglary were the most common crimes, though burglary declined over time. Certain categories like aggravated assault exhibited stable trends, while others, such as robbery, showed slight annual variations.
 
-2. **Geospatial Insights**: Crime hotspots were identified reporting higher crime rates, particularly for property crimes like larceny and burglary. Heatmaps and geographic visualizations highlighted areas requiring increased law enforcement attention and community safety initiatives.  
+2.  **Geospatial Insights**: Crime hotspots were identified reporting higher crime rates, particularly for property crimes like larceny and burglary. Heatmaps and geographic visualizations highlighted areas requiring increased law enforcement attention and community safety initiatives.
 
-3. **Crime Distribution**: Property crimes dominated, with clear regional differences highlighting the importance of localized strategies. Regional differences underscored the importance of tailoring law enforcement strategies to specific areas.
+3.  **Crime Distribution**: Property crimes dominated, with clear regional differences highlighting the importance of localized strategies. Regional differences underscored the importance of tailoring law enforcement strategies to specific areas.
 
-4. **Community Impact**: The analysis emphasized a human-centered approach, aiming to reduce the fear and impact of crime by informing strategic interventions, emphasized actionable insights to reduce crime and strengthen police-community collaboration.  
+4.  **Community Impact**: The analysis emphasized a human-centered approach, aiming to reduce the fear and impact of crime by informing strategic interventions, emphasized actionable insights to reduce crime and strengthen police-community collaboration.
 
-### **Future Work**  
+### **Future Work**
 
-1. **Advanced Predictive Analytics**: Use machine learning to forecast crime trends and hotspots.  
+1.  **Advanced Predictive Analytics**: Use machine learning to forecast crime trends and hotspots.
 
-2. **Integrated Data**: Combine crime data with socioeconomic and urban factors for deeper insights.  
+2.  **Integrated Data**: Combine crime data with socioeconomic and urban factors for deeper insights.
 
-3. **Community Engagement**: Develop tailored prevention programs and share findings through public dashboards.  
+3.  **Community Engagement**: Develop tailored prevention programs and share findings through public dashboards.
 
-4. **Focus on High-Impact Crimes**: Expand analysis to address less frequent but severe crimes like homicides.  
+4.  **Focus on High-Impact Crimes**: Expand analysis to address less frequent but severe crimes like homicides.
 
 These steps will further improve crime prevention, resource allocation, and public safety in Tucson.
