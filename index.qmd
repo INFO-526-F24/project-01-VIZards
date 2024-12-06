@@ -17,17 +17,19 @@ execute:
   echo: false
 ---
 
-### Tucson Crime Analysis: An Overview
+## Tucson Crime Analysis: An Overview
+
+## Introduction and Data
 
 Tucson, Arizona, like many cities, faces challenges related to crime and public safety. Crime analysis is an essential tool for local law enforcement, city planners, and community stakeholders to understand crime trends, allocate resources effectively, and improve overall public safety. By examining historical crime data, law enforcement agencies can identify patterns, develop strategic responses, and engage the community in crime prevention efforts.
 
-### **Motivation for the Project**
+#### **Motivation for the Project**
 
 The goal of this crime analysis project is to provide a clearer understanding of crime patterns in Tucson, enabling both law enforcement agencies and the local community to work together towards creating a safer environment. By analyzing historical crime data, we can uncover trends in the types, locations, and timing of criminal activity across the city. This project aims to shed light on areas that need more focused intervention, whether it’s tackling property crimes like burglary in specific neighborhoods or addressing violent offenses such as aggravated assault and homicides. The motivation behind this project is not just about tracking numbers; it's about finding actionable insights that can directly improve the quality of life for Tucson's residents, ensuring that law enforcement strategies are more effective and that the community feels safer.
 
 Ultimately, the project is driven by a commitment to creating a deeper connection between the police and the public they serve. It’s about empowering people—whether they're community members, policymakers, or officers—to make informed decisions based on real data. By analyzing crime trends, we can identify where resources are most needed and collaborate with community groups to prevent crime before it happens. This human-centered approach recognizes that behind every statistic is a person, a family, or a neighborhood, and the aim is to provide tools that help reduce the fear and impact of crime in the daily lives of Tucson’s residents.
 
-### **Research Questions**
+#### **Research Questions**
 
 #### **1. What are the patterns of crime incidents across different types of crimes (e.g., theft, assault) over time in Tucson?**
 
@@ -57,19 +59,19 @@ Understanding the geographic distribution of crimes can help law enforcement and
 
 -   **Number of Incidents** **:** Quantitative
 
-### Data Source :
+#### Data Source :
 
 The data for this crime analysis project is sourced from the Tucson Police Department's Crime Reporting System, specifically the publicly available records on reported crimes from their official crime data portal. This dataset includes detailed information about incidents reported to the police, including crime types, locations, and timestamps, as well as demographic details related to the offenses. By leveraging this data, collected through official police reports, we can ensure accuracy and reliability in understanding crime trends across Tucson. The data is continuously updated and reflects a wide range of criminal activities, providing a comprehensive view of the city's crime landscape for analysis and informed decision-making.
 
 Website link : <https://policeanalysis.tucsonaz.gov/pages/reported-crimes>
 
-### Data description
+#### Data description
 
 This dataset contains incident reports related to various criminal activities recorded by a police department. It includes information about the date and time of the incident, the location, nature of the crime, and offense descriptions. Each row represents a unique incident (identified by `IncidentID`) with additional details such as the specific offense category, location, call source, and related timestamps.
 
 This dataset can be used for analyzing crime patterns over time, geographic distribution of specific crimes, and the response to different types of criminal activities within various divisions and wards.
 
-### Column Descriptions
+#### Column Descriptions
 
 1.  **IncidentID**:
 
@@ -151,7 +153,7 @@ This dataset can be used for analyzing crime patterns over time, geographic dist
 
 This dataset can be analyzed to identify trends in criminal activity, study the effectiveness of police response strategies, and potentially help inform resource allocation in different districts or wards.
 
-## Exploratory Data Analysis (EDA)
+### Exploratory Data Analysis (EDA)
 
 This report summarizes the steps and insights derived from exploratory data analysis (EDA) of the Tucson crime dataset. It encompasses data preparation, filtering, geospatial analysis, crime categorization, and trend analysis to uncover patterns and variations in criminal activity over time.
 
@@ -274,3 +276,67 @@ To understand the evolution of crime patterns over time, a detailed trend analys
     -   Line graphs or bar charts of the `Trend` data visually depicted changes in the prevalence of each crime type, helping to identify increasing or decreasing trends.
 
 **Purpose**: Trend analysis provided insights into the dynamic nature of crime over time, helping to forecast potential future patterns and allocate law enforcement resources accordingly.
+
+## Methodology
+
+Our approach to analyzing and visualizing the Tucson Police Department's Reported Crime dataset emphasizes interactive and intuitive visual storytelling techniques. The methodology comprises several steps, including data preprocessing, exploration, transformation, and visualization, tailored to answer the research questions effectively.
+
+### Data Preprocessing and Transformation
+
+The dataset was cleaned and preprocessed to handle missing values and inconsistencies. Temporal variables, such as the date and time of incidents, were formatted to support time-series analysis. Spatial data, including ward and division boundaries, were geocoded and integrated with geographic shapefiles to enable map-based visualizations.
+
+For Research Question 1, data was aggregated by year, crime type, and hour of the day to uncover temporal patterns and trends. For Research Question 2, crime incidents were spatially grouped by wards and divisions over time. This step ensured the data was structured appropriately for visual representation.
+
+### Visualization Techniques and Tools
+
+We utilized **R (ggplot2)** and **Shiny** to create an interactive dashboard for both spatial and temporal analysis. Below are the specific visualization methods employed:
+
+#### Research Question 1: Patterns of Crime Incidents Over Time
+
+1.  **Line Charts**:
+
+    -   Purpose: To illustrate crime trends over time for different types of crimes.
+
+    -   Justification: Line charts effectively capture temporal changes and trends, allowing stakeholders to observe fluctuations in crime incidents across years (2018–2024).
+
+    -   Implementation: The charts were plotted with crime types on separate lines, ensuring clear differentiation and comparability.
+
+2.  **Bar Charts**:
+
+    -   Purpose: To depict hourly crime distribution across the day.
+
+    -   Justification: Bar charts provide a straightforward representation of categorical data (hours) and their quantitative measures (crime count), highlighting peak hours.
+
+    -   Innovative Element: Color gradients were used to represent time segments (dawn, morning, afternoon, evening, night), improving visual interpretability.
+
+#### Research Question 2: Spatial Distribution of Crimes
+
+1.  **Choropleth Maps**:
+
+    -   Purpose: To visualize the geographic distribution of crime incidents across wards in Tucson.
+
+    -   Justification: Choropleth maps offer a spatially intuitive representation, highlighting crime hotspots and low-crime areas. Color gradients were used to represent crime density, making it easy to identify patterns.
+
+    -   Tools: Leveraged **Leaflet** for interactivity, allowing users to explore specific wards and view detailed crime statistics.
+
+2.  **Stacked Bar Charts**:
+
+    -   Purpose: To show the distribution of different crime types across divisions.
+
+    -   Justification: Stacked bar charts highlight the relative and absolute frequencies of crime types within each division, providing a comparative overview of crime distribution.
+
+    -   Enhanced Interaction: Tooltips displaying exact counts were added to improve usability.
+
+### Additional Features and Innovations
+
+-   **Interactivity**: The Shiny dashboard includes dropdowns to filter by year, crime type, and ward/division, ensuring users can customize the analysis based on their interests.
+
+-   **Dynamic Maps**: The inclusion of geospatial layers and zoom functionality in maps enhances user engagement.
+
+-   **Color Encoding**: Consistent and meaningful use of colors ensures clarity in distinguishing crime types and time periods.
+
+-   **Responsiveness**: The visualizations are designed to adapt to different screen sizes and user inputs, improving accessibility.
+
+### Rationale Behind Visualization Choices
+
+Each visualization method was carefully chosen to align with the data characteristics and research questions. Line and bar charts simplify temporal trends, while maps offer actionable insights into spatial distributions. The interactive design enhances user experience, making the analysis more accessible and engaging for both technical and non-technical audiences.
