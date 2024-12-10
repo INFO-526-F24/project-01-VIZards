@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://INFO-526-F24.github.io/project-01-VIZards/shiny_2.html</loc>
-    <lastmod>2024-12-06T23:29:25.344Z</lastmod>
+    <lastmod>2024-12-10T21:16:05.795Z</lastmod>
   </url>
   <url>
     <loc>https://INFO-526-F24.github.io/project-01-VIZards/proposal.html</loc>
@@ -10,19 +10,23 @@
   </url>
   <url>
     <loc>https://INFO-526-F24.github.io/project-01-VIZards/index.html</loc>
-    <lastmod>2024-12-06T23:47:34.195Z</lastmod>
+    <lastmod>2024-12-10T21:16:05.792Z</lastmod>
   </url>
   <url>
     <loc>https://INFO-526-F24.github.io/project-01-VIZards/eda.html</loc>
     <lastmod>2024-12-05T00:08:16.143Z</lastmod>
   </url>
   <url>
+    <loc>https://INFO-526-F24.github.io/project-01-VIZards/contract.html</loc>
+    <lastmod>2024-11-25T21:58:53.559Z</lastmod>
+  </url>
+  <url>
     <loc>https://INFO-526-F24.github.io/project-01-VIZards/about.html</loc>
     <lastmod>2024-11-25T21:58:53.559Z</lastmod>
   </url>
   <url>
-    <loc>https://INFO-526-F24.github.io/project-01-VIZards/contract.html</loc>
-    <lastmod>2024-11-25T21:58:53.559Z</lastmod>
+    <loc>https://INFO-526-F24.github.io/project-01-VIZards/dashboard.html</loc>
+    <lastmod>2024-12-10T21:16:05.789Z</lastmod>
   </url>
   <url>
     <loc>https://INFO-526-F24.github.io/project-01-VIZards/index - Copy.html</loc>
@@ -34,6 +38,6 @@
   </url>
   <url>
     <loc>https://INFO-526-F24.github.io/project-01-VIZards/shiny_1.html</loc>
-    <lastmod>2024-12-06T23:29:25.342Z</lastmod>
+    <lastmod>2024-12-10T21:16:05.795Z</lastmod>
   </url>
 </urlset>

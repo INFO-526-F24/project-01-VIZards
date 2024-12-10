@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tucson Crime Data Analysis –   Tucson Crime Data Analysis</title>
+<title>Dashboard –   Tucson Crime Data Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -41,6 +41,14 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="site_libs/quarto-dashboard/quarto-dashboard.js"></script>
+<script src="site_libs/quarto-dashboard/stickythead.js"></script>
+<script src="site_libs/quarto-dashboard/datatables.min.js" kdttablesentinel="true"></script>
+<script src="site_libs/quarto-dashboard/pdfmake.min.js" kdttablesentinel="true"></script>
+<script src="site_libs/quarto-dashboard/vfs_fonts.js" kdttablesentinel="true"></script>
+<script src="site_libs/quarto-dashboard/web-components.js" type="module"></script>
+<script src="site_libs/quarto-dashboard/components.js"></script>
+<link href="site_libs/quarto-dashboard/datatables.min.css" rel="stylesheet" kdttablesentinel="true">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,11 +76,36 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="site_libs/core-js-2.5.3/shim.min.js"></script>
+
+<script src="site_libs/react-18.2.0/react.min.js"></script>
+
+<script src="site_libs/react-18.2.0/react-dom.min.js"></script>
+
+<script src="site_libs/reactwidget-2.0.0/react-tools.js"></script>
+
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+
+<link href="site_libs/reactable-0.4.4/reactable.css" rel="stylesheet">
+
+<script src="site_libs/reactable-binding-0.4.4/reactable.js"></script>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+
+<link href="site_libs/jquery-sparkline-2.1.2/jquery.sparkline.css" rel="stylesheet">
+
+<script src="site_libs/jquery-sparkline-2.1.2/jquery.sparkline.js"></script>
+
+<script src="site_libs/sparkline-binding-2.0/sparkline.js"></script>
+
 
 
 </head>
 
-<body class="nav-fixed">
+<body class="quarto-dashboard nav-fixed dashboard-fill dashboard-sidebar fullcontent">
+
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -106,7 +139,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./dashboard.html"> 
+    <a class="nav-link active" href="./dashboard.html" aria-current="page"> 
 <span class="menu-text">Dashboard</span></a>
   </li>  
 </ul>
@@ -123,159 +156,219 @@ ul.task-list li input[type="checkbox"] {
 </div>
       </div> <!-- /container-fluid -->
     </nav>
-</header>
+<header id="quarto-dashboard-header">
+<nav class="navbar navbar-expand-md slim" data-bs-theme="dark">
+  <div class="navbar-container container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-controls="dashboard-collapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>    
+
+
+    <div class="navbar-brand-container">       
+
+      <div class="navbar-title">
+        <div class="navbar-title-text"><a href="#">Dashboard</a></div>
+        
+        
+      </div>
+    </div>
+<div id="dashboard-collapse" class="navbar-collapse collapse"><ul class="navbar-nav navbar-nav-scroll me-auto" role="tablist"><li class="nav-item" role="presentation"><a id="tab-time-analysis" class="nav-link active" data-bs-toggle="tab" role="tab" data-bs-target="#time-analysis" data-scrolling="false" href="#time-analysis" aria-controls="time-analysis" aria-selected="true"><span class="nav-link-text">TIME ANALYSIS</span></a></li><li class="nav-item" role="presentation"><a id="tab-area-analysis" class="nav-link" data-bs-toggle="tab" role="tab" data-bs-target="#area-analysis" data-scrolling="false" href="#area-analysis" aria-controls="area-analysis" aria-selected="false"><span class="nav-link-text">AREA ANALYSIS</span></a></li></ul></div></div>
+</nav>
+</header></header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-layout-custom page-navbar quarto-dashboard-content bslib-gap-spacing html-fill-container bslib-page-fill quarto-dashboard-pages dashboard-sidebar-container">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
-    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Tucson Crime Data Analysis</h1>
+<div class="bslib-sidebar-layout html-fill-item html-fill-container" data-bslib-sidebar-open="desktop" data-bslib-sidebar-init="true" data-bslib-sidebar-border="false" data-bslib-sidebar-border-radius="false"><div class="main html-fill-container html-fill-item"><div class="sidebar-content html-fill-item html-fill-container">
+<div class="tab-content bslib-grid html-fill-item html-fill-container" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div id="time-analysis" class="dashboard-page tab-pane show active html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-time-analysis">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 20fr) minmax(3em, 40fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr) minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-primary showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="card-body html-fill-item html-fill-container">
+<div data-icon="shield" class="html-fill-item html-fill-container value-box-grid">
+<div class="value-box-showcase html-fill-item html-fill-container">
+
+<i class="bi bi-shield"></i></div>
+<div class="value-box-area">
+<p class="value-box-title">
+Total Reported Crime (Jan 2018 - May 2024)
+</p>
+<p class="value-box-value">
+181683
+</p>
+</div>
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div><div class="card valuebox cell html-fill-item html-fill-container bslib-card bslib-value-box bg-primary showcase-left-center" data-bslib-card-init="" data-require-bs-caller="card()">
+<div class="card-body html-fill-item html-fill-container">
+<div data-icon="shield" class="html-fill-item html-fill-container value-box-grid">
+<div class="value-box-showcase html-fill-item html-fill-container">
+
+<i class="bi bi-shield"></i></div>
+<div class="value-box-area">
+<p class="value-box-title">
+Crimes Reported in 2024
+</p>
+<p class="value-box-value">
+11036
+</p>
+</div>
+</div>
+</div>
+<script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 40fr) minmax(3em, 60fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, 1fr); grid-auto-columns: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-title="Total Incidents over the years" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header"><div class="card-title html-fill-item html-fill-container">Total Incidents over the years</div></div>
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<img src="./images/crime_trend_animation_with_yaxis_counts.gif" class="img-fluid quarto-dashboard-img-contain">
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div><div class="card tabset html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-header dashboard-card-no-title bslib-navs-card-title">
+
+<ul class="nav nav-tabs card-header-tabs" role="tablist" data-tabsetid="card-tabset-4"><li class="nav-item" role="presentation"><a href="#card-tabset-4-1" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Trend Analysis" aria-selected="true" class="nav-link active">Trend Analysis</a></li><li class="nav-item" role="presentation"><a href="#card-tabset-4-2" role="tab" data-toggle="tab" data-bs-toggle="tab" data-value="Crimes Pattern Analysis" aria-selected="false" class="nav-link">Crimes Pattern Analysis</a></li></ul></div>
+
+
+<div class="tab-content html-fill-item html-fill-container" data-tabset-id="card-tabset-4"><div class="tab-pane active show html-fill-item html-fill-container" role="tabpanel" id="card-tabset-4-1"><div class="card-body html-fill-item html-fill-container" data-title="Trend Analysis">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="card cell html-fill-item html-fill-container bslib-card" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<div style="font-family: Arial, sans-serif; font-size: 20px; font-weight: bold; margin-bottom: 10px; text-align: center;" class="html-fill-item html-fill-container">Tucson Crime Analysis</div>
+<div class="reactable html-widget html-fill-item html-fill-container" id="htmlwidget-824469bf0a8e0147505f" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-824469bf0a8e0147505f">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"UCRDescription":["Assault, Aggravated","Burglary","Homicide","Larceny","Other","Robbery","Sexual Assault"],"2018":[6,10.1,0.2,70.3,8.2,3.8,1.5],"2019":[6.5,9.1,0.2,70.8,8,3.8,1.7],"2020":[8.9,8.7,0.3,67.2,8.8,4.1,1.9],"2021":[8.4,9.2,0.3,66.8,9.1,4.3,1.9],"2022":[8.9,11.1,0.3,64.7,9.5,4,1.5],"2023":[8,8.2,0.2,69.9,9.8,2.6,1.4],"2024":[7.4,6.7,0.2,74.6,7.8,2.1,1.1],"Trend":[[6,6.5,8.9,8.4,8.9,8,7.4],[10.1,9.1,8.7,9.2,11.1,8.2,6.7],[0.2,0.2,0.3,0.3,0.3,0.2,0.2],[70.3,70.8,67.2,66.8,64.7,69.9,74.6],[8.2,8,8.8,9.1,9.5,9.8,7.8],[3.8,3.8,4.1,4.3,4,2.6,2.1],[1.5,1.7,1.9,1.9,1.5,1.4,1.1]]},"columns":[{"id":"UCRDescription","name":"Crime Type","type":"character","align":"center","style":{"fontWeight":"bold"}},{"id":"2018","name":"2018","type":"numeric","align":"center","style":{"fontFamily":"Arial, sans-serif","fontSize":"14px","padding":"5px"},"cell":["6%","10.1%","0.2%","70.3%","8.2%","3.8%","1.5%"]},{"id":"2019","name":"2019","type":"numeric","align":"center","style":{"fontFamily":"Arial, sans-serif","fontSize":"14px","padding":"5px"},"cell":["6.5%","9.1%","0.2%","70.8%","8%","3.8%","1.7%"]},{"id":"2020","name":"2020","type":"numeric","align":"center","style":{"fontFamily":"Arial, sans-serif","fontSize":"14px","padding":"5px"},"cell":["8.9%","8.7%","0.3%","67.2%","8.8%","4.1%","1.9%"]},{"id":"2021","name":"2021","type":"numeric","align":"center","style":{"fontFamily":"Arial, sans-serif","fontSize":"14px","padding":"5px"},"cell":["8.4%","9.2%","0.3%","66.8%","9.1%","4.3%","1.9%"]},{"id":"2022","name":"2022","type":"numeric","align":"center","style":{"fontFamily":"Arial, sans-serif","fontSize":"14px","padding":"5px"},"cell":["8.9%","11.1%","0.3%","64.7%","9.5%","4%","1.5%"]},{"id":"2023","name":"2023","type":"numeric","align":"center","style":{"fontFamily":"Arial, sans-serif","fontSize":"14px","padding":"5px"}},{"id":"2024","name":"2024","type":"numeric","align":"center","style":{"fontFamily":"Arial, sans-serif","fontSize":"14px","padding":"5px"}},{"id":"Trend","name":"Trend","type":"list","align":"center","style":{"fontFamily":"Arial, sans-serif","fontSize":"14px","padding":"5px"},"cell":[{"name":"WidgetContainer","attribs":{"key":"2fb1eb4e4f37a3a04034858190e327ae"},"children":[{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"id":"htmlwidget-5fa9bcf170051fd0298b","className":"sparkline html-widget"},"children":[]},{"name":"script","attribs":{"type":"application/json","data-for":"htmlwidget-5fa9bcf170051fd0298b"},"children":["{\"x\":{\"values\":[6,6.5,8.9,8.4,8.9,8,7.4],\"options\":{\"type\":\"line\",\"height\":30,\"width\":120},\"width\":120,\"height\":30},\"evals\":[],\"jsHooks\":[]}"]}]}]},{"name":"WidgetContainer","attribs":{"key":"9e594d186f5be252b96f2afbfc6d57f0"},"children":[{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"id":"htmlwidget-4af63a4e4f08ef738953","className":"sparkline html-widget"},"children":[]},{"name":"script","attribs":{"type":"application/json","data-for":"htmlwidget-4af63a4e4f08ef738953"},"children":["{\"x\":{\"values\":[10.1,9.1,8.699999999999999,9.199999999999999,11.1,8.199999999999999,6.7],\"options\":{\"type\":\"line\",\"height\":30,\"width\":120},\"width\":120,\"height\":30},\"evals\":[],\"jsHooks\":[]}"]}]}]},{"name":"WidgetContainer","attribs":{"key":"d8acc388475a1ab2e1e7e6b49ebb97d6"},"children":[{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"id":"htmlwidget-f2771ff0c600142a5344","className":"sparkline html-widget"},"children":[]},{"name":"script","attribs":{"type":"application/json","data-for":"htmlwidget-f2771ff0c600142a5344"},"children":["{\"x\":{\"values\":[0.2,0.2,0.3,0.3,0.3,0.2,0.2],\"options\":{\"type\":\"line\",\"height\":30,\"width\":120},\"width\":120,\"height\":30},\"evals\":[],\"jsHooks\":[]}"]}]}]},{"name":"WidgetContainer","attribs":{"key":"b3134e8ea450b1c170b0c378fc7dd443"},"children":[{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"id":"htmlwidget-53fec5e11c72f7548a70","className":"sparkline html-widget"},"children":[]},{"name":"script","attribs":{"type":"application/json","data-for":"htmlwidget-53fec5e11c72f7548a70"},"children":["{\"x\":{\"values\":[70.3,70.8,67.2,66.8,64.7,69.90000000000001,74.59999999999999],\"options\":{\"type\":\"line\",\"height\":30,\"width\":120},\"width\":120,\"height\":30},\"evals\":[],\"jsHooks\":[]}"]}]}]},{"name":"WidgetContainer","attribs":{"key":"3613dbfc37e0385df7f80f79ce7e7331"},"children":[{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"id":"htmlwidget-4cdc80d6040c440093ae","className":"sparkline html-widget"},"children":[]},{"name":"script","attribs":{"type":"application/json","data-for":"htmlwidget-4cdc80d6040c440093ae"},"children":["{\"x\":{\"values\":[8.199999999999999,8,8.800000000000001,9.1,9.5,9.800000000000001,7.8],\"options\":{\"type\":\"line\",\"height\":30,\"width\":120},\"width\":120,\"height\":30},\"evals\":[],\"jsHooks\":[]}"]}]}]},{"name":"WidgetContainer","attribs":{"key":"0195b45c627f10674de9899ccc53088e"},"children":[{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"id":"htmlwidget-86baa4d77facd57e922f","className":"sparkline html-widget"},"children":[]},{"name":"script","attribs":{"type":"application/json","data-for":"htmlwidget-86baa4d77facd57e922f"},"children":["{\"x\":{\"values\":[3.8,3.8,4.1,4.3,4,2.6,2.1],\"options\":{\"type\":\"line\",\"height\":30,\"width\":120},\"width\":120,\"height\":30},\"evals\":[],\"jsHooks\":[]}"]}]}]},{"name":"WidgetContainer","attribs":{"key":"6997a37d6465db45f95d1b106510d9af"},"children":[{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"id":"htmlwidget-fba28691d1ab6efe7b24","className":"sparkline html-widget"},"children":[]},{"name":"script","attribs":{"type":"application/json","data-for":"htmlwidget-fba28691d1ab6efe7b24"},"children":["{\"x\":{\"values\":[1.5,1.7,1.9,1.9,1.5,1.4,1.1],\"options\":{\"type\":\"line\",\"height\":30,\"width\":120},\"width\":120,\"height\":30},\"evals\":[],\"jsHooks\":[]}"]}]}]}]}],"highlight":true,"bordered":true,"theme":{"borderColor":"#ddd","stripedColor":"#f9f9f9","highlightColor":"#f0f0f0","headerStyle":{"background":"#f4f4f4","fontWeight":"bold","fontSize":"15px","borderBottom":"2px solid #ddd"}},"dataKey":"d7c8e00ede6781fa2e36750cbca52297"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div></div><div class="tab-pane html-fill-item html-fill-container" role="tabpanel" id="card-tabset-4-2"><div class="card-body html-fill-item html-fill-container" data-title="Crimes Pattern Analysis">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-columns: minmax(3em, 1fr);
+grid-auto-rows: minmax(0, 1fr);">
+<div class="card html-fill-item html-fill-container bslib-card" data-fill="false" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="{iframe-section} html-fill-item html-fill-container">
+<iframe src="http://hitarthbharadaz.shinyapps.io/dashboard-2/" width="100%" height="720px" style="border:none;">
+</iframe>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div></div></div><bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+</div>
+</div>
+</div><div id="area-analysis" class="dashboard-page tab-pane grid-skip html-fill-item html-fill-container" data-orientation="rows" aria-labelledby="tab-area-analysis">
+<div class="html-fill-item html-fill-container bslib-grid" style="display: grid; grid-template-rows: minmax(3em, max-content); grid-auto-columns: minmax(0, 1fr);">
+<div class="card html-fill-item html-fill-container bslib-card" data-fill="false" data-bslib-card-init="" data-require-bs-caller="card()" data-full-screen="false">
+<div class="card-body html-fill-item html-fill-container">
+<div class="{iframe-section} html-fill-item html-fill-container">
+<iframe src="http://hitarthbharadaz.shinyapps.io/dashboard-1/" width="100%" height="720px" style="border:none;">
+</iframe>
+</div>
+</div>
+<bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
+    <template>Expand</template>
+    <span class="bslib-full-screen-enter badge rounded-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" style="height:1em;width:1em;" aria-hidden="true" role="img"><path d="M20 5C20 4.4 19.6 4 19 4H13C12.4 4 12 3.6 12 3C12 2.4 12.4 2 13 2H21C21.6 2 22 2.4 22 3V11C22 11.6 21.6 12 21 12C20.4 12 20 11.6 20 11V5ZM4 19C4 19.6 4.4 20 5 20H11C11.6 20 12 20.4 12 21C12 21.6 11.6 22 11 22H3C2.4 22 2 21.6 2 21V13C2 12.4 2.4 12 3 12C3.6 12 4 12.4 4 13V19Z"></path></svg>
+    </span>
+</bslib-tooltip><script data-bslib-card-init="">bslib.Card.initializeAllCards();</script></div>
+
+
+<div id="3ade8a4a-fb1d-4a6c-8409-ac45482d5fc9" class="hidden html-fill-item html-fill-container">
+
+</div>
+</div>
+</div>
+</div>
+</div></div><aside id="bslib-sidebar-1" class="sidebar html-fill-container html-fill-item"><div class="html-fill-container html-fill-item">
+<p>In [2018-2024], Crime count with latest reported incident (in 2024) ordered by severity:</p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td><strong>Homicide</strong></td>
+<td>404</td>
+<td>28th Apr</td>
+</tr>
+<tr class="even">
+<td><strong>Sexual Assault</strong></td>
+<td>2,892</td>
+<td>1st May</td>
+</tr>
+<tr class="odd">
+<td><strong>Robbery</strong></td>
+<td>6,586</td>
+<td>30th Apr</td>
+</tr>
+<tr class="even">
+<td><strong>Assault, Aggravated</strong></td>
+<td>13,923</td>
+<td>1st May</td>
+</tr>
+<tr class="odd">
+<td><strong>Burglary</strong></td>
+<td>16,797</td>
+<td>1st May</td>
+</tr>
+<tr class="even">
+<td><strong>Larceny</strong></td>
+<td>125,045</td>
+<td>1st May</td>
+</tr>
+<tr class="odd">
+<td><strong>GTA</strong></td>
+<td>14,859</td>
+<td>1st May</td>
+</tr>
+<tr class="even">
+<td><strong>Arson</strong></td>
+<td>1,182</td>
+<td>1st May</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</div></aside>
+<button class="collapse-toggle" type="button" title="Toggle sidebar" aria-expanded="true" aria-controls="bslib-sidebar-1">
+    <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 16 16" class="bi bi-chevron-left collapse-icon" style="fill:currentColor;" aria-hidden="true" role="img">
+      <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"></path>
+    </svg>
+</button>
+<script data-bslib-sidebar-init="">
+bslib.Sidebar.initCollapsibleAll()
+</script>
 </div>
 
 
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<p><strong>Team Project Contract</strong><br>
-<strong>Project Title:</strong> Tucson Police Data and Analysis<br>
-<strong>Team Members:</strong></p>
-<ol type="1">
-<li><p>Ashwini R Jannu, ashwinijannu@arizona.edu</p></li>
-<li><p>Lekhashree Honnavalli Jayarama, lekhashreehj@arizona.edu</p></li>
-<li><p>Mridula Kalaisevan, lekhashreehj@arizona.edu</p></li>
-<li><p>Hitarth Bharad, hitarthbharad@arizona.edu</p></li>
-<li><p>Hardik Chemburkar, hardikchemburkar@arizona.edu</p></li>
-<li><p>Dhawal Gajwe, dhawalgajwe@arizona.edu</p></li>
-</ol>
-<p><strong>Project Overview</strong></p>
-<ul>
-<li><p><strong>Project Description:</strong> This project focuses on analyzing and visualizing crime data reported to the Tucson Police Department from 2018 to the present. The dataset contains over 181,000 incidents, including details such as crime type, location, and date. The primary objective is to gain insights into crime trends over time, geographic distribution of offenses, and other significant patterns. By using data visualization techniques, we aim to present the findings in an engaging and informative way for decision-makers, law enforcement agencies, and the public.</p></li>
-<li><p><strong>Expected Deliverables:</strong></p>
-<ul>
-<li><p>Dashboard representing crime patterns.</p></li>
-<li><p>A set of visualizations highlighting crime patterns over time (e.g., monthly/annual trends).</p></li>
-</ul>
-<!-- -->
-<ul>
-<li><p>Geographic heat maps showing the distribution of crimes across different wards and divisions in Tucson.</p></li>
-<li><p>A detailed report summarizing key findings and visualizations.</p></li>
-<li><p>A final presentation to showcase the visualizations and insights derived from the data.</p></li>
-</ul></li>
-</ul>
-<p><strong>Team Goals</strong></p>
-<ul>
-<li><p><strong>Project Goals:</strong></p>
-<ul>
-<li><strong>Analyze crime trends</strong>: Identify patterns in reported crimes across different time periods (year, month, day) and locations (ward, division) in Tucson.</li>
-</ul>
-<!-- -->
-<ul>
-<li><p><strong>Visualize crime distribution</strong>: Create compelling visualizations such as heat maps, bar charts, and line graphs to showcase crime data trends over time and space.</p></li>
-<li><p><strong>Understand crime categories</strong>: Explore the types of crimes (e.g., burglary, homicide, assault) and their frequency to help uncover any significant trends or correlations.</p></li>
-<li><p><strong>Support decision-making</strong>: Provide insights through visualizations that could assist law enforcement, policy makers, and the community in understanding and responding to crime patterns effectively.</p></li>
-</ul></li>
-<li><p><strong>Learning Objectives:</strong></p>
-<ul>
-<li><strong>Data wrangling</strong>: Develop skills in cleaning, transforming, and preparing real-world datasets for analysis.</li>
-</ul>
-<!-- -->
-<ul>
-<li><p><strong>Data visualization</strong>: Learn to design and implement effective visualizations using tools like <code>ggplot2</code>.</p></li>
-<li><p><strong>Exploratory Data Analysis (EDA)</strong>: Strengthen the ability to extract meaningful insights from large datasets by identifying trends, patterns, and anomalies.</p></li>
-<li><p><strong>Collaboration and teamwork</strong>: Enhance communication and project management skills by working collaboratively within a team structure to deliver a data-driven project.</p></li>
-</ul></li>
-</ul>
-<p><strong>Team Roles and Responsibilities</strong></p>
-<ul>
-<li><strong>Roles (change as needed):</strong></li>
-</ul>
-<!-- -->
-<ul>
-<li><p><strong>Project Manager:</strong> [Ashwini R Jannu] – Ensures timelines are met, organizes meetings, and manages communications.</p></li>
-<li><p><strong>Data Analyst:</strong> [Lekhashree Honnavalli Jayarama, Mridula Kalaisevan] – Responsible for data cleaning, analysis, and exploratory</p></li>
-<li><p><strong>Visualization Specialist:</strong> [Dhawal Gajwe, Hitharth Bharad] – Designs the final visualizations and makes aesthetic choices.</p></li>
-<li><p><strong>Documentation Lead:</strong> [Hardik Chemburkar, Ashwini R Jannu] – Keeps detailed notes, ensures all project decisions are documented, and handles the final report.</p></li>
-</ul>
-<!-- -->
-<ul>
-<li><p><strong>Responsibilities:</strong></p></li>
-<li><p><strong>General Responsibilities:</strong> Each team member is responsible for:</p></li>
-</ul>
-<!-- -->
-<ul>
-<li><p>Participating actively in all meetings.</p></li>
-<li><p>Completing their assigned tasks on time.</p></li>
-</ul>
-<!-- -->
-<ul>
-<li>Communicating openly and promptly if issues arise.</li>
-</ul>
-<p><strong>Communication Plan</strong></p>
-<ul>
-<li><p><strong>Meeting Schedule:</strong> Weekly on Monday and Wed at 3.15 - 4.15 PM in person.</p></li>
-<li><p><strong>Primary Communication Platform:</strong> Whatsapp.</p></li>
-<li><p><strong>Decision-Making Process:</strong> Decisions will be made by consensus; if a consensus cannot be reached, a vote will be taken.</p></li>
-</ul>
-<p><strong>Work Plan and Timeline</strong></p>
-<ul>
-<li><p><strong>Milestones:</strong></p>
-<ul>
-<li>Milestone 1 - Completed</li>
-<li>Milestone 2 - In process</li>
-</ul></li>
-<li><p><strong>Data Collection and Cleaning:</strong> Completed by [Date].</p></li>
-<li><p><strong>Exploratory Data Analysis:</strong> Completed by [Date].</p></li>
-<li><p><strong>Design of Visualizations:</strong> Completed by [Date].</p></li>
-<li><p><strong>Final Presentation and Report:</strong> Completed by [Date].</p></li>
-<li><p><strong>Task Assignments:</strong> [Use a table to assign tasks to team members with due dates.]</p></li>
-</ul>
-<p><strong>Accountability and Expectations</strong></p>
-<ul>
-<li><p><strong>Attendance Policy:</strong> All team members are expected to attend scheduled meetings unless previously discussed.</p></li>
-<li><p><strong>Quality of Work:</strong> All deliverables should be completed to a professional standard.</p></li>
-<li><p><strong>Deadlines:</strong> All members are responsible for meeting deadlines. If someone cannot meet a deadline, they must notify the team in advance.</p></li>
-</ul>
-<p><strong>Conflict Resolution Plan</strong></p>
-<ul>
-<li><strong>Conflict Management:</strong> If a conflict arises, team members will:</li>
-</ul>
-<ol type="1">
-<li><p>Discuss the issue openly during a team meeting.</p></li>
-<li><p>Attempt to resolve the issue through compromise.</p></li>
-<li><p>If the conflict persists, consult the project supervisor for guidance.</p></li>
-</ol>
-<p><strong>Signatures</strong><br>
-By signing below, each team member agrees to the terms of this contract and commits to working together effectively and respectfully.</p>
-<ul>
-<li><p>Ashwini R Jannu (30th Sept 2024)</p></li>
-<li><p>Lekhashree Honnavalli Jayarama (30th Sept 2024)</p></li>
-<li><p>Mridula Kalaisevan (30th Sept 2024)</p></li>
-<li><p>Hitarth Bharad (30th Sept 2024)</p></li>
-<li><p>Hardik Chemburkar (30th Sept 2024)</p></li>
-<li><p>Dhawal Gajwe (30th Sept 2024)</p></li>
-</ul>
-<p>This template ensures that everyone understands their roles, responsibilities, and the expectations for the project. It can help prevent misunderstandings and promote effective teamwork throughout the project.</p>
-
-
-
-</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -842,6 +935,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 </div> <!-- /content -->
 
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (_event) {
+  if (window.bslib.Card) {
+    window.bslib.Card.initializeAllCards();
+  }
+}); 
+</script>
+  
 
 
 
