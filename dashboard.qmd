@@ -201,12 +201,12 @@ browsable(
 
 #### Crimes Pattern Analysis
 :::{iframe-section}
-<iframe src="http://hitarthbharadaz.shinyapps.io/dashboard-2/" width="100%" height="720px" style="border:none;"></iframe>
+<iframe src="https://hitarthbharadaz.shinyapps.io/dashboard-2/" width="100%" height="720px" style="border:none;"></iframe>
 :::
 
 
 # AREA ANALYSIS
 
 :::{iframe-section}
-<iframe src="http://hitarthbharadaz.shinyapps.io/dashboard-1/" width="100%" height="720px" style="border:none;"></iframe>
+<iframe src="https://hitarthbharadaz.shinyapps.io/dashboard-1/" width="100%" height="720px" style="border:none;"></iframe>
 :::
