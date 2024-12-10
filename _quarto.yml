@@ -2,7 +2,7 @@ project:
   type: website
 
 website:
-  title: Tucson Crime Data Analysis 
+  title: "<img src='/images/tucson_logo.jpg' alt='Tucson Logo' style='width: 2.7em; height: 2.3em; border-radius: 20%;'> <b> Tucson Crime Data Analysis</b>"
   navbar:
     right:
       - icon: github

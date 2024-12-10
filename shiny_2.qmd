@@ -1,28 +1,24 @@
 ---
-title: "Question 2 Visualization"
-editor: visual
+title: "Tucson Crime Trend Analysis"
 author: 
   - name: "VIZards"
     affiliations:
       - name: "College of Information, University of Arizona"
 description: "Tucson Police Reported Crime Data Analysis"
 format: dashboard
-runtime: shiny
+editor: visual
 execute:
   warning: false
   echo: false
 ---
 
-
-```{r}
-# Load libraries
+```{r include=FALSE}
 if (!require(pacman)) install.packages("pacman")
-pacman::p_load(tidyverse, shiny, scales, ggplot2)
+pacman::p_load(tidyverse, shiny, scales, ggplot2, shinythemes, plotly)
 
 ```
 
-```{r}
-# Load data
+```{r include=FALSE}
 crime_data <- read.csv("./data/Tucson_Police_Reported_Crimes.csv")
 
 crime_data <- crime_data %>%
@@ -67,146 +63,166 @@ crime_colors <- c(
 crime_data
 ```
 
-```{r}
+```{r echo=FALSE}
 ui <- fluidPage(
-  titlePanel("Crime Trends in Tucson (2018-2024)"),
+  theme = shinytheme("cosmo"),
+  
+  titlePanel(
+    tags$div(
+      tags$div(
+        style = "display: flex; align-items: center; justify-content: center;",
+        tags$h1("Crime Analytics Dashboard", style = "color: #555; font-weight: bold; text-align: center; margin-bottom: 10px;")
+      )
+    )
+  ),
+  
+  tags$style(HTML("
+    body {
+      background-color: #f4f6f9;
+      font-family: 'Arial', sans-serif;
+    }
+    .sidebar {
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 15px;
+    }
+    .sidebar h4, .sidebar label {
+      color: #333333;
+      font-weight: bold;
+    }
+    .main-panel {
+      background-color: #ffffff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    footer {
+      text-align: center;
+      color: #888;
+      font-size: 14px;
+      margin-top: 20px;
+      padding: 10px;
+    }
+    footer a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+  ")),
+
   sidebarLayout(
     sidebarPanel(
+      class = "sidebar",
+      tags$h4("Filters", style = "color: #007bff; text-align: center; margin-bottom: 15px;"),
       selectInput(
         inputId = "crime_type",
         label = "Select Crime Type:",
-        choices = unique_crime_types,  # Use clean names for the filter
+        choices = unique_crime_types,
         selected = "All"
-      )
+      ),
+      checkboxGroupInput(
+      inputId = "year_filter",
+      label = "Select Years:",
+      choices = sort(unique(crime_data$Year)),
+      selected = sort(unique(crime_data$Year))
+    )
     ),
     mainPanel(
+      class = "main-panel",
       tabsetPanel(
         tabPanel(
-          "Line Chart",
-          plotOutput("line_chart", height = "600px", width = "100%")
-        ),
-        tabPanel(
-          "Bar Chart",
-          plotOutput("bar_chart", height = "600px", width = "100%")
+          tags$h4("Crime Distribution by Hour", style = "color: #007bff"),
+          plotlyOutput("bar_chart", height = "600px", width = "100%")
         )
       )
     )
+  ),
+
+  tags$footer(
+    tags$a(
+      href = "https://info-526-f24.github.io/project-01-VIZards/",
+      "Visit Our Website - VIZards"
+    ),
+    style = "margin-top: 20px; background-color: #f4f6f9; padding: 10px;"
   )
 )
 ```
 
-```{r}
+```{r echo=FALSE}
 server <- function(input, output, session) {
-
+  
   filtered_hourly_data <- reactive({
-    if (input$crime_type == "All") {
-      crime_data %>%
-        group_by(Hour, TimeOfDay) %>%
-        summarise(CrimeCount = n(), .groups = "drop")
-    } else {
-      crime_data %>%
-        filter(ProcessedCrimeType == input$crime_type) %>%
-        group_by(Hour, TimeOfDay) %>%
-        summarise(CrimeCount = n(), .groups = "drop")
+    filtered_data <- crime_data
+    if (!is.null(input$year_filter) && length(input$year_filter) > 0) {
+      filtered_data <- filtered_data %>%
+        filter(Year %in% input$year_filter)
     }
+    if (input$crime_type != "All") {
+      filtered_data <- filtered_data %>%
+        filter(ProcessedCrimeType == input$crime_type)
+    }
+    filtered_data %>%
+      group_by(Hour, TimeOfDay) %>%
+      summarise(CrimeCount = n(), .groups = "drop")
   })
 
-  filtered_line_data <- reactive({
-    if (input$crime_type == "All") {
-      crime_data %>%
-        group_by(ProcessedCrimeType, Year) %>%
-        summarise(CrimeCount = n(), .groups = "drop")
-    } else {
-      crime_data %>%
-        filter(ProcessedCrimeType == input$crime_type) %>%
-        group_by(Year) %>%
-        summarise(CrimeCount = n(), .groups = "drop")
-    }
-  })
-
-  # Render the line chart
-  output$line_chart <- renderPlot({
-    data <- filtered_line_data()  # Call the reactive data
-
-    # Validate that data is non-empty
-    req(nrow(data) > 0)
-
-    ggplot(data, aes(x = Year, y = CrimeCount)) +
-      geom_line(
-        aes(
-          group = if (input$crime_type == "All") ProcessedCrimeType else NULL,
-          color = if (input$crime_type == "All") ProcessedCrimeType else "Selected"
-        ),
-        size = if (input$crime_type == "All") 0.8 else 1.5
-      ) +
-      geom_point(
-        aes(
-          group = if (input$crime_type == "All") ProcessedCrimeType else NULL,
-          color = if (input$crime_type == "All") ProcessedCrimeType else "Selected",
-          fill = if (input$crime_type == "All") ProcessedCrimeType else "Selected"
-        ),
-        fill = "white",
-        size = 3,
-        shape = 21
-      ) +
-      scale_color_manual(
-        values = if (input$crime_type == "All") crime_colors else c("Selected" = "red"),
-        guide = if (input$crime_type == "All") "legend" else "none"
-      ) +
-      scale_y_continuous(labels = scales::comma) +
-      labs(
-        title = if (input$crime_type == "All") "Crime Trends in Tucson (2018-2024)" else paste(input$crime_type, "Trend"),
-        x = "Year",
-        y = "Number of Incidents",
-        color = if (input$crime_type == "All") "Crime Type" else NULL
-      ) +
-      theme_minimal() +
-      theme(
-        plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
-        axis.text.x = element_text(size = 12),
-        axis.text.y = element_text(size = 12),
-        legend.position = if (input$crime_type == "All") "bottom" else "none",
-        panel.border = element_rect(fill = NA, color = "black", size = 1)
+  output$bar_chart <- renderPlotly({
+  data <- filtered_hourly_data()
+  
+  ggplot_chart <- ggplot(data, aes(x = Hour, y = CrimeCount, fill = TimeOfDay)) +
+    geom_bar(stat = "identity", color = "black") +
+    scale_x_continuous(breaks = 0:23, labels = sprintf("%02d", 0:23)) +
+    scale_y_continuous(labels = scales::comma) +
+    scale_fill_manual(
+      values = time_of_day_colors,
+      breaks = c("Night", "Dawn", "Morning", "Afternoon", "Evening", "Dusk"),
+      labels = c("Night", "Dawn", "Morning", "Afternoon", "Evening", "Dusk")
+    ) +
+    labs(
+      title = paste(input$crime_type, "Crime Type"),
+      x = "Hour of the Day",
+      y = "Number of Incidents",
+      fill = "Time of Day",
+      caption = tags$a(
+        href = "https://gisdata.tucsonaz.gov/datasets/982a2698677d4f6e8ef310171f7b4d9f_8/explore",
+        "Source: City of Tucson"
       )
-  })
-
-
-  # Render bar chart
-  output$bar_chart <- renderPlot({
-    data <- filtered_hourly_data()
-
-    ggplot(data, aes(x = Hour, y = CrimeCount, fill = TimeOfDay)) +
-      geom_bar(stat = "identity", color = "black") +
-      scale_x_continuous(breaks = 0:23, labels = sprintf("%02d", 0:23)) +  # Format X-axis as 2 digits
-      scale_y_continuous(labels = scales::comma) +
-      scale_fill_manual(
-        values = time_of_day_colors,
-        breaks = c("Night", "Dawn", "Morning", "Afternoon", "Evening", "Dusk"),  # Format legend order
-        labels = c("Night", "Dawn", "Morning", "Afternoon", "Evening", "Dusk")  # Label them explicitly
-      ) +
-      labs(
-        title = paste("Crime Incidents by Hour of the Day for", input$crime_type),
-        x = "Hour of the Day",
-        y = "Number of Incidents",
-        fill = "Time of Day"
-      ) +
-      theme_minimal() +
-      theme(
-        plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
-        axis.text.x = element_text(size = 10, angle = 0, hjust = 0.5),
-        axis.text.y = element_text(size = 12),
-        legend.position = "bottom",  # Move legend to the bottom
-        legend.direction = "horizontal",  # Arrange legend horizontally
-        legend.spacing.x = unit(1, "cm"),  # Add spacing between legend items
-        panel.grid.major = element_blank(),  # Remove major grid lines
-        panel.grid.minor = element_blank(),  # Remove minor grid lines
-        panel.border = element_rect(fill = NA, color = "black", size = 1),
-        legend.text = element_text(family = "sans", size = 12),
-        legend.key.width = unit(1.5, "cm"),
-        legend.key.height = unit(0.5, "cm"),
-        legend.title = element_blank()
-      ) +
-      guides(fill = guide_legend(label.position = "top", nrow = 1))
+    ) +
+    theme_minimal() +
+    theme(
+      plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
+      axis.text.x = element_text(size = 10, angle = 0, hjust = 0.5),
+      axis.text.y = element_text(size = 12),
+      legend.position = "bottom",
+      legend.direction = "horizontal",
+      panel.grid.major = element_blank(),
+      panel.grid.minor = element_blank(),
+      panel.border = element_rect(fill = NA, color = "black", size = 1),
+      legend.text = element_text(size = 12),
+      legend.key.width = unit(1.5, "cm"),
+      legend.key.height = unit(0.5, "cm"),
+      legend.title = element_blank()
+    )
+  
+  ggplotly(ggplot_chart) %>%
+    layout(
+      legend = list(
+        orientation = "h",
+        x = 0.5,
+        y = -0.2,
+        xanchor = "center",
+        yanchor = "top",
+        itemwidth = 50, 
+        font = list(size = 12)
+      ),
+      title = list(
+        text = paste(input$crime_type, "Crime Type"),
+        x = 0.5
+      )
+    )
   })
 }
 

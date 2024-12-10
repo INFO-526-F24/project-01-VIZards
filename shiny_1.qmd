@@ -14,7 +14,6 @@ execute:
 
 
 ```{r include=FALSE}
-# Install and load necessary packages
 if(!require(pacman))
   install.packages("pacman")
 
@@ -26,9 +25,10 @@ pacman::p_load(tidyverse,
                scales,
                shiny,
                tmap,
-               colorspace)
+               colorspace,
+               shinythemes,
+               plotly)
 
-# Set options for better figure display
 options(width = 65)
 knitr::opts_chunk$set(
   fig.width = 7,
@@ -40,17 +40,15 @@ knitr::opts_chunk$set(
 ```
 
 ```{r}
-# Load data
 crime_data <- read.csv("./data/Tucson_Police_Reported_Crimes.csv")
 tucson_wards <- st_read("Wards_-_City_of_Tucson.geojson") %>%
   mutate(Ward = as.character(WARD))
 
-# Process crime type data for consistency
 crime_data <- crime_data %>%
   mutate(
-    UCRDescription = str_replace(UCRDescription, "^[0-9]+ - ", ""),  # Remove prefixes like "01 -"
-    UCRDescription = str_to_title(UCRDescription),  # Convert to title case
-    Year = as.numeric(Year)  # Ensure year is numeric for filtering
+    UCRDescription = str_replace(UCRDescription, "^[0-9]+ - ", ""),
+    UCRDescription = str_to_title(UCRDescription),
+    Year = as.numeric(Year)
   )
 
 ```
@@ -58,31 +56,65 @@ crime_data <- crime_data %>%
 
 ```{r}
 ui <- fillPage(
-  tags$head(
-    tags$style(HTML("
-      html, body {
-        width: 100%;
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-      }
-      .sidebar {
-        height: 100%;
-      }
-      .main-panel {
-        height: 100%;
-        width: 100%;
-      }
-      .tab-content {
-        height: calc(100vh - 100px); /* Adjust for titlePanel */
-      }
-    "))
-  ),
-  titlePanel("Tucson Crime Analysis"),
+  theme = shinytheme("cosmo"),
+  
+  tags$style(HTML("
+    body {
+      background-color: #f4f6f9;
+      font-family: 'Arial', sans-serif;
+    }
+    .sidebar {
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 15px;
+      margin-right: 10px;
+    }
+    .sidebar h4, .sidebar label {
+      color: #333333;
+      font-weight: bold;
+    }
+    .main-panel {
+      background-color: #ffffff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .navbar {
+      background-color: #007bff;
+      color: #ffffff;
+      border-radius: 0 0 8px 8px;
+      padding: 10px 20px;
+      font-size: 18px;
+      text-align: center;
+      font-weight: bold;
+    }
+    footer {
+      text-align: center;
+      color: #888;
+      font-size: 14px;
+      margin-top: 20px;
+      padding: 10px;
+    }
+    footer a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+  ")),
+
+  titlePanel(tags$div(
+    style = "color: black; padding: 15px; border-radius: 8px; text-align: center;",
+    tags$h1("Tucson Crime Analysis", style = "margin: 0;")
+  )),
+  
   sidebarLayout(
     sidebarPanel(
+      class = "sidebar",
       width = 3,
+      tags$h4("Filters", style = "text-align: center; margin-bottom: 15px;"),
       selectInput(
         inputId = "year_filter",
         label = "Select Year:",
@@ -97,12 +129,21 @@ ui <- fillPage(
       )
     ),
     mainPanel(
+      class = "main-panel",
       width = 9,
       tabsetPanel(
-        tabPanel("Crime Map", tmapOutput("crime_map", height = "600px", width = "100%")),
-        tabPanel("Crime Type Distribution", plotOutput("bar_chart", height = "600px", width = "100%"))
+        tabPanel("Geo Distribution", tmapOutput("crime_map", height = "600px", width = "100%")),
+        tabPanel("Distribution over Police Divisions", plotlyOutput("bar_chart", height = "600px", width = "100%"))
       )
     )
+  ),
+  
+  tags$footer(
+    tags$a(
+      href = "https://info-526-f24.github.io/project-01-VIZards/",
+      "Visit Our Website - VIZards"
+    ),
+    style = "margin-top: 20px; background-color: #f4f6f9; padding: 10px;"
   )
 )
 ```
@@ -142,15 +183,14 @@ server <- function(input, output, session) {
     "Other" = "gray"
   )
 
-  # Render tmap output
   output$crime_map <- renderTmap({
     tmap_mode("view")
     tm_shape(merged_data()) +
       tm_fill(
         "CrimeCount",
         palette = "Reds",
-        title = "Crime Count",
-        popup.vars = c("Crime Count :  " = "CrimeCount"),
+        title = "Incidents",
+        popup.vars = c("Incidents :  " = "CrimeCount"),
         border.col = "black", border.alpha = .5,
         id = "Label"
       ) +
@@ -180,7 +220,7 @@ server <- function(input, output, session) {
   })
 
 
-  output$bar_chart <- renderPlot({
+  output$bar_chart <- renderPlotly({
   data <- processed_data() %>%
     filter(Division != "NA") %>%
     group_by(Division) %>%
@@ -188,47 +228,45 @@ server <- function(input, output, session) {
     mutate(UCRDescription = fct_reorder(UCRDescription, CrimeCount, .desc = TRUE)) %>%
     ungroup()
 
-  # Define bar colors dynamically
   bar_colors <- setNames(
     if (input$crime_type_filter == "All") {
-      crime_colors  # Keep original colors for all crime types
+      crime_colors 
     } else {
       ifelse(
         names(crime_colors) == input$crime_type_filter,
-        crime_colors,  # Keep the original color for the selected crime type
-        scales::alpha(crime_colors, 0.3)  # Reduce intensity for other crime types
+        crime_colors, 
+        scales::alpha(crime_colors, 0.3) 
       )
     },
-    names(crime_colors)  # Ensure names remain for matching
+    names(crime_colors) 
   )
 
-  # Create the bar chart
-ggplot(data, aes(x = Division, y = CrimeCount, fill = UCRDescription)) +
+ggplot_chart <- ggplot(data, aes(
+    x = Division,
+    y = CrimeCount,
+    fill = UCRDescription,
+    text = paste(
+      "Division:", Division,
+      "<br>Crime Type:", UCRDescription,
+      "<br>Incidents:", scales::comma(CrimeCount)
+    )
+  )) +
   geom_bar(
     stat = "identity",
     position = position_dodge(width = 0.9),
     color = "black"
   ) +
-  geom_text(
-    aes(
-      label = scales::comma(CrimeCount),
-      group = UCRDescription
-    ),
-    position = position_dodge(width = 0.9),
-    vjust = -0.5,
-    size = 3,
-    color = "black"
-  ) +
-  scale_y_log10(labels = scales::comma) +  # Add comma-based numbers to y-axis
-  scale_fill_manual(values = bar_colors) +  # Apply dynamic bar colors
+  scale_y_log10(labels = scales::comma) +
+  scale_fill_manual(values = bar_colors) +
   labs(
     title = paste(
       "Distribution of", if (input$crime_type_filter == "All") "All" else input$crime_type_filter,
       "Crimes across Tucson Divisions"
     ),
     x = "Division",
-    y = "Crime Count (Log Scale)",
-    fill = NULL
+    y = "Incident Count",
+    fill = NULL,
+    caption = "Source: City of Tucson"
   ) +
   theme_minimal() +
   theme(
@@ -247,9 +285,29 @@ ggplot(data, aes(x = Division, y = CrimeCount, fill = UCRDescription)) +
       size = 15
     ),
     plot.margin = unit(c(1.2, 1.2, 1.2, 1.2), "cm"),
-    panel.border = element_rect(color = "grey80", fill = NA)  # Add border around plot
+    panel.border = element_rect(color = "grey80", fill = NA)
   ) +
   guides(fill = guide_legend(label.position = "top", nrow = 1))
+
+  ggplotly(ggplot_chart, tooltip = "text") %>%
+    layout(
+      legend = list(
+        orientation = "h",
+        x = 0.5,
+        y = -0.2,
+        xanchor = "center",
+        yanchor = "top",
+        itemwidth = 50,
+        font = list(size = 12)
+      ),
+      title = list(
+        text = paste(
+          "Distribution of", if (input$crime_type_filter == "All") "All" else input$crime_type_filter,
+          "Crimes across Police Divisions"
+        ),
+        x = 0.5
+      )
+    )
   })
 }
 
