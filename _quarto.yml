@@ -16,10 +16,8 @@ website:
         href: presentation.qmd
       - text: About
         href: about.qmd
-      - text: Crime Trend Analysis
-        href: https://hitarthbharadaz.shinyapps.io/dashboard-2/
-      - text: Crime GeoSpatial Analysis
-        href: https://hitarthbharadaz.shinyapps.io/dashboard-1/
+      - text: Dashboard
+        href: dashboard.qmd
 
 format:
   html:

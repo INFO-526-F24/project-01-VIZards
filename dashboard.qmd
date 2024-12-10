@@ -1,0 +1,275 @@
+---
+title: "Dashboard"
+format: dashboard
+editor_options: 
+  chunk_output_type: console
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+if(!require(pacman))
+  install.packages("pacman")
+
+options(repos = "https://cran.r-project.org/")
+
+pacman::p_load(tidyverse,
+               dplyr,
+               ggplot2,
+               gganimate,
+               gifski,
+               png,
+               transformr,
+               sf,
+               stringr,
+               sparkline,
+               reactable,
+               tidyr,
+               htmltools)
+
+theme_set(theme_minimal(base_size = 24, base_family = "Atkinson Hyperlegible"))
+
+```
+
+
+# {.sidebar}
+
+In [2018-20234], Crime count with latest reported incident (in 2024) ordered by severity:
+
+|                      |          |             |
+|----------------------|----------|-------------|
+| **Homicide**           |   404    | 28th Apr |
+| **Sexual Assault**    |   2,892    | 1st May |
+| **Robbery**       |   6,586    | 30th Apr |
+| **Assault, Aggravated**      |   13,923    | 1st May |
+| **Burglary**      |   16,797    | 1st May |
+| **Larceny**      |   125,045    | 1st May |
+| **GTA**      |   14,859    | 1st May |
+| **Arson**      |   1,182    | 1st May |
+
+------------------------------------------------------------------------
+
+
+# TIME ANALYSIS
+
+## Row {height="20%"}
+```{r}
+#| content: valuebox
+#| title: "Total Reported Crime (Jan 2018 - May 2024)"
+
+list(
+  icon = "shield",
+  color = "primary",
+  value = 181683
+)
+```
+
+
+```{r}
+#| content: valuebox
+#| title: "Crimes Reported in 2024"
+
+list(
+  icon = "shield",
+  color = "primary",
+  value = 7500
+)
+```
+
+
+## Row {height="40%"}
+
+### Column {width="40%"}
+
+```{r include=FALSE}
+#| title: Total Incidents over the years [CODE BLOCK]
+
+crime_data <- read.csv("./data/Tucson_Police_Reported_Crimes.csv")
+
+# Convert 'DateOccurred' to Date format and extract Year and Quarter
+crime_data$DateOccurred <- as.Date(crime_data$DateOccurred)
+crime_data$Year <- as.numeric(format(crime_data$DateOccurred, "%Y"))
+crime_data$Quarter <- as.numeric(format(crime_data$DateOccurred, "%m")) %/% 3 + 1
+
+# Group by Year and Quarter and count the number of incidents
+quarterly_trends <- crime_data %>%
+  group_by(Year, Quarter) %>%
+  summarise(IncidentCount = n()) %>%
+  ungroup() %>%
+  mutate(TimelineIndex = row_number())
+
+# Get unique year positions for annotations
+year_annotations <- quarterly_trends %>%
+  group_by(Year) %>%
+  summarise(TimelineIndex = min(TimelineIndex))
+
+# Create the animated plot with annotations and y-axis counts
+animated_plot <- ggplot(quarterly_trends, aes(x = TimelineIndex, y = IncidentCount)) +
+  geom_line(color = "tomato2", size = 1) +
+  labs(
+    title = "Crime Trend",
+    x = NULL,
+    y = "Incident Count" 
+  ) +
+  scale_y_continuous(
+    breaks = seq(0, 9000, by = 1000),
+    minor_breaks = seq(0, 9000, by = 1000),
+    labels = scales::comma
+  ) +
+  theme_minimal() +
+  theme(
+    # panel.grid = element_blank(),  # Remove all grid lines
+    # panel.background = element_blank(),  # Remove panel background
+    axis.line = element_line(color = "black"),  # Keep only x and y axes as black lines
+    axis.ticks.y = element_line(color = "black"),  # Retain ticks only on the y-axis
+    axis.text.y = element_text(color = "black"),  # Retain y-axis text
+    axis.ticks.x = element_blank(),  # Remove x-axis ticks
+    axis.text.x = element_blank(),  # Remove x-axis text
+    plot.title = element_text(hjust = 0.5, size = 16),  # Center the title
+    plot.margin = unit(c(1, 1, 5, 1), "lines")
+  ) +
+  annotate(
+    "text",
+    x = year_annotations$TimelineIndex + 1.5,
+    y = 850,
+    label = year_annotations$Year,
+    size = 4,
+    color = "black"
+  ) +
+ coord_cartesian(clip = "off", ylim = c(1500, 9000), expand=FALSE) + 
+ transition_reveal(TimelineIndex)
+
+# Animate the plot and save as a GIF
+animated_gif <- animate(animated_plot, width = 800, height = 700, units = "px", res = 150, fps = 10)
+anim_save("./images/crime_trend_animation_with_yaxis_counts.gif", animated_gif)
+```
+
+
+```{r}
+#| title: Total Incidents over the years
+
+knitr::include_graphics("./images/crime_trend_animation_with_yaxis_counts.gif")
+```
+
+
+### Column {width="50%"}  {.tabset}
+ 
+```{r}
+#| title: Crimes Trends at glance
+
+crime_data <- read.csv("./data/Tucson_Police_Reported_Crimes.csv")
+
+# Major Crime Type
+main_crime_types <- c(
+  "Homicide",
+  "Sexual Assault",
+  "Robbery",
+  "Assault, Aggravated",
+  "Burglary",
+  "Larceny",
+  "GTA",
+  "Other"
+)
+
+crime_trend_data <- crime_data %>%
+  mutate(
+    UCRDescription = str_replace(UCRDescription, "^[0-9]+ - ", ""),
+    UCRDescription = str_to_title(UCRDescription),
+    UCRDescription = ifelse(UCRDescription %in% main_crime_types, UCRDescription, "Other")
+  ) %>%
+  group_by(UCRDescription, Year) %>%
+  summarise(CrimeCount = n(), .groups = "drop") %>%
+  group_by(Year) %>%
+  mutate(TotalCrimes = sum(CrimeCount)) %>%
+  ungroup() %>%
+  mutate(Percentage = round((CrimeCount / TotalCrimes) * 100, 1)) %>%
+  select(UCRDescription, Year, Percentage) %>%
+  pivot_wider(names_from = Year, values_from = Percentage, values_fill = NA) %>%
+  rowwise() %>%
+  mutate(Trend = list(c_across(starts_with("20")))) %>%
+  ungroup()
+
+# Remove null crime type
+crime_trend_data <- crime_trend_data %>%
+  filter(UCRDescription %in% main_crime_types)
+
+
+browsable(
+  tagList(
+    div(
+      "Tucson Crime Analysis",
+      style = "font-family: Arial, sans-serif; font-size: 20px; font-weight: bold; margin-bottom: 10px; text-align: center;"
+    ),
+    reactable(
+      crime_trend_data,
+      columns = list(
+        UCRDescription = colDef(
+          name = "Crime Type",
+          style = list(fontWeight = "bold")
+        ),
+        Trend = colDef(
+          name = "Trend",
+          cell = function(value) sparkline(value, type = "line", width = 120, height = 30)
+        ),
+        `2018` = colDef(
+          name = "2018",
+          cell = function(value) paste0(value, "%") 
+        ),
+        `2019` = colDef(
+          name = "2019",
+          cell = function(value) paste0(value, "%")
+        ),
+        `2020` = colDef(
+          name = "2020",
+          cell = function(value) paste0(value, "%")
+        ),
+        `2021` = colDef(
+          name = "2021",
+          cell = function(value) paste0(value, "%")
+        ),
+        `2022` = colDef(
+          name = "2022",
+          cell = function(value) paste0(value, "%")
+        )
+      ),
+      bordered = TRUE,
+      highlight = TRUE,
+      defaultColDef = colDef(
+        align = "center",
+        style = list(
+          fontFamily = "Arial, sans-serif",
+          fontSize = "14px",      
+          padding = "5px"       
+        )
+      ),
+      theme = reactableTheme(
+        stripedColor = "#f9f9f9",
+        highlightColor = "#f0f0f0",
+        headerStyle = list(
+          background = "#f4f4f4",
+          fontWeight = "bold", 
+          fontSize = "15px", 
+          borderBottom = "2px solid #ddd"
+        ),
+        borderColor = "#ddd"
+      ),
+      fullWidth = TRUE
+    )
+  )
+)
+
+
+```
+
+:::{iframe-section}
+<iframe src="http://hitarthbharadaz.shinyapps.io/dashboard-2/" width="100%" height="720px" style="border:none;"></iframe>
+:::
+
+
+# AREA ANALYSIS
+
+:::{iframe-section}
+<iframe src="http://hitarthbharadaz.shinyapps.io/dashboard-1/" width="100%" height="720px" style="border:none;"></iframe>
+:::
