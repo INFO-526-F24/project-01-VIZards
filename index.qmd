@@ -409,6 +409,14 @@ browsable(
         `2022` = colDef(
           name = "2022",
           cell = function(value) paste0(value, "%")
+        ),
+        `2023` = colDef(
+          name = "2023",
+          cell = function(value) paste0(value, "%")
+        ),
+        `2024` = colDef(
+          name = "2024",
+          cell = function(value) paste0(value, "%")
         )
       ),
       bordered = TRUE,
@@ -460,9 +468,9 @@ We utilized **R (ggplot2)** and **Shiny** to create an interactive dashboard for
 
     -   Purpose: To illustrate crime trends over time for different types of crimes.
 
-    -   Justification: Line charts effectively capture temporal changes and trends, allowing stakeholders to observe fluctuations in crime incidents across years (2018–2024).
+    -   Justification: Line charts effectively capture temporal changes and trends, allowing stakeholders to observe fluctuations in crime incidents across years (2018–2024) for each quarter.
 
-    -   Implementation: The charts were plotted with crime types on separate lines, ensuring clear differentiation and comparability.
+    -   Implementation: The chart was plotted with incident count vs Time, ensuring clear differentiation and comparability.
 
 2.  **Bar Charts**:
 
@@ -482,11 +490,11 @@ We utilized **R (ggplot2)** and **Shiny** to create an interactive dashboard for
 
     -   Tools: Leveraged **Leaflet** for interactivity, allowing users to explore specific wards and view detailed crime statistics.
 
-2.  **Stacked Bar Charts**:
+2.  **Side-by-Side Bar Charts**:
 
     -   Purpose: To show the distribution of different crime types across divisions.
 
-    -   Justification: Stacked bar charts highlight the relative and absolute frequencies of crime types within each division, providing a comparative overview of crime distribution.
+    -   Justification: Side-by-Side bar charts highlight the relative and absolute frequencies of crime types within each police division, providing a comparative overview of crime distribution.
 
     -   Enhanced Interaction: Tooltips displaying exact counts were added to improve usability.
 
